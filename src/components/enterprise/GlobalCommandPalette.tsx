@@ -240,9 +240,9 @@ export const GlobalCommandPalette: React.FC<GlobalCommandPaletteProps> = ({
         {/* Test Suite Results Banner */}
         {testResults && (
           <div className="p-3 bg-slate-900 border-b border-slate-800 space-y-2 text-xs">
-            <div className="flex items-center justify-between font-bold text-emerald-400">
+            <div className="flex items-center justify-between font-bold text-[#D64062]">
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <CheckCircle2 className="w-4 h-4 text-[#D64062]" />
                 <span>Production Suite Execution Passed (100% Zero-Defect)</span>
               </span>
               <button
@@ -255,7 +255,7 @@ export const GlobalCommandPalette: React.FC<GlobalCommandPaletteProps> = ({
             <div className="space-y-1 font-mono text-[11px] max-h-36 overflow-y-auto">
               {testResults.map((r, i) => (
                 <div key={i} className="flex items-center justify-between text-slate-300 border-b border-slate-800/40 py-0.5">
-                  <span className="text-emerald-300">✓ {r.suiteName}: {r.testName}</span>
+                  <span className="text-slate-300">✓ {r.suiteName}: {r.testName}</span>
                   <span className="text-slate-500 text-[10px]">{r.durationMs}ms</span>
                 </div>
               ))}

@@ -141,7 +141,7 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
       )}
 
       {showStatus && (
-        <span className="absolute bottom-0 right-0 block w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900" />
+        <span className="absolute bottom-0 right-0 block w-2 h-2 rounded-full bg-[#D64062] ring-2 ring-white dark:ring-slate-900" />
       )}
     </div>
   );

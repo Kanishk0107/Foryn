@@ -233,7 +233,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
       <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/60">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0F1428] dark:text-[#D64062] bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-200">
               Commercial Costing Engine
             </span>
             <span className="text-xs text-slate-400">•</span>
@@ -310,13 +310,13 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
         </div>
 
         <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 space-y-1 shadow-2xs">
-          <span className="text-[10px] font-mono uppercase text-emerald-600 dark:text-emerald-400 font-bold block">
+          <span className="text-[10px] font-mono uppercase text-[#0F1428] dark:text-[#D64062] font-bold block">
             Gross Margin
           </span>
-          <div className="text-base font-black font-mono text-emerald-600 dark:text-emerald-400">
+          <div className="text-base font-black font-mono text-[#0F1428] dark:text-[#D64062]">
             {grossProfitPercent}%
           </div>
-          <span className="text-[10px] text-emerald-600 font-medium">
+          <span className="text-[10px] text-[#0F1428] font-medium">
             +₹{(grossProfitMargin / 100000).toFixed(2)} Lakhs
           </span>
         </div>
@@ -451,7 +451,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
                           (₹{item.materialUnitRate} + ₹{item.laborUnitRate})
                         </div>
                       </td>
-                      <td className="py-3 px-3 text-right font-mono font-semibold text-emerald-600 dark:text-emerald-400">
+                      <td className="py-3 px-3 text-right font-mono font-semibold text-[#0F1428] dark:text-[#D64062]">
                         {item.markupMarginPercent}%
                       </td>
                       <td className="py-3 px-3 text-right font-mono font-bold text-slate-800 dark:text-slate-100">
@@ -464,11 +464,11 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
                         <span
                           className={`text-[9px] font-bold px-2 py-0.5 rounded-full inline-block ${
                             item.status === 'Client Approved'
-                              ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                              ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
                               : item.status === 'Procurement Released'
-                              ? 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300'
+                              ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
                               : item.status === 'Site Installed'
-                              ? 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300'
+                              ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
                               : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
                           }`}
                         >
@@ -486,7 +486,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
                           </button>
                           <button
                             onClick={() => handleDeleteItem(item.id)}
-                            className="p-1 rounded-md text-slate-400 hover:text-rose-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+                            className="p-1 rounded-md text-slate-400 hover:text-[#D64062] hover:bg-slate-100 dark:hover:bg-slate-800"
                             title="Delete Line Item"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
@@ -632,7 +632,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono uppercase text-emerald-600 dark:text-emerald-400 font-bold mb-1">
+                  <label className="block text-[10px] font-mono uppercase text-[#0F1428] dark:text-[#D64062] font-bold mb-1">
                     Markup Margin %
                   </label>
                   <input
@@ -642,7 +642,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
                     required
                     value={formMargin}
                     onChange={(e) => setFormMargin(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 rounded-xl text-emerald-700 dark:text-emerald-400 font-mono font-bold"
+                    className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-200 rounded-xl text-[#0F1428] dark:text-[#D64062] font-mono font-bold"
                   />
                 </div>
               </div>

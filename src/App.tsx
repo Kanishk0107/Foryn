@@ -830,7 +830,7 @@ export default function App() {
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#D64062]/10 rounded-full blur-[140px]" />
         <div className="absolute top-1/2 -right-32 w-[500px] h-[500px] bg-[#0F1428]/5 rounded-full blur-[140px]" />
-        <div className="absolute -bottom-32 left-1/3 w-[550px] h-[550px] bg-amber-400/10 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-32 left-1/3 w-[550px] h-[550px] bg-[#D64062]/10 rounded-full blur-[140px]" />
       </div>
 
       {/* Top Light Portal Navigation Header */}
@@ -844,8 +844,8 @@ export default function App() {
         </div>
         <div className="flex items-center gap-4 text-xs font-semibold text-slate-600">
           <span className="hidden md:inline">24/7 Enterprise Support</span>
-          <span className="px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-[#0F1428] text-xs font-bold flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#D64062] animate-pulse" />
             Cloud Auth Active
           </span>
         </div>

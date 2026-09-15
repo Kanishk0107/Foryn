@@ -113,13 +113,13 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
   return (
     <div className="space-y-6">
       {/* Top Banner Header */}
-      <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-xl flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-xl flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/30">
+            <span className="p-1.5 rounded-lg bg-[#0F1428]/20 text-slate-400 border border-slate-200">
               <HardHat className="w-5 h-5" />
             </span>
-            <span className="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest">
+            <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">
               Project Management & Vendor Hub
             </span>
           </div>
@@ -133,7 +133,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
 
         <button
           onClick={() => setIsAssignModalOpen(true)}
-          className="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-all flex items-center gap-2 ring-2 ring-amber-400/30"
+          className="px-4 py-2.5 bg-[#D64062] hover:bg-[#D64062] active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-all flex items-center gap-2 ring-2 ring-slate-200"
         >
           <Plus className="w-4 h-4" />
           <span>Assign New Vendor</span>
@@ -154,7 +154,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
               {vendors.length} Contracted Vendors
             </span>
           </div>
-          <div className="w-11 h-11 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100 flex items-center justify-center font-bold">
+          <div className="w-11 h-11 rounded-2xl bg-slate-50 text-[#0F1428] border border-slate-200 flex items-center justify-center font-bold">
             <FileSpreadsheet className="w-6 h-6" />
           </div>
         </div>
@@ -164,14 +164,14 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
             <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
               Awaiting PM Approval
             </span>
-            <span className="text-2xl font-black text-amber-600 mt-1 block">
+            <span className="text-2xl font-black text-[#0F1428] mt-1 block">
               ₹{pendingPMApprovals.toFixed(1)} Lakhs
             </span>
-            <span className="text-[10px] font-semibold text-amber-600 mt-1 block">
+            <span className="text-[10px] font-semibold text-[#0F1428] mt-1 block">
               Requires site milestone audit
             </span>
           </div>
-          <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 border border-amber-200 flex items-center justify-center font-bold">
+          <div className="w-11 h-11 rounded-2xl bg-slate-100 text-[#0F1428] border border-slate-200 flex items-center justify-center font-bold">
             <Clock className="w-6 h-6" />
           </div>
         </div>
@@ -181,14 +181,14 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
             <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
               Finance Released Payouts
             </span>
-            <span className="text-2xl font-black text-emerald-600 mt-1 block">
+            <span className="text-2xl font-black text-[#0F1428] mt-1 block">
               ₹{totalPaidToVendors.toFixed(1)} Lakhs
             </span>
-            <span className="text-[10px] font-semibold text-emerald-600 mt-1 block">
+            <span className="text-[10px] font-semibold text-[#0F1428] mt-1 block">
               Disbursed via RTGS/NEFT
             </span>
           </div>
-          <div className="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center font-bold">
+          <div className="w-11 h-11 rounded-2xl bg-slate-50 text-[#0F1428] border border-slate-200 flex items-center justify-center font-bold">
             <CheckCircle2 className="w-6 h-6" />
           </div>
         </div>
@@ -202,14 +202,14 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
                   Active Execution Sites
                 </span>
-                <span className="text-2xl font-black text-blue-600 mt-1 block">
+                <span className="text-2xl font-black text-[#0F1428] mt-1 block">
                   {activeSitesCount} {activeSitesCount === 1 ? 'Active Site' : 'Active Sites'}
                 </span>
                 <span className="text-[10px] font-semibold text-slate-500 mt-1 block">
                   {activeSitesCount > 0 ? 'Live Site Registry' : 'No active site records'}
                 </span>
               </div>
-              <div className="w-11 h-11 rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center font-bold">
+              <div className="w-11 h-11 rounded-2xl bg-slate-50 text-[#0F1428] border border-slate-200 flex items-center justify-center font-bold">
                 <Building2 className="w-6 h-6" />
               </div>
             </div>
@@ -253,15 +253,15 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
           >
             <div className="space-y-2 flex-1">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200">
+                <span className="px-2.5 py-0.5 rounded-full bg-slate-50 text-[#0F1428] text-[10px] font-bold border border-slate-200">
                   {vendor.category}
                 </span>
                 <span className="text-xs font-bold text-slate-500">Project: {vendor.projectName}</span>
                 <span
                   className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                     vendor.status === 'Approved by PM'
-                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-                      : 'bg-amber-100 text-amber-900 border border-amber-200'
+                      ? 'bg-slate-100 text-[#0F1428] border border-slate-200'
+                      : 'bg-slate-100 text-[#0F1428] border border-slate-200'
                   }`}
                 >
                   {vendor.status}
@@ -292,19 +292,19 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                       </div>
 
                       {m.status === 'Released by Finance' ? (
-                        <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                        <span className="px-2 py-0.5 rounded bg-slate-100 text-[#0F1428] text-[10px] font-extrabold flex items-center gap-1">
+                          <CheckCircle2 className="w-3 h-3 text-[#0F1428]" />
                           <span>Paid</span>
                         </span>
                       ) : m.status === 'PM Approved' ? (
-                        <span className="px-2 py-0.5 rounded bg-blue-100 text-blue-800 text-[10px] font-extrabold flex items-center gap-1">
-                          <Send className="w-3 h-3 text-blue-600" />
+                        <span className="px-2 py-0.5 rounded bg-slate-100 text-[#0F1428] text-[10px] font-extrabold flex items-center gap-1">
+                          <Send className="w-3 h-3 text-[#0F1428]" />
                           <span>Sent to Finance</span>
                         </span>
                       ) : (
                         <button
                           onClick={() => onApproveVendorPayment(vendor.id, m.id)}
-                          className="px-2.5 py-1 rounded bg-amber-500 hover:bg-amber-400 text-slate-950 text-[11px] font-bold transition-all shadow-xs flex items-center gap-1"
+                          className="px-2.5 py-1 rounded bg-[#D64062] hover:bg-[#D64062] text-slate-950 text-[11px] font-bold transition-all shadow-xs flex items-center gap-1"
                         >
                           <CheckSquare className="w-3 h-3" />
                           <span>Approve Payment</span>
@@ -320,21 +320,21 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
             <div className="w-full md:w-64 bg-slate-900 text-white p-4 rounded-xl border border-slate-800 space-y-3">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-400">Total Contract:</span>
-                <span className="font-black text-amber-400 text-sm">₹{vendor.totalContractValue} Lakhs</span>
+                <span className="font-black text-[#D64062] text-sm">₹{vendor.totalContractValue} Lakhs</span>
               </div>
               <div className="flex items-center justify-between text-xs">
                 <span className="text-slate-400">Paid to Date:</span>
-                <span className="font-bold text-emerald-400">₹{vendor.paidToDate} Lakhs</span>
+                <span className="font-bold text-[#D64062]">₹{vendor.paidToDate} Lakhs</span>
               </div>
               <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-800">
                 <span className="text-slate-400">Pending PM Action:</span>
-                <span className="font-extrabold text-amber-300">₹{vendor.pendingApprovalAmount} Lakhs</span>
+                <span className="font-extrabold text-slate-300">₹{vendor.pendingApprovalAmount} Lakhs</span>
               </div>
 
               <div className="pt-2">
                 <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-amber-400 rounded-full"
+                    className="h-full bg-[#D64062] rounded-full"
                     style={{
                       width: `${Math.round((vendor.paidToDate / (vendor.totalContractValue || 1)) * 100)}%`
                     }}
@@ -361,7 +361,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
             >
               <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-2">
-                  <HardHat className="w-5 h-5 text-amber-500" />
+                  <HardHat className="w-5 h-5 text-[#D64062]" />
                   <h2 className="text-base font-extrabold text-slate-900">Assign Vendor to Project BOQ</h2>
                 </div>
                 <button
@@ -378,7 +378,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                   <select
                     value={projectName}
                     onChange={(e) => setProjectName(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
                   >
                     <option value="Villa Penthouse 402">Villa Penthouse 402</option>
                     <option value="Modern Duplex Kitchen">Modern Duplex Kitchen</option>
@@ -393,7 +393,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value as any)}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
                     >
                       <option value="Modular Cabinetry Factory">Modular Cabinetry Factory</option>
                       <option value="Civil & Tiling">Civil & Tiling</option>
@@ -410,7 +410,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                       step="0.1"
                       value={totalContractValue}
                       onChange={(e) => setTotalContractValue(Number(e.target.value))}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                      className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
                     />
                   </div>
                 </div>
@@ -423,7 +423,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                     value={vendorName}
                     onChange={(e) => setVendorName(e.target.value)}
                     placeholder="e.g. CenturyPly Modular Works Pvt Ltd"
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
                   />
                 </div>
 
@@ -435,7 +435,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                     value={contactPhone}
                     onChange={(e) => setContactPhone(e.target.value)}
                     placeholder="+91 98100 22334"
-                    className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                    className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
                   />
                 </div>
 
@@ -449,7 +449,7 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-md"
+                    className="px-5 py-2 bg-[#D64062] hover:bg-[#D64062] text-slate-950 font-bold text-xs rounded-xl shadow-md"
                   >
                     Assign Vendor & Generate Milestones
                   </button>

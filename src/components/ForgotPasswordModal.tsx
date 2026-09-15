@@ -48,7 +48,7 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
 
         {submitted ? (
           <div className="text-center py-6 space-y-4">
-            <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto animate-bounce" />
+            <CheckCircle2 className="w-12 h-12 text-[#D64062] mx-auto animate-bounce" />
             <h3 className="text-xl font-bold text-[#0F1428] dark:text-white">Password Reset Link Sent</h3>
             <p className="text-sm text-slate-600 dark:text-slate-300">
               We emailed a recovery link to <span className="font-semibold">{email}</span>. Click the link to update your password.
@@ -68,7 +68,7 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
             </div>
 
             {error && (
-              <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+              <div className="p-3 rounded-xl bg-[#D64062]/5 border border-[#D64062]/20 text-[#D64062] text-xs font-semibold">
                 {error}
               </div>
             )}

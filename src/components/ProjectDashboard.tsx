@@ -107,11 +107,11 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
 
           {/* Right Nav Utilities */}
           <div className="flex items-center gap-4 text-xs font-semibold text-slate-600 dark:text-slate-300">
-            <button className="flex items-center gap-1 hover:text-amber-600 transition-colors">
+            <button className="flex items-center gap-1 hover:text-[#0F1428] transition-colors">
               <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
               <span>Admin</span>
             </button>
-            <button className="flex items-center gap-1 hover:text-amber-600 transition-colors">
+            <button className="flex items-center gap-1 hover:text-[#0F1428] transition-colors">
               <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
               <span>MES</span>
             </button>
@@ -140,7 +140,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
             <button
               onClick={onLogout}
               title="Sign Out"
-              className="text-slate-400 hover:text-rose-600 transition-colors pl-2 border-l border-slate-200"
+              className="text-slate-400 hover:text-[#D64062] transition-colors pl-2 border-l border-slate-200"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -155,7 +155,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
           <div>
             {/* User & Organization Header */}
             <div className="mb-6 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 font-bold flex items-center justify-center border border-blue-100">
+              <div className="w-9 h-9 rounded-xl bg-slate-50 text-[#0F1428] font-bold flex items-center justify-center border border-slate-200">
                 {user.name.charAt(0).toUpperCase()}
               </div>
               <div className="min-w-0">
@@ -169,7 +169,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
             {/* Primary Action Button */}
             <button
               onClick={() => setIsCreatingProject(true)}
-              className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 mb-6"
+              className="w-full py-2.5 px-4 bg-[#0F1428] hover:bg-[#0F1428] text-white font-semibold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 mb-6"
             >
               <Plus className="w-4 h-4" />
               <span>New Project</span>
@@ -181,15 +181,15 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                 onClick={() => setActiveTab('analytics')}
                 className={`w-full px-3 py-2.5 rounded-xl flex items-center justify-between transition-colors ${
                   activeTab === 'analytics'
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-xs'
-                    : 'text-slate-700 hover:bg-amber-50/80 bg-amber-50/40 border border-amber-200/60'
+                    ? 'bg-[#D64062] text-slate-950 font-bold shadow-xs'
+                    : 'text-slate-700 hover:bg-slate-50 bg-slate-50 border border-slate-200'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <BarChart3 className="w-4 h-4 text-amber-600" />
+                  <BarChart3 className="w-4 h-4 text-[#0F1428]" />
                   <span>Project Analytics</span>
                 </div>
-                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase rounded bg-amber-200 text-amber-900">
+                <span className="px-1.5 py-0.5 text-[9px] font-mono font-bold uppercase rounded bg-slate-200 text-[#0F1428]">
                   D3
                 </span>
               </button>
@@ -198,7 +198,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                 onClick={() => setActiveTab('recent')}
                 className={`w-full px-3 py-2.5 rounded-xl flex items-center gap-2.5 transition-colors ${
                   activeTab === 'recent'
-                    ? 'bg-blue-50 text-blue-700'
+                    ? 'bg-slate-50 text-[#0F1428]'
                     : 'text-slate-600 hover:bg-slate-100/80'
                 }`}
               >
@@ -210,7 +210,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                 onClick={() => setActiveTab('all')}
                 className={`w-full px-3 py-2.5 rounded-xl flex items-center gap-2.5 transition-colors ${
                   activeTab === 'all'
-                    ? 'bg-blue-50 text-blue-700'
+                    ? 'bg-slate-50 text-[#0F1428]'
                     : 'text-slate-600 hover:bg-slate-100/80'
                 }`}
               >
@@ -222,7 +222,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                 onClick={() => setActiveTab('deleted')}
                 className={`w-full px-3 py-2.5 rounded-xl flex items-center gap-2.5 transition-colors ${
                   activeTab === 'deleted'
-                    ? 'bg-blue-50 text-blue-700'
+                    ? 'bg-slate-50 text-[#0F1428]'
                     : 'text-slate-600 hover:bg-slate-100/80'
                 }`}
               >
@@ -236,7 +236,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                   onClick={() => setActiveTab('production')}
                   className={`w-full px-3 py-2.5 rounded-xl flex items-center justify-between transition-colors ${
                     activeTab === 'production'
-                      ? 'bg-blue-600 text-white shadow-sm'
+                      ? 'bg-[#0F1428] text-white shadow-sm'
                       : 'text-slate-600 hover:bg-slate-100'
                   }`}
                 >
@@ -244,7 +244,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                     <LayoutGrid className="w-4 h-4" />
                     <span>Production Designs</span>
                   </div>
-                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#D64062] animate-pulse" />
                 </button>
                 <a
                   href="#know-more"
@@ -252,7 +252,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                     e.preventDefault();
                     alert('Foryn Production Designs module connects directly to CNC manufacturing factories for automated cutting lists.');
                   }}
-                  className="text-[11px] text-blue-600 hover:underline pl-9 mt-1 block font-normal"
+                  className="text-[11px] text-[#0F1428] hover:underline pl-9 mt-1 block font-normal"
                 >
                   Know more
                 </a>
@@ -281,9 +281,9 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                   e.preventDefault();
                   alert('Opening Foryn CAD Documentation Guide.');
                 }}
-                className="flex items-center gap-2 hover:text-blue-600 transition-colors py-1"
+                className="flex items-center gap-2 hover:text-[#0F1428] transition-colors py-1"
               >
-                <BookOpen className="w-4 h-4 text-blue-500 shrink-0" />
+                <BookOpen className="w-4 h-4 text-[#0F1428] shrink-0" />
                 <span>Help Documentation</span>
               </a>
             </div>
@@ -300,7 +300,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search projects, client names or designs..."
-                className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 shadow-xs"
+                className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 pl-10 focus:outline-none focus:ring-2 focus:ring-slate-200 focus:border-slate-200 shadow-xs"
               />
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
             </div>
@@ -310,11 +310,11 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                 onClick={() => setActiveTab('analytics')}
                 className={`px-3.5 py-2.5 font-semibold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 ${
                   activeTab === 'analytics'
-                    ? 'bg-amber-500 text-slate-950 font-bold'
+                    ? 'bg-[#D64062] text-slate-950 font-bold'
                     : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
               >
-                <BarChart3 className="w-3.5 h-3.5 text-amber-600" />
+                <BarChart3 className="w-3.5 h-3.5 text-[#0F1428]" />
                 <span>Project Analytics</span>
               </button>
 
@@ -322,7 +322,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                 onClick={() => onOpenStudio()}
                 className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs rounded-xl shadow-sm transition-all flex items-center gap-2"
               >
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <Sparkles className="w-3.5 h-3.5 text-[#D64062]" />
                 <span>Launch Studio Canvas</span>
               </button>
             </div>
@@ -339,13 +339,13 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <Folder className="w-4 h-4 text-blue-600" />
+                <Folder className="w-4 h-4 text-[#0F1428]" />
                 <span>Recent Projects</span>
               </h2>
 
               <button
                 onClick={() => setIsCreatingProject(true)}
-                className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1"
+                className="text-xs font-bold text-[#0F1428] hover:text-[#0F1428] flex items-center gap-1"
               >
                 <span>+ Create new project</span>
               </button>
@@ -377,7 +377,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
 
                     <div className="text-right">
                       <span className="text-[10px] text-slate-300 block">{project.timeAgo}</span>
-                      <span className="text-[10px] font-mono text-amber-300 flex items-center gap-1">
+                      <span className="text-[10px] font-mono text-slate-300 flex items-center gap-1">
                         <Layers className="w-3 h-3" />
                         <span>{project.designCount}</span>
                       </span>
@@ -392,7 +392,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <FileText className="w-4 h-4 text-blue-600" />
+                <FileText className="w-4 h-4 text-[#0F1428]" />
                 <span>Recent Designs</span>
               </h2>
             </div>
@@ -419,7 +419,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
 
                   <div className="p-3 bg-white flex-1 flex flex-col justify-between">
                     <div>
-                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors truncate">
+                      <h4 className="text-xs font-bold text-slate-900 group-hover:text-[#0F1428] transition-colors truncate">
                         {design.title}
                       </h4>
                       <p className="text-[11px] text-slate-500 mt-0.5 truncate">
@@ -464,7 +464,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                     value={newProjectName}
                     onChange={(e) => setNewProjectName(e.target.value)}
                     placeholder="e.g. Project76 or Villa Penthouse"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-slate-200"
                   />
                 </div>
 
@@ -477,7 +477,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                     value={newClientName}
                     onChange={(e) => setNewClientName(e.target.value)}
                     placeholder="e.g. Mr. Rajesh Sharma"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-blue-600"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs text-slate-900 focus:outline-none focus:border-slate-200"
                   />
                 </div>
 
@@ -491,7 +491,7 @@ export const ProjectDashboard: React.FC<ProjectDashboardProps> = ({
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-sm"
+                    className="px-4 py-2 bg-[#0F1428] hover:bg-[#0F1428] text-white font-semibold text-xs rounded-xl shadow-sm"
                   >
                     Create & Open CAD Studio
                   </button>

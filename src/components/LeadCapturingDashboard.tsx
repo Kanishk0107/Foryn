@@ -482,7 +482,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-amber-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl border border-amber-400 shadow-xs flex items-center justify-between text-xs"
+          className="bg-[#D64062] text-slate-950 font-bold px-4 py-2.5 rounded-xl border border-slate-200 shadow-xs flex items-center justify-between text-xs"
         >
           <div className="flex items-center gap-2.5">
             <Bell className="w-4 h-4 animate-bounce shrink-0 text-slate-950" />
@@ -499,7 +499,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
             </button>
             <button
               onClick={() => setIsBannerDismissed(true)}
-              className="p-1 text-slate-950 hover:bg-amber-600/30 rounded"
+              className="p-1 text-slate-950 hover:bg-slate-800 rounded"
             >
               <X className="w-4 h-4" />
             </button>
@@ -526,7 +526,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
                   Pipeline Value:
                 </span>
-                <span className="text-xl font-black text-emerald-600">
+                <span className="text-xl font-black text-[#0F1428]">
                   ₹{totalBudgetSum.toFixed(1)} Lakhs
                 </span>
               </div>
@@ -536,13 +536,13 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
               {/* Follow-up Notifications Bell button */}
               <button
                 onClick={() => setIsFollowUpDrawerOpen(true)}
-                className="relative p-2 rounded-xl bg-slate-100 hover:bg-amber-100 border border-slate-200 text-slate-700 hover:text-amber-700 transition-all shadow-2xs flex items-center gap-1.5 text-xs font-bold"
+                className="relative p-2 rounded-xl bg-slate-100 hover:bg-slate-100 border border-slate-200 text-slate-700 hover:text-[#0F1428] transition-all shadow-2xs flex items-center gap-1.5 text-xs font-bold"
                 title="Follow-Up Notifications"
               >
-                <Bell className="w-4 h-4 text-amber-600" />
+                <Bell className="w-4 h-4 text-[#0F1428]" />
                 <span className="hidden sm:inline">Notifications</span>
                 {allPendingFollowUps.length > 0 && (
-                  <span className="ml-1 px-1.5 py-0.5 rounded-full bg-rose-500 text-white font-extrabold text-[10px] animate-pulse">
+                  <span className="ml-1 px-1.5 py-0.5 rounded-full bg-[#D64062] text-white font-extrabold text-[10px] animate-pulse">
                     {allPendingFollowUps.length}
                   </span>
                 )}
@@ -566,7 +566,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                   onClick={() => setDisplayMode('kanban')}
                   className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                     displayMode === 'kanban'
-                      ? 'bg-rose-500 text-white font-extrabold shadow-xs'
+                      ? 'bg-[#D64062] text-white font-extrabold shadow-xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -577,7 +577,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
 
               <button
                 onClick={() => setIsNewLeadModalOpen(true)}
-                className="px-3.5 py-1.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all"
+                className="px-3.5 py-1.5 bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all"
               >
                 <Plus className="w-4 h-4" />
                 <span>+ New Lead</span>
@@ -594,7 +594,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search Unique PID (e.g. 1001), Name, Phone..."
-                  className="w-full pl-8 pr-4 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-rose-500/20 shadow-2xs"
+                  className="w-full pl-8 pr-4 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#D64062]/20 shadow-2xs"
                 />
                 <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" />
                 {searchQuery && (
@@ -633,7 +633,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 font-extrabold text-[11px]">
+              <span className="px-2.5 py-1 rounded-lg bg-slate-50 text-[#0F1428] border border-slate-200 font-extrabold text-[11px]">
                 Showing {filteredLeads.length} of {totalLeadsCount} Leads
               </span>
             </div>
@@ -646,7 +646,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200/80 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
                     <th className="p-3 w-8">
-                      <input type="checkbox" className="rounded text-amber-500" />
+                      <input type="checkbox" className="rounded text-[#D64062]" />
                     </th>
                     <th className="p-3 w-12 text-center">S.No.</th>
                     <th className="p-3">Client Name & Unique PID</th>
@@ -666,10 +666,10 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                   {filteredLeads.map((item, index) => (
                     <tr
                       key={item.id}
-                      className="hover:bg-amber-50/40 transition-colors group cursor-pointer"
+                      className="hover:bg-slate-50 transition-colors group cursor-pointer"
                     >
                       <td className="p-3" onClick={(e) => e.stopPropagation()}>
-                        <input type="checkbox" className="rounded text-amber-500" />
+                        <input type="checkbox" className="rounded text-[#D64062]" />
                       </td>
 
                       {/* S.No. Serial Number */}
@@ -680,7 +680,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                       {/* Client Name & Unique PID */}
                       <td className="p-3 font-extrabold text-slate-900 whitespace-nowrap">
                         <div className="flex items-center gap-2">
-                          <div className="w-7 h-7 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-black text-xs shrink-0">
+                          <div className="w-7 h-7 rounded-full bg-[#D64062]/10 text-[#D64062] flex items-center justify-center font-black text-xs shrink-0">
                             {item.clientName.charAt(0).toUpperCase()}
                           </div>
                           <div className="flex flex-col">
@@ -689,12 +689,12 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                                 setSelectedLead(item);
                                 setActiveView('detail');
                               }}
-                              className="hover:underline hover:text-rose-600 text-slate-900 font-black text-xs"
+                              className="hover:underline hover:text-[#D64062] text-slate-900 font-black text-xs"
                             >
                               {item.clientName}
                             </span>
                             <span className="inline-flex items-center gap-1 font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 font-extrabold w-fit mt-0.5">
-                              <ShieldCheck className="w-2.5 h-2.5 text-amber-600" />
+                              <ShieldCheck className="w-2.5 h-2.5 text-[#0F1428]" />
                               <span>{item.pid}</span>
                             </span>
                           </div>
@@ -710,15 +710,15 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                           }
                           className={`px-2.5 py-1 rounded-lg border text-[11px] font-extrabold focus:outline-none ${
                             item.status === 'New Enquiry'
-                              ? 'bg-amber-100 text-amber-900 border-amber-300'
+                              ? 'bg-slate-100 text-[#0F1428] border-slate-200'
                               : item.status === 'Call Scheduled'
-                              ? 'bg-blue-100 text-blue-900 border-blue-300'
+                              ? 'bg-slate-100 text-[#0F1428] border-slate-200'
                               : item.status === 'Call Done'
-                              ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                              ? 'bg-slate-100 text-[#0F1428] border-slate-200'
                               : item.status === 'Call Back Required'
-                              ? 'bg-orange-100 text-orange-900 border-orange-300'
+                              ? 'bg-slate-100 text-[#0F1428] border-slate-200'
                               : item.status === 'Promoted to Sales Team'
-                              ? 'bg-purple-100 text-purple-900 border-purple-300'
+                              ? 'bg-slate-100 text-[#0F1428] border-slate-200'
                               : 'bg-slate-100 text-slate-800 border-slate-200'
                           }`}
                         >
@@ -736,7 +736,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                           <span className="font-mono text-slate-700">{item.phone}</span>
                           <button
                             onClick={() => handleStartCall(item)}
-                            className="p-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-bold transition-all shadow-2xs"
+                            className="p-1.5 rounded-lg bg-[#D64062] hover:bg-[#C03252] text-white font-bold transition-all shadow-2xs"
                             title="Launch Call Terminal"
                           >
                             <PhoneCall className="w-3.5 h-3.5" />
@@ -752,7 +752,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                       {/* Follow Up Alerts */}
                       <td className="p-3 whitespace-nowrap">
                         {item.followUps && item.followUps.length > 0 ? (
-                          <span className="px-2 py-0.5 rounded bg-rose-100 text-rose-800 border border-rose-200 font-extrabold text-[10px] flex items-center gap-1 w-fit">
+                          <span className="px-2 py-0.5 rounded bg-[#D64062]/10 text-[#D64062] border border-[#D64062]/20 font-extrabold text-[10px] flex items-center gap-1 w-fit">
                             <Clock className="w-3 h-3" />
                             <span>{item.followUps[0].date}</span>
                           </span>
@@ -801,7 +801,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                             setSelectedLead(item);
                             setActiveView('detail');
                           }}
-                          className="px-2.5 py-1 rounded-xl bg-slate-900 text-white font-bold text-[11px] hover:bg-rose-500 transition-all shadow-xs"
+                          className="px-2.5 py-1 rounded-xl bg-slate-900 text-white font-bold text-[11px] hover:bg-[#D64062] transition-all shadow-xs"
                         >
                           Inspect File
                         </button>
@@ -846,14 +846,14 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         onClick={() => setStatusFilter(st)}
                         className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                           isSelected
-                            ? 'bg-rose-500 text-white shadow-xs'
+                            ? 'bg-[#D64062] text-white shadow-xs'
                             : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
                         }`}
                       >
                         <span>{st}</span>
                         <span
                           className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
-                            isSelected ? 'bg-rose-700 text-white' : 'bg-slate-100 text-slate-600'
+                            isSelected ? 'bg-[#A82440] text-white' : 'bg-slate-100 text-slate-600'
                           }`}
                         >
                           {count}
@@ -903,12 +903,12 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                                 key={lead.id}
                                 draggable
                                 onDragStart={(e) => handleDragStart(e as any, lead)}
-                                className="p-3 bg-white rounded-xl border border-slate-200 hover:border-rose-400 shadow-2xs hover:shadow-md transition-all space-y-2 cursor-grab active:cursor-grabbing group"
+                                className="p-3 bg-white rounded-xl border border-slate-200 hover:border-[#D64062]/20 shadow-2xs hover:shadow-md transition-all space-y-2 cursor-grab active:cursor-grabbing group"
                               >
                                 <div className="flex items-start justify-between gap-2">
                                   <div className="space-y-0.5">
                                     <span className="inline-flex items-center gap-1 font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-800 font-black border border-slate-200">
-                                      <ShieldCheck className="w-2.5 h-2.5 text-amber-600" />
+                                      <ShieldCheck className="w-2.5 h-2.5 text-[#0F1428]" />
                                       <span>PID: {lead.pid}</span>
                                     </span>
                                     <h4
@@ -916,7 +916,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                                         setSelectedLead(lead);
                                         setActiveView('detail');
                                       }}
-                                      className="font-black text-sm text-slate-900 group-hover:text-rose-600 cursor-pointer hover:underline block"
+                                      className="font-black text-sm text-slate-900 group-hover:text-[#D64062] cursor-pointer hover:underline block"
                                     >
                                       {lead.clientName}
                                     </h4>
@@ -924,7 +924,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
 
                                   <button
                                     onClick={() => handleStartCall(lead)}
-                                    className="p-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg shadow-2xs shrink-0"
+                                    className="p-1.5 bg-[#D64062] hover:bg-[#C03252] text-white rounded-lg shadow-2xs shrink-0"
                                     title="Launch Call Terminal"
                                   >
                                     <PhoneCall className="w-3.5 h-3.5" />
@@ -936,7 +936,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                                 </p>
 
                                 <div className="flex flex-wrap items-center justify-between gap-1 pt-2 border-t border-slate-100 text-[10px]">
-                                  <span className="font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                                  <span className="font-extrabold text-[#0F1428] bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
                                     {lead.budgetLabel || `₹${lead.estimatedBudget}L`}
                                   </span>
 
@@ -1010,7 +1010,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
               <div>
                 <h1 className="text-xl font-black text-slate-900 flex items-center gap-2">
                   <span>{inspectorLead.clientName}</span>
-                  <span className="text-xs font-mono px-2.5 py-0.5 bg-amber-100 border border-amber-300 rounded-lg font-black text-amber-900">
+                  <span className="text-xs font-mono px-2.5 py-0.5 bg-slate-100 border border-slate-200 rounded-lg font-black text-[#0F1428]">
                     Unique PID: {inspectorLead.pid}
                   </span>
                 </h1>
@@ -1024,7 +1024,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={() => handleStartCall(inspectorLead)}
-                className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all"
+                className="px-3.5 py-2 bg-[#C03252] hover:bg-[#D64062] text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all"
               >
                 <PhoneCall className="w-4 h-4" />
                 <span>Call Terminal</span>
@@ -1032,7 +1032,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
 
               <button
                 onClick={() => onConvertLeadToProject(inspectorLead)}
-                className="px-4 py-2 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all"
+                className="px-4 py-2 bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>Promote to Sales Team</span>
@@ -1063,7 +1063,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 onClick={() => setActiveDetailTab(tab.id as any)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
                   activeDetailTab === tab.id
-                    ? 'bg-rose-500 text-white shadow-xs font-black'
+                    ? 'bg-[#D64062] text-white shadow-xs font-black'
                     : 'text-slate-600 hover:bg-slate-100'
                 }`}
               >
@@ -1090,19 +1090,19 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         }
                         className="sr-only peer"
                       />
-                      <div className="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-rose-500"></div>
+                      <div className="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#D64062]"></div>
                     </label>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-slate-700">Rating:</span>
-                    <div className="flex items-center gap-1 text-amber-400">
+                    <div className="flex items-center gap-1 text-[#D64062]">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star
                           key={star}
                           className={`w-4 h-4 cursor-pointer ${
                             star <= (inspectorLead.rating || 4)
-                              ? 'fill-amber-400 text-amber-400'
+                              ? 'fill-[#D64062] text-[#D64062]'
                               : 'text-slate-300'
                           }`}
                           onClick={() => setInspectorLead({ ...inspectorLead, rating: star })}
@@ -1115,7 +1115,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 {/* Contact Details */}
                 <div className="space-y-3">
                   <h3 className="font-extrabold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-2 border-b border-slate-100 pb-2">
-                    <User className="w-4 h-4 text-rose-500" />
+                    <User className="w-4 h-4 text-[#D64062]" />
                     <span>Contact Details</span>
                   </h3>
 
@@ -1130,7 +1130,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         onChange={(e) =>
                           setInspectorLead({ ...inspectorLead, clientName: e.target.value })
                         }
-                        className="w-full px-3 py-2 rounded-xl border border-slate-200 text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-rose-500/20"
+                        className="w-full px-3 py-2 rounded-xl border border-slate-200 text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-[#D64062]/20"
                       />
                     </div>
 
@@ -1145,12 +1145,12 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                           onChange={(e) =>
                             setInspectorLead({ ...inspectorLead, phone: e.target.value })
                           }
-                          className="w-full px-3 py-2 rounded-xl border border-slate-200 text-slate-900 font-mono font-bold focus:outline-none focus:ring-2 focus:ring-rose-500/20"
+                          className="w-full px-3 py-2 rounded-xl border border-slate-200 text-slate-900 font-mono font-bold focus:outline-none focus:ring-2 focus:ring-[#D64062]/20"
                         />
                         <button
                           type="button"
                           onClick={() => handleStartCall(inspectorLead)}
-                          className="p-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl shadow-2xs"
+                          className="p-2 bg-[#D64062] hover:bg-[#C03252] text-white rounded-xl shadow-2xs"
                           title="Call directly"
                         >
                           <Phone className="w-4 h-4" />
@@ -1166,7 +1166,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         type="text"
                         readOnly
                         value={inspectorLead.pid}
-                        className="w-full px-3 py-2 rounded-xl border border-slate-200 text-slate-900 font-mono font-bold bg-amber-50/50"
+                        className="w-full px-3 py-2 rounded-xl border border-slate-200 text-slate-900 font-mono font-bold bg-slate-50"
                       />
                     </div>
                   </div>
@@ -1175,7 +1175,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 {/* Project Details */}
                 <div className="space-y-3">
                   <h3 className="font-extrabold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-2 border-b border-slate-100 pb-2">
-                    <Building2 className="w-4 h-4 text-rose-500" />
+                    <Building2 className="w-4 h-4 text-[#D64062]" />
                     <span>Project Details & Pre-Sales CRM Pipeline</span>
                   </h3>
 
@@ -1243,7 +1243,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 <div className="space-y-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                     <div className="flex items-center gap-2">
-                      <div className="p-2 rounded-xl bg-rose-100 text-rose-700">
+                      <div className="p-2 rounded-xl bg-[#D64062]/10 text-[#D64062]">
                         <History className="w-4 h-4" />
                       </div>
                       <div>
@@ -1256,7 +1256,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                       </div>
                     </div>
 
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-black text-[10px] animate-pulse">
+                    <span className="px-2 py-0.5 rounded-full bg-slate-100 text-[#0F1428] font-black text-[10px] animate-pulse">
                       Live Sync
                     </span>
                   </div>
@@ -1277,7 +1277,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                       <button
                         type="button"
                         onClick={handleAddActivityNote}
-                        className="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-lg shrink-0"
+                        className="px-3 py-1.5 bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs rounded-lg shrink-0"
                       >
                         Log
                       </button>
@@ -1291,19 +1291,19 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         key={act.id}
                         className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1.5 relative pl-8"
                       >
-                        <div className="absolute left-2.5 top-3.5 w-4 h-4 rounded-full bg-white border-2 border-rose-500 flex items-center justify-center">
-                          {act.type === 'call' && <PhoneCall className="w-2.5 h-2.5 text-rose-600" />}
+                        <div className="absolute left-2.5 top-3.5 w-4 h-4 rounded-full bg-white border-2 border-[#D64062]/20 flex items-center justify-center">
+                          {act.type === 'call' && <PhoneCall className="w-2.5 h-2.5 text-[#D64062]" />}
                           {act.type === 'status_change' && (
-                            <RefreshCw className="w-2.5 h-2.5 text-amber-600" />
+                            <RefreshCw className="w-2.5 h-2.5 text-[#0F1428]" />
                           )}
                           {act.type === 'followup' && (
-                            <CalendarClock className="w-2.5 h-2.5 text-blue-600" />
+                            <CalendarClock className="w-2.5 h-2.5 text-[#0F1428]" />
                           )}
                           {act.type === 'note' && (
-                            <MessageSquare className="w-2.5 h-2.5 text-purple-600" />
+                            <MessageSquare className="w-2.5 h-2.5 text-[#0F1428]" />
                           )}
                           {act.type === 'lead_created' && (
-                            <Sparkles className="w-2.5 h-2.5 text-emerald-600" />
+                            <Sparkles className="w-2.5 h-2.5 text-[#0F1428]" />
                           )}
                         </div>
 
@@ -1321,7 +1321,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         <div className="flex items-center justify-between pt-1 text-[10px] text-slate-400 font-mono border-t border-slate-100">
                           <span>By: {act.performedBy}</span>
                           {act.metadata?.isRecorded && (
-                            <span className="text-rose-600 font-bold flex items-center gap-1">
+                            <span className="text-[#D64062] font-bold flex items-center gap-1">
                               <Radio className="w-2.5 h-2.5 animate-pulse" /> Audio Rec
                             </span>
                           )}
@@ -1340,7 +1340,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                    <History className="w-5 h-5 text-rose-500" />
+                    <History className="w-5 h-5 text-[#D64062]" />
                     <span>Real-Time Activity Timeline (Unique PID: {inspectorLead.pid})</span>
                   </h3>
                   <p className="text-xs text-slate-500">
@@ -1358,7 +1358,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                   />
                   <button
                     onClick={handleAddActivityNote}
-                    className="px-4 py-2 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl shadow-xs"
+                    className="px-4 py-2 bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs rounded-xl shadow-xs"
                   >
                     + Post Note
                   </button>
@@ -1371,19 +1371,19 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                     key={act.id}
                     className="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-start gap-4"
                   >
-                    <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-rose-600 shrink-0 shadow-2xs">
-                      {act.type === 'call' && <PhoneCall className="w-5 h-5 text-emerald-600" />}
+                    <div className="p-2.5 rounded-xl bg-white border border-slate-200 text-[#D64062] shrink-0 shadow-2xs">
+                      {act.type === 'call' && <PhoneCall className="w-5 h-5 text-[#0F1428]" />}
                       {act.type === 'status_change' && (
-                        <RefreshCw className="w-5 h-5 text-amber-600" />
+                        <RefreshCw className="w-5 h-5 text-[#0F1428]" />
                       )}
                       {act.type === 'followup' && (
-                        <CalendarClock className="w-5 h-5 text-blue-600" />
+                        <CalendarClock className="w-5 h-5 text-[#0F1428]" />
                       )}
                       {act.type === 'note' && (
-                        <MessageSquare className="w-5 h-5 text-purple-600" />
+                        <MessageSquare className="w-5 h-5 text-[#0F1428]" />
                       )}
                       {act.type === 'lead_created' && (
-                        <Sparkles className="w-5 h-5 text-rose-500" />
+                        <Sparkles className="w-5 h-5 text-[#D64062]" />
                       )}
                     </div>
 
@@ -1402,7 +1402,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                       <div className="flex items-center gap-3 pt-1 text-[11px] font-mono text-slate-400">
                         <span>Performed by: {act.performedBy}</span>
                         <span>•</span>
-                        <span className="text-amber-700 font-bold">PID: {inspectorLead.pid}</span>
+                        <span className="text-[#0F1428] font-bold">PID: {inspectorLead.pid}</span>
                       </div>
                     </div>
                   </div>
@@ -1417,7 +1417,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div>
                   <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <ShieldCheck className="w-4 h-4 text-[#0F1428]" />
                     <span>In-System Encrypted Call Logs & Recordings</span>
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
@@ -1427,7 +1427,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
 
                 <button
                   onClick={() => handleStartCall(inspectorLead)}
-                  className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5"
+                  className="px-3.5 py-2 bg-[#C03252] hover:bg-[#D64062] text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5"
                 >
                   <PhoneCall className="w-3.5 h-3.5" />
                   <span>Start New System Call</span>
@@ -1451,7 +1451,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                     >
                       <div className="flex items-center justify-between text-xs">
                         <div className="flex items-center gap-2">
-                          <span className="p-1 rounded bg-emerald-100 text-emerald-800 font-mono font-bold text-[10px]">
+                          <span className="p-1 rounded bg-slate-100 text-[#0F1428] font-mono font-bold text-[10px]">
                             {log.status}
                           </span>
                           <span className="font-extrabold text-slate-900">{log.calledBy}</span>
@@ -1460,7 +1460,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                           </span>
                         </div>
 
-                        <span className="font-mono text-emerald-600 font-bold flex items-center gap-1">
+                        <span className="font-mono text-[#0F1428] font-bold flex items-center gap-1">
                           <Clock className="w-3 h-3" /> {log.duration}
                         </span>
                       </div>
@@ -1474,11 +1474,11 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                       )}
 
                       <div className="flex items-center justify-between text-[11px] pt-1">
-                        <span className="text-emerald-700 font-mono font-bold flex items-center gap-1">
+                        <span className="text-[#0F1428] font-mono font-bold flex items-center gap-1">
                           <ShieldCheck className="w-3 h-3" /> Audio Recording Vaulted & Encrypted
                         </span>
 
-                        <button className="text-rose-600 font-bold hover:underline flex items-center gap-1">
+                        <button className="text-[#D64062] font-bold hover:underline flex items-center gap-1">
                           <span>Play Call Audio</span>
                           <Volume2 className="w-3 h-3" />
                         </button>
@@ -1494,7 +1494,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
           {activeDetailTab === 'followups' && (
             <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs space-y-4">
               <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                <CalendarClock className="w-4 h-4 text-amber-600" />
+                <CalendarClock className="w-4 h-4 text-[#0F1428]" />
                 <span>Scheduled Follow-Ups & Automatic Reminders</span>
               </h3>
 
@@ -1573,7 +1573,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 {(inspectorLead.followUps || []).map((f) => (
                   <div
                     key={f.id}
-                    className="p-3 bg-amber-50/50 rounded-xl border border-amber-200/80 flex flex-wrap items-center justify-between text-xs gap-2"
+                    className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between text-xs gap-2"
                   >
                     <div className="flex items-center gap-2">
                       <input
@@ -1587,7 +1587,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                           setInspectorLead(updatedLead);
                           if (onUpdateLead) onUpdateLead(updatedLead);
                         }}
-                        className="rounded text-rose-500"
+                        className="rounded text-[#D64062]"
                       />
                       <span
                         className={
@@ -1599,12 +1599,12 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono px-2 py-0.5 bg-amber-200 text-amber-900 font-bold rounded">
+                      <span className="text-[10px] font-mono px-2 py-0.5 bg-slate-200 text-[#0F1428] font-bold rounded">
                         {f.date} {f.time ? `• ${f.time}` : ''}
                       </span>
                       <button
                         onClick={() => handleStartCall(inspectorLead)}
-                        className="px-2 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-bold flex items-center gap-1"
+                        className="px-2 py-0.5 bg-[#C03252] text-white rounded text-[10px] font-bold flex items-center gap-1"
                       >
                         <PhoneCall className="w-2.5 h-2.5" /> Call Terminal
                       </button>
@@ -1619,11 +1619,11 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
           {activeDetailTab === 'location' && (
             <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs space-y-3">
               <h3 className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-rose-500" />
+                <MapPin className="w-4 h-4 text-[#D64062]" />
                 <span>Site Address & Geo-Coordinates ({inspectorLead.location})</span>
               </h3>
               <div className="h-64 bg-slate-100 rounded-2xl border border-slate-200 flex flex-col items-center justify-center p-6 text-center space-y-2">
-                <MapPin className="w-8 h-8 text-rose-500 animate-bounce" />
+                <MapPin className="w-8 h-8 text-[#D64062] animate-bounce" />
                 <h4 className="font-extrabold text-slate-900">{inspectorLead.location}</h4>
                 <p className="text-xs text-slate-500 font-mono">
                   Site Measurement Team Dispatched • GPS Latitude: 28.4595, Longitude: 77.0266
@@ -1649,7 +1649,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
               <div className="space-y-4 overflow-y-auto">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                   <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-xl bg-amber-100 text-amber-700">
+                    <div className="p-2 rounded-xl bg-slate-100 text-[#0F1428]">
                       <Bell className="w-5 h-5" />
                     </div>
                     <div>
@@ -1671,7 +1671,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
 
                 {allPendingFollowUps.length === 0 ? (
                   <div className="p-8 text-center text-slate-400 space-y-2">
-                    <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
+                    <CheckCircle2 className="w-8 h-8 text-[#D64062] mx-auto" />
                     <p className="text-xs font-bold text-slate-700">All follow-ups are up to date!</p>
                     <p className="text-[11px] text-slate-400">
                       No pending client reminders due right now.
@@ -1682,7 +1682,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                     {allPendingFollowUps.map((item) => (
                       <div
                         key={item.id}
-                        className="p-4 bg-slate-50 hover:bg-amber-50/50 rounded-2xl border border-slate-200 transition-all space-y-2"
+                        className="p-4 bg-slate-50 hover:bg-slate-50 rounded-2xl border border-slate-200 transition-all space-y-2"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
@@ -1693,7 +1693,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                               PID: {item.lead.pid}
                             </span>
                           </div>
-                          <span className="font-mono text-[10px] px-2 py-0.5 bg-rose-100 text-rose-800 font-extrabold rounded-full animate-pulse">
+                          <span className="font-mono text-[10px] px-2 py-0.5 bg-[#D64062]/10 text-[#D64062] font-extrabold rounded-full animate-pulse">
                             Due: {item.date} {item.time || ''}
                           </span>
                         </div>
@@ -1710,7 +1710,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                                 handleStartCall(item.lead);
                                 setIsFollowUpDrawerOpen(false);
                               }}
-                              className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-[10px] font-bold flex items-center gap-1 shadow-2xs"
+                              className="px-2.5 py-1 bg-[#C03252] hover:bg-[#D64062] text-white rounded-lg text-[10px] font-bold flex items-center gap-1 shadow-2xs"
                             >
                               <PhoneCall className="w-3 h-3" /> Call Terminal
                             </button>
@@ -1747,26 +1747,26 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
               exit={{ opacity: 0, scale: 0.9 }}
               className="bg-slate-900 text-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-800 space-y-6 text-center relative overflow-hidden"
             >
-              <div className="absolute -top-12 -left-12 w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -top-12 -left-12 w-32 h-32 bg-[#D64062]/20 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-bold">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D64062]/10 border border-slate-200 text-[#D64062] text-[11px] font-mono font-bold">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>Encrypted Phone Relay Active</span>
                 </div>
 
-                <span className="font-mono text-amber-400 text-xs font-bold px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">
+                <span className="font-mono text-[#D64062] text-xs font-bold px-2 py-0.5 rounded bg-[#D64062]/10 border border-slate-200">
                   PID: {dialingLead.pid}
                 </span>
               </div>
 
               <div className="space-y-1">
-                <div className="w-16 h-16 rounded-full bg-slate-800 border-2 border-emerald-500/40 text-emerald-400 mx-auto flex items-center justify-center text-xl font-black shadow-inner">
+                <div className="w-16 h-16 rounded-full bg-slate-800 border-2 border-slate-200 text-[#D64062] mx-auto flex items-center justify-center text-xl font-black shadow-inner">
                   {dialingLead.clientName.charAt(0).toUpperCase()}
                 </div>
                 <h3 className="text-lg font-black text-white">{dialingLead.clientName}</h3>
                 <p className="text-xs text-slate-400 font-mono">{dialingLead.phone}</p>
-                <p className="text-[11px] text-emerald-400 font-mono font-bold">
+                <p className="text-[11px] text-[#D64062] font-mono font-bold">
                   {callState === 'dialing'
                     ? 'Connecting via Cloud Gateway...'
                     : callState === 'connected'
@@ -1784,7 +1784,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         key={i}
                         animate={{ height: [`${h}%`, `${100 - h}%`, `${h}%`] }}
                         transition={{ repeat: Infinity, duration: 0.8 + (i % 3) * 0.2 }}
-                        className="w-1 bg-emerald-500 rounded-full"
+                        className="w-1 bg-[#D64062] rounded-full"
                       />
                     ))}
                   </div>
@@ -1795,7 +1795,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                       onClick={() => setIsRecording(!isRecording)}
                       className={`px-2.5 py-1 rounded-lg border flex items-center gap-1.5 font-bold transition-all text-[11px] ${
                         isRecording
-                          ? 'bg-rose-500/20 border-rose-500/50 text-rose-400 animate-pulse'
+                          ? 'bg-[#D64062]/10 border-[#D64062]/20 text-[#D64062] animate-pulse'
                           : 'bg-slate-800 border-slate-700 text-slate-400'
                       }`}
                     >
@@ -1804,7 +1804,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                     </button>
 
                     {/* Live Timer */}
-                    <span className="text-emerald-400 font-bold text-sm">
+                    <span className="text-[#D64062] font-bold text-sm">
                       {Math.floor(callDuration / 60)
                         .toString()
                         .padStart(2, '0')}
@@ -1824,7 +1824,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                     value={postCallNotes}
                     onChange={(e) => setPostCallNotes(e.target.value)}
                     placeholder="Enter discussion takeaway or next steps..."
-                    className="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-slate-200"
                   />
                 </div>
               )}
@@ -1835,7 +1835,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                     onClick={() => setIsMuted(!isMuted)}
                     className={`p-3 rounded-2xl border transition-all ${
                       isMuted
-                        ? 'bg-rose-500/20 text-rose-400 border-rose-500'
+                        ? 'bg-[#D64062]/10 text-[#D64062] border-[#D64062]/20'
                         : 'bg-slate-800 text-slate-300 border-slate-700'
                     }`}
                     title={isMuted ? 'Unmute Microphone' : 'Mute Microphone'}
@@ -1847,7 +1847,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 {callState !== 'ended' ? (
                   <button
                     onClick={handleEndCall}
-                    className="px-6 py-3 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-2xl shadow-lg flex items-center gap-2"
+                    className="px-6 py-3 bg-[#C03252] hover:bg-[#D64062] text-white font-bold text-xs rounded-2xl shadow-lg flex items-center gap-2"
                   >
                     <PhoneOff className="w-4 h-4" />
                     <span>End Call</span>
@@ -1855,7 +1855,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                 ) : (
                   <button
                     onClick={handleSaveCallLog}
-                    className="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-2xl shadow-lg flex items-center gap-2"
+                    className="px-6 py-3 bg-[#D64062] hover:bg-[#D64062] text-slate-950 font-bold text-xs rounded-2xl shadow-lg flex items-center gap-2"
                   >
                     <CheckCircle2 className="w-4 h-4 text-slate-950" />
                     <span>Save Log to Activity History</span>
@@ -1979,7 +1979,7 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl shadow-md"
+                    className="px-5 py-2 bg-[#D64062] hover:bg-[#C03252] text-white font-bold rounded-xl shadow-md"
                   >
                     Save Lead
                   </button>

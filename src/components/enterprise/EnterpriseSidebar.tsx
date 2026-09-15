@@ -56,7 +56,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           label: 'Executive Command',
           icon: LayoutDashboard,
           badge: 'Live',
-          badgeColor: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300'
+          badgeColor: 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
         }
       ]
     },
@@ -68,21 +68,21 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           label: 'Pre-Sales & CRM',
           icon: Target,
           badge: `${leadCount}`,
-          badgeColor: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300'
+          badgeColor: 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
         },
         {
           id: 'boq' as EnterpriseView,
           label: 'Master BOQ Studio',
           icon: FileSpreadsheet,
           badge: 'Core',
-          badgeColor: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300'
+          badgeColor: 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
         },
         {
           id: 'studio' as EnterpriseView,
           label: '2D/3D CAD Studio',
           icon: Compass,
           badge: 'WebGL',
-          badgeColor: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300'
+          badgeColor: 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
         }
       ]
     },
@@ -94,14 +94,14 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           label: 'Projects & 31 Stages',
           icon: FolderGit2,
           badge: 'Engine',
-          badgeColor: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300'
+          badgeColor: 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
         },
         {
           id: 'vendors' as EnterpriseView,
           label: 'Procurement & Sites',
           icon: HardHat,
           badge: pendingPmCount > 0 ? `${pendingPmCount} Req` : undefined,
-          badgeColor: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300'
+          badgeColor: 'bg-[#D64062]/10 text-[#D64062] dark:bg-[#D64062]/20 dark:text-[#D64062]'
         }
       ]
     },
@@ -113,7 +113,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           label: 'Finance & GST Ledger',
           icon: Receipt,
           badge: pendingFinanceCount > 0 ? `${pendingFinanceCount} RTGS` : undefined,
-          badgeColor: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300'
+          badgeColor: 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
         }
       ]
     }
@@ -176,7 +176,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
         {/* Quick Tips modal button */}
         <button
           onClick={onOpenQuickTips}
-          className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors cursor-pointer ${
+          className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-[#0F1428] dark:text-[#D64062] hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer ${
             isCollapsed ? 'justify-center' : 'justify-start'
           }`}
           title="Pentagram Operator Quick Guide"
@@ -190,15 +190,15 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 text-[11px] space-y-1">
             <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 font-mono text-[10px]">
               <span className="flex items-center gap-1">
-                <Database className="w-3 h-3 text-emerald-500" />
+                <Database className="w-3 h-3 text-[#D64062]" />
                 <span>Postgres Flexible</span>
               </span>
-              <span className="text-emerald-500 font-bold">LIVE</span>
+              <span className="text-[#D64062] font-bold">LIVE</span>
             </div>
             <div className="flex items-center justify-between text-[#0F1428] dark:text-slate-300 font-medium">
               <span>Tenant Security</span>
               <span className="flex items-center gap-1 font-mono text-[10px]">
-                <ShieldCheck className="w-3 h-3 text-blue-500" />
+                <ShieldCheck className="w-3 h-3 text-[#0F1428]" />
                 RLS Encrypted
               </span>
             </div>

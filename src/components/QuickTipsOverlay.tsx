@@ -301,7 +301,7 @@ export const QuickTipsOverlay: React.FC<QuickTipsOverlayProps> = ({
           {/* Step Header */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+              <span className="text-[11px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-md bg-slate-50 dark:bg-slate-900 text-[#0F1428] dark:text-slate-300 border border-slate-200 dark:border-slate-200">
                 {activeSop.sopCode}
               </span>
               <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-extrabold uppercase tracking-wider">
@@ -328,16 +328,16 @@ export const QuickTipsOverlay: React.FC<QuickTipsOverlayProps> = ({
 
             {activeSop.checklist.map((item, idx) => (
               <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-[#D64062] shrink-0 mt-0.5" />
                 <span>{item}</span>
               </div>
             ))}
           </div>
 
           {/* Pro Tip Box */}
-          <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 flex items-start gap-3">
-            <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-            <div className="text-xs text-amber-900 dark:text-amber-200 leading-relaxed">
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-200 flex items-start gap-3">
+            <Sparkles className="w-4 h-4 text-[#0F1428] dark:text-[#D64062] shrink-0 mt-0.5" />
+            <div className="text-xs text-[#0F1428] dark:text-slate-200 leading-relaxed">
               <strong className="font-bold">Engineer Pro-Tip: </strong>
               {activeSop.proTip}
             </div>

@@ -174,7 +174,7 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
         {/* Security & System Stamps at bottom */}
         <div className="mt-12 flex items-center gap-4 text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#D64062]" />
             <span>256-Bit Encrypted</span>
           </div>
           <span>•</span>

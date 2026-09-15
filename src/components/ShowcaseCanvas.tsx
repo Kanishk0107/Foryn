@@ -118,7 +118,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                 {isSelected && (
                   <motion.span
                     layoutId="activeSceneBubble"
-                    className="absolute inset-0 z-0 bg-[#F62440] rounded-[3rem] shadow-md shadow-[#F62440]/30"
+                    className="absolute inset-0 z-0 bg-[#D64062] rounded-[3rem] shadow-md shadow-[#D64062]/30"
                     transition={{
                       type: 'spring',
                       bounce: 0.18,
@@ -153,7 +153,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                 {isSelected && (
                   <motion.span
                     layoutId="activeLightingBubble"
-                    className="absolute inset-0 z-0 bg-[#F62440] rounded-[3rem] shadow-md shadow-[#F62440]/30"
+                    className="absolute inset-0 z-0 bg-[#D64062] rounded-[3rem] shadow-md shadow-[#D64062]/30"
                     transition={{
                       type: 'spring',
                       bounce: 0.18,
@@ -161,7 +161,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                     }}
                   />
                 )}
-                <Icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 relative z-10 ${isSelected ? 'text-white' : 'text-[#F62440]'}`} />
+                <Icon className={`w-3 h-3 sm:w-3.5 sm:h-3.5 relative z-10 ${isSelected ? 'text-white' : 'text-[#D64062]'}`} />
                 <span className="relative z-10">{mode.label}</span>
               </button>
             );
@@ -222,14 +222,14 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
           {/* AI Daylight Sunbeam Shaft Overlay */}
           {lightingPreset === 'daylight' && renderMode === 'photo' && (
             <div className="absolute inset-0 pointer-events-none mix-blend-soft-light opacity-40">
-              <div className="w-full h-full bg-gradient-to-tr from-transparent via-amber-100/20 to-amber-200/40" />
+              <div className="w-full h-full bg-gradient-to-tr from-transparent from-slate-900/40 via-slate-900/20 to-transparent from-slate-900/40 via-slate-900/20 to-transparent" />
             </div>
           )}
 
           {/* AI Golden Hour Warm Rays Overlay */}
           {lightingPreset === 'golden' && renderMode === 'photo' && (
             <div className="absolute inset-0 pointer-events-none mix-blend-color-dodge opacity-60">
-              <div className="w-full h-full bg-gradient-to-br from-amber-500/20 via-orange-500/25 to-rose-900/30" />
+              <div className="w-full h-full bg-gradient-to-br from-slate-900/40 via-slate-900/20 to-transparent from-slate-900/40 via-slate-900/20 to-transparent from-slate-900/40 via-slate-900/20 to-transparent" />
             </div>
           )}
 
@@ -240,19 +240,19 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
               <div className="absolute inset-0 bg-slate-950/40 mix-blend-multiply" />
               
               {/* Warm Ceiling Cove LED Light Strip Beam */}
-              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-amber-400/40 via-amber-500/10 to-transparent mix-blend-screen" />
+              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-slate-900/40 via-slate-900/20 to-transparent from-slate-900/40 via-slate-900/20 to-transparent to-transparent mix-blend-screen" />
 
               {/* Night Mode Spotlights over hotspots */}
               {currentScene.hotspots.map((h) => (
                 <div
                   key={`spot-${h.id}`}
                   style={{ left: `${h.x}%`, top: `${h.y}%` }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-radial from-amber-400/30 via-amber-500/10 to-transparent pointer-events-none mix-blend-screen blur-xl"
+                  className="absolute -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-radial from-slate-900/40 via-slate-900/20 to-transparent from-slate-900/40 via-slate-900/20 to-transparent to-transparent pointer-events-none mix-blend-screen blur-xl"
                 />
               ))}
 
               {/* Warm Mood Floor Glow */}
-              <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-amber-900/30 via-amber-950/10 to-transparent mix-blend-screen" />
+              <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-slate-900/40 via-slate-900/20 to-transparent from-slate-900/40 via-slate-900/20 to-transparent to-transparent mix-blend-screen" />
             </div>
           )}
 
@@ -264,26 +264,26 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
               <motion.div
                 animate={{ x: [-200, 400], opacity: [0, 0.25, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
-                className="w-96 h-full bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent transform -skew-x-12"
+                className="w-96 h-full bg-gradient-to-r from-transparent via-slate-800/20 to-transparent transform -skew-x-12"
               />
             </div>
           )}
 
           {/* Blueprint CAD Grid Overlay */}
           {renderMode === 'blueprint' && (
-            <div className="absolute inset-0 bg-cyan-950/40 pointer-events-none flex flex-col justify-between p-6 border-4 border-cyan-500/30">
+            <div className="absolute inset-0 bg-slate-900 pointer-events-none flex flex-col justify-between p-6 border-4 border-slate-700">
               <div
                 className="absolute inset-0 opacity-25"
                 style={{
-                  backgroundImage: `linear-gradient(to right, #06b6d4 1px, transparent 1px), linear-gradient(to bottom, #06b6d4 1px, transparent 1px)`,
+                  backgroundImage: `linear-gradient(to right, #D64062 1px, transparent 1px), linear-gradient(to bottom, #D64062 1px, transparent 1px)`,
                   backgroundSize: '40px 40px'
                 }}
               />
-              <div className="relative z-10 flex justify-between text-cyan-400 font-mono text-[10px] uppercase tracking-widest bg-slate-950/80 p-2 rounded border border-cyan-800/50">
+              <div className="relative z-10 flex justify-between text-slate-400 font-mono text-[10px] uppercase tracking-widest bg-slate-950/80 p-2 rounded border border-slate-700">
                 <span>FORYN INDIAN STUDIO ENGINE // ARCHITECTURAL CAD</span>
                 <span>SCALE 1:50 | IS:13920 COMPLIANT</span>
               </div>
-              <div className="relative z-10 flex justify-between text-cyan-400 font-mono text-[10px]">
+              <div className="relative z-10 flex justify-between text-slate-400 font-mono text-[10px]">
                 <span>ELEVATION: +0.000m</span>
                 <span>GST BILLABLE SPECIFICATION SHEET</span>
               </div>
@@ -292,7 +292,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
 
           {/* Watermark & Legal Domain Stamps */}
           <div className="absolute bottom-4 left-4 z-20 bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 text-[10px] text-slate-300 font-mono flex items-center gap-2">
-            <Globe className="w-3 h-3 text-amber-400" />
+            <Globe className="w-3 h-3 text-[#D64062]" />
             <span className="font-bold text-white">design.foryn.io</span>
             <span className="text-slate-500">|</span>
             <span className="text-slate-400">FORYN Technologies Pvt Ltd</span>
@@ -318,8 +318,8 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                       }}
                       className="group/pin relative flex items-center justify-center p-1 focus:outline-none"
                     >
-                      <span className="absolute w-8 h-8 rounded-full bg-amber-400/40 animate-ping group-hover/pin:bg-amber-400/70" />
-                      <span className="relative w-7 h-7 rounded-full bg-slate-900/90 text-amber-400 border-2 border-amber-400 flex items-center justify-center shadow-lg transition-transform group-hover/pin:scale-110">
+                      <span className="absolute w-8 h-8 rounded-full bg-[#D64062]/40 animate-ping group-hover/pin:bg-[#D64062]/70" />
+                      <span className="relative w-7 h-7 rounded-full bg-slate-900/90 text-[#D64062] border-2 border-slate-200 flex items-center justify-center shadow-lg transition-transform group-hover/pin:scale-110">
                         <Tag className="w-3.5 h-3.5" />
                       </span>
 
@@ -341,14 +341,14 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div>
-                              <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold uppercase tracking-wider">
+                              <span className="px-2 py-0.5 rounded-full bg-[#D64062]/20 text-slate-300 text-[10px] font-bold uppercase tracking-wider">
                                 {hotspot.category}
                               </span>
                               <h4 className="text-sm font-bold text-slate-100 mt-1">
                                 {hotspot.title}
                               </h4>
                             </div>
-                            <span className="text-base font-extrabold text-amber-400">
+                            <span className="text-base font-extrabold text-[#D64062]">
                               ₹{hotspot.price.toLocaleString('en-IN')}
                             </span>
                           </div>
@@ -383,7 +383,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                                     onClick={() => setSelectedColor(c)}
                                     style={{ backgroundColor: c }}
                                     className={`w-6 h-6 rounded-full border-2 transition-transform ${
-                                      selectedColor === c ? 'scale-110 border-amber-400 ring-2 ring-amber-400/30' : 'border-slate-600'
+                                      selectedColor === c ? 'scale-110 border-slate-200 ring-2 ring-slate-200' : 'border-slate-600'
                                     }`}
                                   />
                                 ))}
@@ -398,7 +398,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                                   onSelectHotspotInStudio(hotspot);
                                 }
                               }}
-                              className="w-full py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center gap-1.5"
+                              className="w-full py-2 bg-[#D64062] hover:bg-[#D64062] text-slate-950 font-bold text-xs rounded-xl shadow transition-colors flex items-center justify-center gap-1.5"
                             >
                               <span>Open CAD Studio</span>
                               <ChevronRight className="w-3.5 h-3.5" />
@@ -428,7 +428,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
           <div>
             <h3 className="text-xs sm:text-sm font-bold text-white flex items-center gap-2">
               <span>{currentScene.name}</span>
-              <span className="text-[10px] sm:text-xs font-semibold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">
+              <span className="text-[10px] sm:text-xs font-semibold text-[#D64062] bg-[#D64062]/10 px-2 py-0.5 rounded-md border border-slate-200">
                 {currentScene.style}
               </span>
             </h3>
@@ -439,7 +439,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             {/* Lighting Kelvin Temperature Control */}
             <div className="flex items-center gap-2 bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-800">
-              <Sun className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <Sun className="w-3.5 h-3.5 text-[#D64062] shrink-0" />
               <div className="flex flex-col">
                 <span className="text-[9px] text-slate-400 font-mono">Temp: {lightingTemp}K</span>
                 <input
@@ -460,7 +460,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
               title="Simulate Ceiling Fan Airflow"
               className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold border transition-all flex items-center gap-1 ${
                 fanSpeed
-                  ? 'bg-cyan-950 text-cyan-300 border-cyan-700/60'
+                  ? 'bg-slate-900 text-slate-400 border-slate-700'
                   : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-white'
               }`}
             >
@@ -475,7 +475,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                 onClick={() => setActiveTexture('default')}
                 title="Default Finish"
                 className={`px-2 py-0.5 rounded text-[10px] font-medium ${
-                  activeTexture === 'default' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400'
+                  activeTexture === 'default' ? 'bg-[#D64062] text-slate-950 font-bold' : 'text-slate-400'
                 }`}
               >
                 Std
@@ -484,7 +484,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                 onClick={() => setActiveTexture('wood')}
                 title="Teak Veneer Finish"
                 className={`px-2 py-0.5 rounded text-[10px] font-medium ${
-                  activeTexture === 'wood' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400'
+                  activeTexture === 'wood' ? 'bg-[#D64062] text-slate-950 font-bold' : 'text-slate-400'
                 }`}
               >
                 Teak
@@ -493,7 +493,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
                 onClick={() => setActiveTexture('marble')}
                 title="Italian Marble Finish"
                 className={`px-2 py-0.5 rounded text-[10px] font-medium ${
-                  activeTexture === 'marble' ? 'bg-amber-500 text-slate-950 font-bold' : 'text-slate-400'
+                  activeTexture === 'marble' ? 'bg-[#D64062] text-slate-950 font-bold' : 'text-slate-400'
                 }`}
               >
                 Marble
@@ -505,7 +505,7 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
               onClick={() => setShowHotspots(!showHotspots)}
               className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold border transition-all flex items-center gap-1.5 ${
                 showHotspots
-                  ? 'bg-slate-800 text-amber-400 border-amber-500/40'
+                  ? 'bg-slate-800 text-[#D64062] border-slate-200'
                   : 'bg-slate-950 text-slate-400 border-slate-800 hover:text-white'
               }`}
             >

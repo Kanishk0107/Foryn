@@ -23,15 +23,15 @@ export const Toast: React.FC<ToastProps> = ({ toasts, onDismiss }) => {
           key={toast.id}
           className={`pointer-events-auto p-4 rounded-2xl border shadow-xl flex items-start gap-3 backdrop-blur-md transition-all animate-slide-up ${
             toast.type === 'success'
-              ? 'bg-emerald-900/90 border-emerald-700 text-white'
+              ? 'bg-slate-900 border-slate-200 text-white'
               : toast.type === 'error'
-              ? 'bg-rose-900/90 border-rose-700 text-white'
+              ? 'bg-[#D64062]/20 border-[#D64062]/20 text-white'
               : 'bg-slate-900/90 border-slate-700 text-white'
           }`}
         >
-          {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />}
-          {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />}
-          {toast.type === 'info' && <Info className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />}
+          {toast.type === 'success' && <CheckCircle2 className="w-5 h-5 text-[#D64062] shrink-0 mt-0.5" />}
+          {toast.type === 'error' && <AlertCircle className="w-5 h-5 text-[#D64062] shrink-0 mt-0.5" />}
+          {toast.type === 'info' && <Info className="w-5 h-5 text-slate-400 shrink-0 mt-0.5" />}
 
           <div className="flex-1 pr-2">
             <h4 className="text-xs font-bold leading-snug">{toast.title}</h4>

@@ -26,14 +26,14 @@ export const ThankYouModal: React.FC<ThankYouModalProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+        <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 text-[#0F1428] flex items-center justify-center mx-auto shadow-inner">
           <CheckCircle2 className="w-8 h-8 animate-bounce" />
         </div>
 
         <div className="space-y-1">
           <h3 className="text-xl font-black text-[#0F1428] dark:text-white flex items-center justify-center gap-1.5">
             {title}
-            <Sparkles className="w-4 h-4 text-amber-500" />
+            <Sparkles className="w-4 h-4 text-[#D64062]" />
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed font-medium">
             {message}

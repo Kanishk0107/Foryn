@@ -49,7 +49,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
       <div className="bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#D64062] animate-pulse" />
             <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Executive Command & Control
             </span>
@@ -87,7 +87,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
         <div className="p-4 rounded-2xl bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
             <span className="text-xs font-semibold">Active Contract Pipeline</span>
-            <span className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+            <span className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 text-[#0F1428] dark:text-slate-400">
               <Building2 className="w-4 h-4" />
             </span>
           </div>
@@ -97,7 +97,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
             </span>
             <span className="text-xs font-bold text-slate-500">Lakhs</span>
           </div>
-          <div className="flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+          <div className="flex items-center gap-1 text-[11px] text-[#0F1428] dark:text-[#D64062] font-semibold">
             <TrendingUp className="w-3.5 h-3.5" />
             <span>{activeSitesCount} Active Site Projects</span>
           </div>
@@ -107,18 +107,18 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
         <div className="p-4 rounded-2xl bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
             <span className="text-xs font-semibold">Blended Gross Margin</span>
-            <span className="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+            <span className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 text-[#0F1428] dark:text-[#D64062]">
               <PieChart className="w-4 h-4" />
             </span>
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-black font-mono text-emerald-600 dark:text-emerald-400">
+            <span className="text-2xl font-black font-mono text-[#0F1428] dark:text-[#D64062]">
               {totalContractValueSum > 0 ? '28.0%' : '0.0%'}
             </span>
             <span className="text-xs font-bold text-slate-500">Target: 25%</span>
           </div>
           <div className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#D64062]" />
             <span>{totalContractValueSum > 0 ? '+3.0% above hurdle rate' : 'No active contract data'}</span>
           </div>
         </div>
@@ -146,7 +146,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
         <div className="p-4 rounded-2xl bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
             <span className="text-xs font-semibold">Vendor Work Orders</span>
-            <span className="p-1.5 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+            <span className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 text-[#0F1428] dark:text-slate-400">
               <HardHat className="w-4 h-4" />
             </span>
           </div>
@@ -158,7 +158,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
           </div>
           <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium">
             <span>GST Output: ₹{((totalGSTLiability || 0) / 100000).toFixed(1)}L</span>
-            <span className="text-emerald-500 font-bold">100% Tax Compliant</span>
+            <span className="text-[#D64062] font-bold">100% Tax Compliant</span>
           </div>
         </div>
       </div>
@@ -215,8 +215,8 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
                       <span
                         className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full ${
                           proj.health === 'On Track'
-                            ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400'
-                            : 'bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-400'
+                            ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-[#D64062]'
+                            : 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-[#D64062]'
                         }`}
                       >
                         {proj.health}
@@ -307,7 +307,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
               <h3 className="text-xs font-black uppercase tracking-wider text-[#0F1428] dark:text-white">
                 Live Office Operations Stream
               </h3>
-              <span className="text-[10px] font-mono text-emerald-500 font-bold">Realtime</span>
+              <span className="text-[10px] font-mono text-[#D64062] font-bold">Realtime</span>
             </div>
 
             <div className="divide-y divide-slate-100 dark:divide-slate-800/60 text-xs">

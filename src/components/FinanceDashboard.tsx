@@ -41,17 +41,17 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
           <div className="text-2xl font-black text-[#0F1428] dark:text-white mt-1">
             ₹{(totalDisbursed / 100000).toFixed(2)} Lakhs
           </div>
-          <div className="text-[11px] text-emerald-600 font-semibold mt-1 flex items-center gap-1">
+          <div className="text-[11px] text-[#0F1428] font-semibold mt-1 flex items-center gap-1">
             <CheckCircle className="w-3.5 h-3.5" /> Bank RTGS Verified
           </div>
         </div>
 
         <div className="p-5 rounded-2xl bg-[#FDFDFD] dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pending Release Queue</div>
-          <div className="text-2xl font-black text-amber-600 dark:text-amber-400 mt-1">
+          <div className="text-2xl font-black text-[#0F1428] dark:text-[#D64062] mt-1">
             ₹{(pendingDisbursed / 100000).toFixed(2)} Lakhs
           </div>
-          <div className="text-[11px] text-amber-600 font-semibold mt-1">
+          <div className="text-[11px] text-[#0F1428] font-semibold mt-1">
             {transactions.filter((t) => t.status === 'Ready for Release').length} Payouts Awaiting Action
           </div>
         </div>
@@ -62,7 +62,7 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
             ₹{(totalGST / 100000).toFixed(2)} Lakhs
           </div>
           <div className="text-[11px] text-slate-500 font-semibold mt-1 flex items-center gap-1">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Auto Input Tax Credit Reconciled
+            <ShieldCheck className="w-3.5 h-3.5 text-[#D64062]" /> Auto Input Tax Credit Reconciled
           </div>
         </div>
       </div>
@@ -121,8 +121,8 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
                       <span
                         className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold ${
                           t.status === 'Completed & Paid'
-                            ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200'
-                            : 'bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 border border-amber-200'
+                            ? 'bg-slate-100 dark:bg-slate-900 text-[#0F1428] dark:text-[#D64062] border border-slate-200'
+                            : 'bg-slate-100 dark:bg-slate-900 text-[#0F1428] dark:text-[#D64062] border border-slate-200'
                         }`}
                       >
                         {t.status}

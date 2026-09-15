@@ -65,7 +65,7 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
       <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 px-2 py-0.5 rounded border border-indigo-200 dark:border-indigo-800/60">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0F1428] dark:text-slate-400 bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-200">
               31-Stage Operating Engine
             </span>
             <span className="text-xs text-slate-400">•</span>
@@ -139,9 +139,9 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
               key={stage.id}
               className={`p-4 sm:p-5 rounded-2xl border transition-all bg-white dark:bg-slate-900 ${
                 isCompleted
-                  ? 'border-emerald-200/80 dark:border-emerald-900/40'
+                  ? 'border-slate-200 dark:border-slate-200'
                   : isInProgress
-                  ? 'border-amber-300 dark:border-amber-800/80 ring-1 ring-amber-300/50'
+                  ? 'border-slate-200 dark:border-slate-200 ring-1 ring-slate-200'
                   : 'border-slate-200/80 dark:border-slate-800'
               }`}
             >
@@ -152,7 +152,7 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
                   </span>
                   <h3 className="text-sm font-black text-slate-900 dark:text-white">{stage.title}</h3>
                   {stage.criticalPath && (
-                    <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400">
+                    <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-[#D64062]/10 dark:bg-slate-900 text-[#D64062] dark:text-[#D64062]">
                       Critical Path
                     </span>
                   )}
@@ -166,9 +166,9 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
                   <span
                     className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                       isCompleted
-                        ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                        ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
                         : isInProgress
-                        ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+                        ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
                         : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
                     }`}
                   >
@@ -191,7 +191,7 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
                 {/* 1. Trigger */}
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
                   <div className="text-[10px] font-mono uppercase text-slate-400 font-bold mb-1 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0F1428]" />
                     <span>Trigger</span>
                   </div>
                   <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
@@ -202,7 +202,7 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
                 {/* 2. Human Action */}
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
                   <div className="text-[10px] font-mono uppercase text-slate-400 font-bold mb-1 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D64062]" />
                     <span>Human Action</span>
                   </div>
                   <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
@@ -212,8 +212,8 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
 
                 {/* 3. FORYN Automation */}
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                  <div className="text-[10px] font-mono uppercase text-indigo-500 font-bold mb-1 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-indigo-500" />
+                  <div className="text-[10px] font-mono uppercase text-[#0F1428] font-bold mb-1 flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-[#0F1428]" />
                     <span>FORYN Automation</span>
                   </div>
                   <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
@@ -223,8 +223,8 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
 
                 {/* 4. Decision Gate */}
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                  <div className="text-[10px] font-mono uppercase text-emerald-600 dark:text-emerald-400 font-bold mb-1 flex items-center gap-1">
-                    <ShieldCheck className="w-3 h-3 text-emerald-500" />
+                  <div className="text-[10px] font-mono uppercase text-[#0F1428] dark:text-[#D64062] font-bold mb-1 flex items-center gap-1">
+                    <ShieldCheck className="w-3 h-3 text-[#D64062]" />
                     <span>Decision Gate</span>
                   </div>
                   <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug font-medium">
@@ -240,7 +240,7 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
                   <span className="font-semibold text-slate-800 dark:text-slate-200">{stage.output}</span>
                 </div>
                 {isCompleted && (
-                  <span className="flex items-center gap-1 font-mono text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">
+                  <span className="flex items-center gap-1 font-mono text-[10px] text-[#0F1428] dark:text-[#D64062] font-bold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     Gate Certified
                   </span>
@@ -273,9 +273,9 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
             </div>
 
             <div className="p-5 space-y-4 text-xs">
-              <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 space-y-1">
-                <div className="font-bold text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-amber-500" />
+              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-200 space-y-1">
+                <div className="font-bold text-[#0F1428] dark:text-slate-300 flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-[#D64062]" />
                   <span>Mandatory Decision Gate Criteria:</span>
                 </div>
                 <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
@@ -315,7 +315,7 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
                 </button>
                 <button
                   onClick={() => handleApproveGate(selectedStage.id)}
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black flex items-center gap-1.5 shadow-xs"
+                  className="px-5 py-2 rounded-xl bg-[#C03252] hover:bg-[#D64062] text-white font-black flex items-center gap-1.5 shadow-xs"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Certify & Approve Gate</span>

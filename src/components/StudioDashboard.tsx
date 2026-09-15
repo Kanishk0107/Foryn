@@ -53,7 +53,7 @@ export const StudioDashboard: React.FC<StudioDashboardProps> = ({
             <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0F1428] dark:text-white tracking-tight">
               Pentagram Studio <span className="text-[#D64062]">| CAD Workspace</span>
             </h1>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/30 animate-pulse">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#D64062]/10 text-[#0F1428] dark:text-[#D64062] border border-slate-200 animate-pulse">
               <AlertTriangle className="w-3.5 h-3.5" />
               Under Construction
             </span>
@@ -297,7 +297,7 @@ export const StudioDashboard: React.FC<StudioDashboardProps> = ({
       {/* Footer Credentials */}
       <div className="pt-6 border-t border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-2">
         <span className="flex items-center gap-1.5">
-          <ShieldCheck className="w-4 h-4 text-emerald-500" />
+          <ShieldCheck className="w-4 h-4 text-[#D64062]" />
           SOC2 & Cloud Encryption Verified
         </span>
         <span>pentagram.in | © Pentagram Living Pvt Ltd</span>
