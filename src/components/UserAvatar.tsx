@@ -36,53 +36,43 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
     xl: 'w-7 h-7'
   };
 
-  // Color schemes based on role or initial name seed
+  // Pentagram OS Color Scheme for Avatars
   const getColorScheme = (roleStr: string, nameStr: string) => {
     const combined = (roleStr + nameStr).toLowerCase();
     if (combined.includes('designer') || combined.includes('architect') || combined.includes('3d')) {
       return {
-        bg: 'bg-gradient-to-tr from-purple-600 to-indigo-500',
-        border: 'border-purple-300 dark:border-purple-800',
+        bg: 'bg-[#0F1428]',
+        border: 'border-[#D64062]',
         text: 'text-white',
-        accent: 'bg-indigo-400',
-        hair: '#4F46E5',
-        skin: '#FDE68A'
+        accent: 'bg-[#D64062]',
+        hair: '#0F1428',
+        skin: '#F1F5F9'
       };
     }
     if (combined.includes('sales') || combined.includes('lead') || combined.includes('client')) {
       return {
-        bg: 'bg-gradient-to-tr from-rose-500 to-amber-500',
-        border: 'border-rose-300 dark:border-rose-800',
+        bg: 'bg-[#D64062]',
+        border: 'border-[#0F1428]',
         text: 'text-white',
-        accent: 'bg-rose-400',
-        hair: '#B91C1C',
-        skin: '#FED7AA'
+        accent: 'bg-[#0F1428]',
+        hair: '#0F1428',
+        skin: '#F1F5F9'
       };
     }
-    if (combined.includes('project') || combined.includes('management') || combined.includes('finance')) {
-      return {
-        bg: 'bg-gradient-to-tr from-emerald-600 to-teal-500',
-        border: 'border-emerald-300 dark:border-emerald-800',
-        text: 'text-white',
-        accent: 'bg-teal-400',
-        hair: '#047857',
-        skin: '#FEF08A'
-      };
-    }
-    // Default Executive / Admin
+    // Default Executive / PM / Finance / Admin
     return {
-      bg: 'bg-gradient-to-tr from-slate-800 to-slate-600',
-      border: 'border-slate-400 dark:border-slate-700',
+      bg: 'bg-[#0F1428]',
+      border: 'border-slate-300',
       text: 'text-white',
-      accent: 'bg-amber-400',
-      hair: '#334155',
-      skin: '#FDE68A'
+      accent: 'bg-[#D64062]',
+      hair: '#0F1428',
+      skin: '#F1F5F9'
     };
   };
 
   const theme = getColorScheme(role, name);
 
-  // SVG Avatars (Male, Female, Neutral SVG graphic avatars)
+  // SVG Avatars (Pentagram OS Clean Minimalist Style)
   const renderSvgAvatar = () => {
     const charCode = name.charCodeAt(0) || 0;
     const isVariantB = charCode % 2 === 0;
@@ -95,23 +85,17 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full rounded-full"
         >
-          <circle cx="18" cy="18" r="18" fill="url(#avatar-grad-b)" />
-          <defs>
-            <linearGradient id="avatar-grad-b" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#6366F1" />
-              <stop offset="1" stopColor="#A855F7" />
-            </linearGradient>
-          </defs>
+          <circle cx="18" cy="18" r="18" fill="#0F1428" />
           {/* Head & Hair */}
-          <circle cx="18" cy="14" r="6" fill="#FDE68A" />
-          <path d="M12 13C12 9.68629 14.6863 7 18 7C21.3137 7 24 9.68629 24 13C24 13.5 23.5 14 23 14C22 14 21.5 12 18 12C14.5 12 14 14 13 14C12.5 14 12 13.5 12 13Z" fill="#312E81" />
-          {/* Glasses */}
-          <circle cx="15.5" cy="14" r="1.5" stroke="#1E1B4B" strokeWidth="0.8" fill="none" />
-          <circle cx="20.5" cy="14" r="1.5" stroke="#1E1B4B" strokeWidth="0.8" fill="none" />
-          <line x1="17" y1="14" x2="19" y2="14" stroke="#1E1B4B" strokeWidth="0.8" />
-          {/* Body / Collar */}
-          <path d="M9 30C9 23.9249 13.0294 19 18 19C22.9706 19 27 23.9249 27 30V36H9V30Z" fill="#312E81" />
-          <path d="M15 22L18 26L21 22" stroke="#FDE68A" strokeWidth="1.2" strokeLinecap="round" />
+          <circle cx="18" cy="14" r="6" fill="#FDFDFD" />
+          <path d="M12 13C12 9.68629 14.6863 7 18 7C21.3137 7 24 9.68629 24 13C24 13.5 23.5 14 23 14C22 14 21.5 12 18 12C14.5 12 14 14 13 14C12.5 14 12 13.5 12 13Z" fill="#D64062" />
+          {/* Accent Glasses */}
+          <circle cx="15.5" cy="14" r="1.5" stroke="#0F1428" strokeWidth="0.8" fill="none" />
+          <circle cx="20.5" cy="14" r="1.5" stroke="#0F1428" strokeWidth="0.8" fill="none" />
+          <line x1="17" y1="14" x2="19" y2="14" stroke="#0F1428" strokeWidth="0.8" />
+          {/* Body */}
+          <path d="M9 30C9 23.9249 13.0294 19 18 19C22.9706 19 27 23.9249 27 30V36H9V30Z" fill="#1E293B" />
+          <path d="M15 22L18 26L21 22" stroke="#D64062" strokeWidth="1.2" strokeLinecap="round" />
         </svg>
       );
     }
@@ -123,20 +107,14 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-full rounded-full"
       >
-        <circle cx="18" cy="18" r="18" fill="url(#avatar-grad-a)" />
-        <defs>
-          <linearGradient id="avatar-grad-a" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#F43F5E" />
-            <stop offset="1" stopColor="#FB923C" />
-          </linearGradient>
-        </defs>
+        <circle cx="18" cy="18" r="18" fill="#D64062" />
         {/* Head */}
-        <circle cx="18" cy="14" r="6" fill="#FED7AA" />
-        {/* Short Styled Hair */}
-        <path d="M12 13C12 9.68629 14.6863 7 18 7C21.3137 7 24 9.68629 24 13V15H12V13Z" fill="#78350F" />
-        {/* Shoulders / Shirt */}
-        <path d="M8 31C8 24.3726 12.4772 19 18 19C23.5228 19 28 24.3726 28 31V36H8V31Z" fill="#1E293B" />
-        <path d="M15 19L18 24L21 19" fill="#E2E8F0" />
+        <circle cx="18" cy="14" r="6" fill="#FDFDFD" />
+        {/* Styled Hair */}
+        <path d="M12 13C12 9.68629 14.6863 7 18 7C21.3137 7 24 9.68629 24 13V15H12V13Z" fill="#0F1428" />
+        {/* Shoulders */}
+        <path d="M8 31C8 24.3726 12.4772 19 18 19C23.5228 19 28 24.3726 28 31V36H8V31Z" fill="#0F1428" />
+        <path d="M15 19L18 24L21 19" fill="#FDFDFD" />
       </svg>
     );
   };
