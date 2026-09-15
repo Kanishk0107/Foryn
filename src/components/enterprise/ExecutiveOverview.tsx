@@ -45,21 +45,12 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
 
   return (
     <div className="space-y-6 select-none animate-in fade-in duration-200">
-      {/* Top Header Card: Greeting & Executive Pulse */}
+      {/* Top Header Card: Operating Overview */}
       <div className="bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-2 h-2 rounded-full bg-[#D64062] animate-pulse" />
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Executive Command & Control
-            </span>
-          </div>
           <h1 className="text-xl sm:text-2xl font-black tracking-tight text-[#0F1428] dark:text-white">
             Pentagram Living — Operating Overview
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
-            Real-time multi-project oversight: tracking ₹{(totalContractValueSum || 0).toFixed(1)} Lakhs in active client contracts, site milestone gates, margin leakage control, and supply chain releases.
-          </p>
         </div>
 
         {/* Quick Launch Action Buttons */}
@@ -169,12 +160,9 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
         <div className="lg:col-span-8 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden flex flex-col">
           <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-black text-[#0F1428] dark:text-white">
-                Active Client Sites (Connected Model)
+              <h2 className="text-sm sm:text-base font-black text-[#0F1428] dark:text-white">
+                Active Client Sites
               </h2>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                Single source of truth: 2D plan, 3D render, BOQ quantities, and factory releases
-              </p>
             </div>
             <button
               onClick={() => onNavigate('projects')}
@@ -262,10 +250,6 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
               </div>
               <span className="text-[10px] font-mono text-[#D64062] font-bold">2 Exceptions</span>
             </div>
-
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-              Pentagram OS exception engine actively monitors material rate fluctuations and scrap rates between CAD takeoff and vendor billing.
-            </p>
 
             <div className="space-y-2.5">
               {marginAlerts.length === 0 ? (

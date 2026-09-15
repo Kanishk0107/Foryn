@@ -55,8 +55,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           id: 'executive' as EnterpriseView,
           label: 'Executive Command',
           icon: LayoutDashboard,
-          badge: 'Live',
-          isHighlight: true
+          badge: undefined
         }
       ]
     },
@@ -67,22 +66,20 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           id: 'crm' as EnterpriseView,
           label: 'Pre-Sales & CRM',
           icon: Target,
-          badge: `${leadCount}`,
-          isHighlight: false
+          badge: leadCount > 0 ? `${leadCount}` : '0',
+          isHighlight: leadCount > 0
         },
         {
           id: 'boq' as EnterpriseView,
           label: 'Master BOQ Studio',
           icon: FileSpreadsheet,
-          badge: 'Core',
-          isHighlight: false
+          badge: undefined
         },
         {
           id: 'studio' as EnterpriseView,
           label: '2D/3D CAD Studio',
           icon: Compass,
-          badge: 'WebGL',
-          isHighlight: false
+          badge: undefined
         }
       ]
     },
@@ -93,15 +90,14 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           id: 'projects' as EnterpriseView,
           label: 'Projects & 31 Stages',
           icon: FolderGit2,
-          badge: 'Engine',
-          isHighlight: false
+          badge: undefined
         },
         {
           id: 'vendors' as EnterpriseView,
           label: 'Procurement & Sites',
           icon: HardHat,
-          badge: pendingPmCount > 0 ? `${pendingPmCount} Req` : undefined,
-          isHighlight: true
+          badge: pendingPmCount > 0 ? `${pendingPmCount}` : undefined,
+          isHighlight: pendingPmCount > 0
         }
       ]
     },
@@ -112,8 +108,8 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           id: 'finance' as EnterpriseView,
           label: 'Finance & GST Ledger',
           icon: Receipt,
-          badge: pendingFinanceCount > 0 ? `${pendingFinanceCount} RTGS` : undefined,
-          isHighlight: false
+          badge: pendingFinanceCount > 0 ? `${pendingFinanceCount}` : undefined,
+          isHighlight: pendingFinanceCount > 0
         }
       ]
     }
@@ -190,26 +186,6 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
           <Zap className="w-4 h-4 shrink-0" />
           {!isCollapsed && <span>Quick SOP Tips</span>}
         </button>
-
-        {/* Database & Latency Card (when expanded) */}
-        {!isCollapsed && (
-          <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 text-[11px] space-y-1">
-            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 font-mono text-[10px]">
-              <span className="flex items-center gap-1">
-                <Database className="w-3 h-3 text-[#D64062]" />
-                <span>Postgres Flexible</span>
-              </span>
-              <span className="text-[#D64062] font-bold">LIVE</span>
-            </div>
-            <div className="flex items-center justify-between text-[#0F1428] dark:text-slate-300 font-medium">
-              <span>Tenant Security</span>
-              <span className="flex items-center gap-1 font-mono text-[10px]">
-                <ShieldCheck className="w-3 h-3 text-[#0F1428]" />
-                RLS Encrypted
-              </span>
-            </div>
-          </div>
-        )}
 
         {/* Collapse Sidebar Button */}
         <button
