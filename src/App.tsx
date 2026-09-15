@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { ShowcaseCanvas } from './components/ShowcaseCanvas';
 import { AuthCard } from './components/AuthCard';
 import { ForgotPasswordModal } from './components/ForgotPasswordModal';
@@ -10,6 +11,7 @@ import { FinanceDashboard } from './components/FinanceDashboard';
 import { TransactionalEmailConsoleModal } from './components/TransactionalEmailConsoleModal';
 import { QuickTipsOverlay } from './components/QuickTipsOverlay';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { ForynLoadingExperience } from './components/loading/ForynLoadingExperience';
 
 import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
@@ -87,6 +89,9 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false); // Authenticated session required for workspace
   const [activeEnterpriseView, setActiveEnterpriseView] = useState<EnterpriseView>('executive');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+
+  // Application Boot & Morph Splash Experience State
+  const [isAppBooting, setIsAppBooting] = useState<boolean>(true);
 
   // Available Projects in Office Registry
   const [availableProjects, setAvailableProjects] = useState<string[]>([]);
@@ -682,6 +687,7 @@ export default function App() {
           onLogout={handleLogout}
           onClearAllData={handleClearAllData}
           onRestoreDemoData={handleRestoreDemoData}
+          onTriggerSplash={() => setIsAppBooting(true)}
         />
 
         {/* Enterprise Workspace Layout: Sidebar + Active Workstation View */}
@@ -817,6 +823,14 @@ export default function App() {
           onScaffoldProject={handleScaffoldProject}
         />
 
+        {/* Global Architectural Loading & Splash Morph Experience */}
+        <AnimatePresence>
+          {isAppBooting && (
+            <ForynLoadingExperience
+              onComplete={() => setIsAppBooting(false)}
+            />
+          )}
+        </AnimatePresence>
       </div>
     );
   }
@@ -975,6 +989,15 @@ export default function App() {
 
       {/* Global Toast Notifications */}
       <Toast toasts={toasts} onDismiss={handleDismissToast} />
+
+      {/* Global Architectural Loading & Splash Morph Experience */}
+      <AnimatePresence>
+        {isAppBooting && (
+          <ForynLoadingExperience
+            onComplete={() => setIsAppBooting(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
