@@ -98,7 +98,7 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
           {isWorkspaceMenuOpen && (
             <div className="absolute left-0 top-full mt-1.5 w-64 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-50 text-xs">
               <div className="px-3 py-1.5 font-bold text-[10px] uppercase text-slate-400 font-mono">
-                Select Workspace Hub
+                Select Office Location
               </div>
               {branches.map((branch) => (
                 <button
@@ -136,7 +136,7 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
           {isProjectMenuOpen && (
             <div className="absolute left-0 top-full mt-1.5 w-72 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-50 text-xs">
               <div className="px-3 py-1.5 font-bold text-[10px] uppercase text-slate-400 font-mono">
-                Active Client Sites (PID Registry)
+                Active Client Sites
               </div>
               {availableProjects.map((p) => (
                 <button

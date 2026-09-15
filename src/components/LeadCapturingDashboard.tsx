@@ -794,17 +794,27 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
                         </span>
                       </td>
 
-                      {/* Inspect Button */}
+                      {/* Actions: Convert to Active Site + Inspect */}
                       <td className="p-3 text-right whitespace-nowrap">
-                        <button
-                          onClick={() => {
-                            setSelectedLead(item);
-                            setActiveView('detail');
-                          }}
-                          className="px-2.5 py-1 rounded-xl bg-slate-900 text-white font-bold text-[11px] hover:bg-[#D64062] transition-all shadow-xs"
-                        >
-                          Inspect File
-                        </button>
+                        <div className="flex items-center justify-end gap-1.5">
+                          <button
+                            onClick={() => onConvertLeadToProject(item)}
+                            className="px-2.5 py-1 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-[11px] transition-all shadow-2xs flex items-center gap-1 cursor-pointer"
+                            title="Convert deal to active site and open 31 stages"
+                          >
+                            <Sparkles className="w-3 h-3" />
+                            <span>+ Convert to Active Site</span>
+                          </button>
+                          <button
+                            onClick={() => {
+                              setSelectedLead(item);
+                              setActiveView('detail');
+                            }}
+                            className="px-2.5 py-1 rounded-xl bg-slate-900 text-white font-bold text-[11px] hover:bg-slate-800 transition-all shadow-xs cursor-pointer"
+                          >
+                            Inspect File
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -1032,10 +1042,10 @@ export const LeadCapturingDashboard: React.FC<LeadCapturingDashboardProps> = ({
 
               <button
                 onClick={() => onConvertLeadToProject(inspectorLead)}
-                className="px-4 py-2 bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all"
+                className="px-4 py-2 bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs rounded-xl shadow-xs flex items-center gap-1.5 transition-all cursor-pointer"
               >
-                <Sparkles className="w-4 h-4" />
-                <span>Promote to Sales Team</span>
+                <Sparkles className="w-4 h-4 text-white" />
+                <span>Convert to Active Site Project →</span>
               </button>
 
               <button

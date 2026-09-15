@@ -90,12 +90,15 @@ export default function App() {
   const [activeEnterpriseView, setActiveEnterpriseView] = useState<EnterpriseView>('executive');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
 
-  // Application Boot & Morph Splash Experience State
-  const [isAppBooting, setIsAppBooting] = useState<boolean>(true);
+  // Application Boot & Morph Splash Experience State (only triggered on login transition)
+  const [isAppBooting, setIsAppBooting] = useState<boolean>(false);
 
   // Available Projects in Office Registry
-  const [availableProjects, setAvailableProjects] = useState<string[]>([]);
-  const [activeProjectName, setActiveProjectName] = useState<string>('No Active Site Selected');
+  const [availableProjects, setAvailableProjects] = useState<string[]>([
+    'B3/21 DLF Alameda Villa (PID 1005)',
+    'Villa Penthouse 402 (PID 1001)'
+  ]);
+  const [activeProjectName, setActiveProjectName] = useState<string>('B3/21 DLF Alameda Villa (PID 1005)');
 
   const [user, setUser] = useState<UserProfile>({
     name: 'Rishabh Bhardwaj',
@@ -341,6 +344,7 @@ export default function App() {
       role: (role as UserRole) || 'Sales Lead'
     });
     setIsLoggedIn(true);
+    setIsAppBooting(true);
     setActiveEnterpriseView('executive');
     const timeGreeting = getGreetingTextByTime();
     addToast(
@@ -358,6 +362,7 @@ export default function App() {
       company: 'Pentagram Living Pvt. Ltd.'
     });
     setIsLoggedIn(true);
+    setIsAppBooting(true);
     setActiveEnterpriseView('executive');
     addToast(
       'info',

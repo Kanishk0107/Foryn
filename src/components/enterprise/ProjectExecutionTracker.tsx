@@ -32,28 +32,49 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
   activeProjectName,
   onSendToast
 }) => {
-  const [stages, setStages] = useState<WorkflowStage[]>(INITIAL_WORKFLOW_STAGES);
-  const [activePhaseNumber, setActivePhaseNumber] = useState<number>(2); // Default to Phase 2 (Concept & 3D Design Freeze)
+  // Per-project completion tracking state map
+  const [projectCompletedStagesMap, setProjectCompletedStagesMap] = useState<Record<string, string[]>>({
+    'B3/21 DLF Alameda Villa (PID 1005)': ['s-1-1', 's-1-2', 's-1-3', 's-1-4', 's-1-5', 's-2-1', 's-2-2'],
+    'Villa Penthouse 402 (PID 1001)': ['s-1-1', 's-1-2', 's-1-3', 's-1-4', 's-1-5']
+  });
+
+  const [activePhaseNumber, setActivePhaseNumber] = useState<number>(2);
   const [selectedStage, setSelectedStage] = useState<WorkflowStage | null>(null);
   const [signoffNotes, setSignoffNotes] = useState('');
 
+  const completedStageIds = projectCompletedStagesMap[activeProjectName] || [];
+
+  const getStageStatus = (stageId: string, index: number): 'Completed' | 'In Progress' | 'Pending' => {
+    if (completedStageIds.includes(stageId)) return 'Completed';
+    if (index === 0 || completedStageIds.includes(INITIAL_WORKFLOW_STAGES[index - 1]?.id)) return 'In Progress';
+    return 'Pending';
+  };
+
+  const stages = INITIAL_WORKFLOW_STAGES.map((s, idx) => ({
+    ...s,
+    status: getStageStatus(s.id, idx)
+  }));
+
   const currentPhaseStages = stages.filter((s) => s.phaseNumber === activePhaseNumber);
 
-  // Overall Statistics
-  const totalCompleted = stages.filter((s) => s.status === 'Completed').length;
-  const totalInProgress = stages.filter((s) => s.status === 'In Progress').length;
-  const percentComplete = Math.round((totalCompleted / stages.length) * 100);
+  // Dynamic Overall Statistics for active project
+  const totalCompleted = completedStageIds.length;
+  const percentComplete = Math.round((totalCompleted / INITIAL_WORKFLOW_STAGES.length) * 100);
 
   const handleApproveGate = (stageId: string) => {
-    setStages((prev) =>
-      prev.map((s) => (s.id === stageId ? { ...s, status: 'Completed' } : s))
-    );
+    setProjectCompletedStagesMap((prev) => {
+      const existing = prev[activeProjectName] || [];
+      if (!existing.includes(stageId)) {
+        return { ...prev, [activeProjectName]: [...existing, stageId] };
+      }
+      return prev;
+    });
 
-    const stg = stages.find((s) => s.id === stageId);
+    const stg = INITIAL_WORKFLOW_STAGES.find((s) => s.id === stageId);
     onSendToast?.(
       'success',
-      `Gate Approved: ${stg?.stageCode}`,
-      `Certified ${stg?.title}. Dispatched next stage trigger.`
+      `Gate Certified: ${stg?.stageCode}`,
+      `Certified ${stg?.title} for ${activeProjectName}. Progress updated dynamically.`
     );
     setSelectedStage(null);
     setSignoffNotes('');
@@ -66,19 +87,16 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0F1428] dark:text-slate-400 bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-200">
-              31-Stage Operating Engine
+              31-Stage Execution Tracker
             </span>
             <span className="text-xs text-slate-400">•</span>
-            <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+            <span className="text-xs font-bold text-[#D64062]">
               {activeProjectName}
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">
-            Project Stage-Gate Execution Tracker
+            Project Lifecycle Engine
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
-            Governed by FORYN's operating atom: <strong className="text-slate-700 dark:text-slate-200">Trigger → Human Action → FORYN Automation → Decision Gate → Output</strong>.
-          </p>
         </div>
 
         {/* Overall Progress Meter */}
@@ -86,12 +104,12 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
           <div>
             <div className="text-[10px] font-mono uppercase text-slate-400 font-bold">Lifecycle Completion</div>
             <div className="text-sm font-black font-mono text-slate-900 dark:text-white">
-              {totalCompleted} of {stages.length} Stages ({percentComplete}%)
+              {totalCompleted} of {INITIAL_WORKFLOW_STAGES.length} Stages ({percentComplete}%)
             </div>
           </div>
-          <div className="w-16 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+          <div className="w-20 h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[var(--foryn-accent)] rounded-full transition-all duration-300"
+              className="h-full bg-[#D64062] rounded-full transition-all duration-300"
               style={{ width: `${percentComplete}%` }}
             />
           </div>
