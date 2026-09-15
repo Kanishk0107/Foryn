@@ -35,6 +35,28 @@ export type StudioRole =
   | '3D Artist'
   | 'Homeowner';
 
+export interface SignInCard2Props {
+  onLoginSuccess?: (userEmail: string, role?: string) => void;
+  onOpenForgotPassword?: () => void;
+  onLaunchGuestDemo?: () => void;
+  onGoogleSignIn?: () => void;
+  defaultTab?: 'login' | 'signup';
+}
+
+const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const Input: React.FC<InputProps> = ({ className, ...props }) => (
+  <input
+    className={cn(
+      'w-full px-3.5 py-2.5 rounded-xl border border-rose-200/80 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#F62440] focus:ring-1 focus:ring-[#F62440] transition-all',
+      className
+    )}
+    {...props}
+  />
+);
+
 const ROLES: { id: StudioRole; label: string; icon: React.FC<{ className?: string }> }[] = [
   { id: 'Interior Designer', label: 'Interior Designer', icon: Palette },
   { id: 'Architect', label: 'Architect', icon: Building2 },
