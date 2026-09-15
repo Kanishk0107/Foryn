@@ -11,6 +11,14 @@ import { TransactionalEmailConsoleModal } from './components/TransactionalEmailC
 import { QuickTipsOverlay } from './components/QuickTipsOverlay';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
+import { CookieConsentBanner } from './components/CookieConsentBanner';
+import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
+import { TermsConditionsModal } from './components/TermsConditionsModal';
+import { ThankYouModal } from './components/ThankYouModal';
+import { StickyMobileCTA } from './components/StickyMobileCTA';
+import { NotFoundPage } from './components/NotFoundPage';
+import { initAnalytics, trackPageView } from './utils/analytics';
+
 
 
 // Enterprise Redesign Workstations & Layout
@@ -101,6 +109,64 @@ export default function App() {
   const [autoOpenBoqModal, setAutoOpenBoqModal] = useState<boolean>(false);
   const [autoOpenVendorModal, setAutoOpenVendorModal] = useState<boolean>(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+
+  // Production Quality Compliance Modals & 404 Routing
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState<boolean>(false);
+  const [isTermsOpen, setIsTermsOpen] = useState<boolean>(false);
+  const [isThankYouOpen, setIsThankYouOpen] = useState<boolean>(false);
+  const [isNotFoundPage, setIsNotFoundPage] = useState<boolean>(false);
+
+  // Initialize Analytics & Dynamic Per-Page Meta Title / Description
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    let title = 'Foryn — Next-Gen Cloud Interior Design & Architecture Studio Platform';
+    let desc = 'Unified workstation platform integrating real-time 3D CAD visualization, automated BOQ calculations, and end-to-end site project management.';
+
+    if (isNotFoundPage) {
+      title = '404 - Page Not Found | Foryn';
+      desc = 'The requested studio workstation page does not exist.';
+    } else if (isLoggedIn) {
+      switch (activeEnterpriseView) {
+        case 'executive':
+          title = 'Executive Command Center | Foryn Enterprise';
+          desc = 'Real-time MNC executive overview, active site metrics, and project velocity dashboard.';
+          break;
+        case 'boq':
+          title = 'Master BOQ & Costing Studio | Foryn';
+          desc = 'Automated Bill of Quantities costing engine with 18% GST liability calculation.';
+          break;
+        case 'crm':
+          title = 'Lead CRM & Pre-Sales Pipeline | Foryn';
+          desc = 'Pre-sales client pipeline management and project conversion engine.';
+          break;
+        case 'projects':
+          title = '31-Stage Site Project Engine | Foryn';
+          desc = 'End-to-end site execution tracking across 31 architectural stages.';
+          break;
+        case 'vendors':
+          title = 'Procurement & Vendor Work Orders | Foryn';
+          desc = 'Vendor milestone contracts and PM approval queue.';
+          break;
+        case 'finance':
+          title = 'Finance & 18% GST Ledger | Foryn';
+          desc = 'Vendor RTGS payout disbursements and tax credit ledger.';
+          break;
+        case 'studio':
+          title = 'CAD 3D Workstation | Foryn Studio';
+          desc = 'Real-time 2D floorplan editor and raytrace cloud render workstation.';
+          break;
+      }
+    }
+
+    document.title = title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+
+    trackPageView(isNotFoundPage ? '/404' : isLoggedIn ? `/${activeEnterpriseView}` : '/login');
+  }, [isLoggedIn, activeEnterpriseView, isNotFoundPage]);
 
   // Organization Workflow Persistent States
   const [leads, setLeads] = useState<LeadItem[]>(INITIAL_LEADS);
@@ -854,12 +920,22 @@ export default function App() {
       </main>
 
       {/* Minimal Footer */}
-      <footer className="w-full max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium z-10 border-t border-rose-100/60">
-        <div>© 2026 Foryn Living Pvt. Ltd. All rights reserved.</div>
+      <footer className="w-full max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium z-10 border-t border-rose-100/60 pb-16 md:pb-4">
+        <div>© 2026 Foryn Living Pvt. Ltd. All rights reserved. • DLF Cyber City, Gurugram</div>
         <div className="flex items-center gap-4 mt-2 sm:mt-0 font-mono text-[11px]">
-          <span>Privacy Policy</span>
+          <button
+            onClick={() => setIsPrivacyOpen(true)}
+            className="hover:text-rose-600 hover:underline transition-colors cursor-pointer"
+          >
+            Privacy Policy
+          </button>
           <span>•</span>
-          <span>Terms of Service</span>
+          <button
+            onClick={() => setIsTermsOpen(true)}
+            className="hover:text-rose-600 hover:underline transition-colors cursor-pointer"
+          >
+            Terms of Service
+          </button>
           <span>•</span>
           <span>ISO 27001 Certified</span>
         </div>
@@ -869,13 +945,36 @@ export default function App() {
       <ForgotPasswordModal
         isOpen={isForgotPasswordOpen}
         onClose={() => setIsForgotPasswordOpen(false)}
-        onSendResetLink={(email) => {
-          addToast(
-            'success',
-            'Reset Link Sent',
-            `Password recovery link has been sent to ${email}`
-          );
+      />
+
+      {/* Production Compliance Modals */}
+      <PrivacyPolicyModal
+        isOpen={isPrivacyOpen}
+        onClose={() => setIsPrivacyOpen(false)}
+      />
+
+      <TermsConditionsModal
+        isOpen={isTermsOpen}
+        onClose={() => setIsTermsOpen(false)}
+      />
+
+      <ThankYouModal
+        isOpen={isThankYouOpen}
+        onClose={() => setIsThankYouOpen(false)}
+      />
+
+      {/* Cookie Consent Banner */}
+      <CookieConsentBanner />
+
+      {/* Mobile Sticky CTA Bar */}
+      <StickyMobileCTA
+        onAction={() => {
+          const authElement = document.querySelector('form');
+          if (authElement) {
+            authElement.scrollIntoView({ behavior: 'smooth' });
+          }
         }}
+        buttonText="Sign In / Register"
       />
 
       {/* Global Toast Notifications */}
