@@ -27,7 +27,6 @@ interface EnterpriseTopBarProps {
   onLogout: () => void;
   onClearAllData?: () => void;
   onRestoreDemoData?: () => void;
-  onTriggerSplash?: () => void;
 }
 
 export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
@@ -40,8 +39,7 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
   onOpenNewItemModal,
   onLogout,
   onClearAllData,
-  onRestoreDemoData,
-  onTriggerSplash
+  onRestoreDemoData
 }) => {
   const [isWorkspaceMenuOpen, setIsWorkspaceMenuOpen] = useState(false);
   const [isProjectMenuOpen, setIsProjectMenuOpen] = useState(false);
@@ -312,17 +310,6 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
             </div>
           )}
         </div>
-
-        {/* Replay Architectural Splash / Loading Engine Button */}
-        {onTriggerSplash && (
-          <button
-            onClick={onTriggerSplash}
-            className="p-2 rounded-xl text-slate-500 hover:text-[#0F1428] dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer flex items-center gap-1.5"
-            title="Preview FORYN CAD Studio Splash Experience"
-          >
-            <Layers className="w-4 h-4 text-[#D64062]" />
-          </button>
-        )}
 
         {/* Transactional Email Logs Modal Button */}
         <button

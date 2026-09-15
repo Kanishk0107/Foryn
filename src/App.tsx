@@ -687,7 +687,6 @@ export default function App() {
           onLogout={handleLogout}
           onClearAllData={handleClearAllData}
           onRestoreDemoData={handleRestoreDemoData}
-          onTriggerSplash={() => setIsAppBooting(true)}
         />
 
         {/* Enterprise Workspace Layout: Sidebar + Active Workstation View */}
