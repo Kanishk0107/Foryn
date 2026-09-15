@@ -679,10 +679,6 @@ export default function App() {
           onOpenEmailConsole={() => setIsEmailConsoleOpen(true)}
           onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
           onOpenNewItemModal={handleOpenNewItemModal}
-          onRoleChange={(newRole) => {
-            setUser((prev) => ({ ...prev, role: newRole }));
-            addToast('info', `Role Updated: ${newRole}`, 'Workspace permissions calibrated.');
-          }}
           onLogout={handleLogout}
           onClearAllData={handleClearAllData}
           onRestoreDemoData={handleRestoreDemoData}

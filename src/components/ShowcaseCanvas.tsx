@@ -183,6 +183,21 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
             src={currentScene.image}
             alt={currentScene.name}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.dataset.fallback) {
+                target.dataset.fallback = 'true';
+                if (currentScene.id === 'indian-kitchen-1') {
+                  target.src = '/assets/images/foryn_indian_kitchen_1_1786438839476.jpg';
+                } else if (currentScene.id === 'indian-wardrobe-1') {
+                  target.src = '/assets/images/foryn_indian_wardrobe_1_1786438855628.jpg';
+                } else if (currentScene.id === 'indian-living-1') {
+                  target.src = '/assets/images/foryn_indian_living_1_1786438872133.jpg';
+                } else {
+                  target.src = '/assets/images/foryn_kitchen_render_1786438263781.jpg';
+                }
+              }
+            }}
             style={{ filter: getLightingFilter() }}
             className={`w-full h-full object-cover transition-all duration-700 ${
               renderMode === 'blueprint'
