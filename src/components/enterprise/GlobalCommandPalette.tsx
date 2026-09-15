@@ -279,17 +279,17 @@ export const GlobalCommandPalette: React.FC<GlobalCommandPaletteProps> = ({
                   className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-[var(--foryn-accent)] group-hover:text-slate-950 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-[#D64062] group-hover:text-white transition-colors">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white">
+                      <div className="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-[#0F1428] dark:group-hover:text-white">
                         {item.title}
                       </div>
                       <div className="text-[10px] text-slate-400 font-mono">{item.category}</div>
                     </div>
                   </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#D64062] dark:group-hover:text-[#D64062] transition-transform group-hover:translate-x-0.5" />
                 </button>
               );
             })
@@ -303,7 +303,7 @@ export const GlobalCommandPalette: React.FC<GlobalCommandPaletteProps> = ({
             <span>↵ Select</span>
             <span>ESC Close</span>
           </div>
-          <span className="text-[var(--foryn-accent)]">Foryn Command Palette</span>
+          <span className="text-[#D64062] font-semibold">Pentagram OS Command Palette</span>
         </div>
       </div>
     </div>

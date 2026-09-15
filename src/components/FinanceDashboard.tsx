@@ -33,12 +33,12 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
   const totalGST = transactions.reduce((sum, t) => sum + t.gstAmount, 0);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 select-none animate-in fade-in duration-200">
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="p-5 rounded-2xl bg-[#FDFDFD] dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total RTGS Disbursed</div>
-          <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
+          <div className="text-2xl font-black text-[#0F1428] dark:text-white mt-1">
             ₹{(totalDisbursed / 100000).toFixed(2)} Lakhs
           </div>
           <div className="text-[11px] text-emerald-600 font-semibold mt-1 flex items-center gap-1">
@@ -46,7 +46,7 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="p-5 rounded-2xl bg-[#FDFDFD] dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Pending Release Queue</div>
           <div className="text-2xl font-black text-amber-600 dark:text-amber-400 mt-1">
             ₹{(pendingDisbursed / 100000).toFixed(2)} Lakhs
@@ -56,9 +56,9 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="p-5 rounded-2xl bg-[#FDFDFD] dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs">
           <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">18% GST Compliance Liability</div>
-          <div className="text-2xl font-black text-[#F62440] mt-1">
+          <div className="text-2xl font-black text-[#D64062] mt-1">
             ₹{(totalGST / 100000).toFixed(2)} Lakhs
           </div>
           <div className="text-[11px] text-slate-500 font-semibold mt-1 flex items-center gap-1">
@@ -68,10 +68,10 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
       </div>
 
       {/* Ledger Table */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="bg-[#FDFDFD] dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden">
+        <div className="p-4 border-b border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">Finance & 18% GST Ledger</h3>
+            <h3 className="text-base font-bold text-[#0F1428] dark:text-white">Finance & 18% GST Ledger</h3>
             <p className="text-xs text-slate-500">Vendor milestone payouts & bank disbursements</p>
           </div>
 
@@ -82,14 +82,14 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search vendor or site..."
-              className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 text-xs bg-slate-50 dark:bg-slate-950 focus:outline-none focus:border-[#F62440]"
+              className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 text-xs bg-slate-50 dark:bg-slate-950 text-[#0F1428] dark:text-slate-100 focus:outline-none focus:border-[#D64062]"
             />
           </div>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 dark:bg-slate-950 text-slate-500 font-bold border-b border-slate-200 dark:border-slate-800">
+            <thead className="bg-slate-50/80 dark:bg-slate-950 text-slate-500 font-bold border-b border-slate-200/80 dark:border-slate-800">
               <tr>
                 <th className="p-3.5">Transaction ID</th>
                 <th className="p-3.5">Site Project</th>
@@ -110,11 +110,11 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
               ) : (
                 filteredTxs.map((t) => (
                   <tr key={t.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td className="p-3.5 font-mono font-bold text-slate-900 dark:text-white">{t.id}</td>
+                    <td className="p-3.5 font-mono font-bold text-[#0F1428] dark:text-white">{t.id}</td>
                     <td className="p-3.5 font-semibold text-slate-800 dark:text-slate-200">{t.projectName}</td>
                     <td className="p-3.5 text-slate-600 dark:text-slate-400">{t.partyName}</td>
                     <td className="p-3.5 text-slate-500">{t.category}</td>
-                    <td className="p-3.5 text-right font-black text-slate-900 dark:text-white">
+                    <td className="p-3.5 text-right font-black text-[#0F1428] dark:text-white">
                       ₹{t.netAmount.toLocaleString('en-IN')}
                     </td>
                     <td className="p-3.5">
@@ -132,7 +132,7 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({
                       {t.status === 'Ready for Release' ? (
                         <button
                           onClick={() => onReleasePayout(t.id)}
-                          className="px-3 py-1 rounded-lg bg-[#F62440] hover:bg-rose-600 text-white font-bold text-[11px] shadow-xs transition-all"
+                          className="px-3 py-1 rounded-lg bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-[11px] shadow-xs transition-all cursor-pointer"
                         >
                           Disburse RTGS
                         </button>

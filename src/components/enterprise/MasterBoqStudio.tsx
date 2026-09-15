@@ -269,7 +269,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
 
           <button
             onClick={handleOpenAddModal}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[var(--foryn-accent)] hover:brightness-110 text-slate-950 text-xs font-black transition-all shadow-xs"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white text-xs font-black transition-all shadow-xs cursor-pointer"
           >
             <Plus className="w-4 h-4 stroke-[2.5]" />
             <span>Add BOQ Item</span>
@@ -331,7 +331,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
           <span className="text-[10px] text-slate-400">Govt Compliance</span>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-slate-900 text-white dark:bg-[var(--foryn-accent)] dark:text-slate-950 space-y-1 shadow-xs border border-transparent">
+        <div className="p-3.5 rounded-xl bg-[#0F1428] text-white dark:bg-[#0F1428] dark:text-[#FDFDFD] space-y-1 shadow-xs border border-transparent">
           <span className="text-[10px] font-mono uppercase opacity-80 font-bold block">
             Client Price (Net)
           </span>
@@ -700,7 +700,7 @@ export const MasterBoqStudio: React.FC<MasterBoqStudioProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-[var(--foryn-accent)] hover:brightness-110 text-slate-950 font-black"
+                  className="px-5 py-2 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white font-bold cursor-pointer transition-all shadow-sm"
                 >
                   {editingItem ? 'Save Changes' : 'Add to BOQ'}
                 </button>

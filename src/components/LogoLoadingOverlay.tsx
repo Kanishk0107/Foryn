@@ -7,15 +7,15 @@ interface LogoLoadingOverlayProps {
 }
 
 export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
-  statusText = 'Launching Foryn Studio Workstation...'
+  statusText = 'Launching Pentagram OS Workstation...'
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
 
   const steps = [
-    'Authenticating Foryn Credentials...',
+    'Authenticating Pentagram Credentials...',
     'Initializing 3D Raytrace & CAD Engine...',
-    'Loading Indian Interior Workstation...',
-    'Connecting to design.foryn.io Cloud...'
+    'Loading Architecture & Studio Workspace...',
+    'Connecting to Pentagram Cloud Gateway...'
   ];
 
   useEffect(() => {
@@ -30,18 +30,18 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-[#FFFAF3]/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 text-slate-900 select-none overflow-hidden"
+      className="fixed inset-0 z-50 bg-[#FDFDFD]/95 backdrop-blur-2xl flex flex-col items-center justify-center p-6 text-[#0F1428] select-none overflow-hidden"
     >
       {/* Background Architectural Grid Lines */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(#F62440 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(#0F1428 1px, transparent 1px)`,
           backgroundSize: '28px 28px'
         }}
       />
 
-      {/* Rotating Ambient Crimson Aura */}
+      {/* Rotating Ambient Aura */}
       <motion.div
         animate={{
           scale: [1, 1.25, 1],
@@ -49,10 +49,10 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
           opacity: [0.25, 0.45, 0.25]
         }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute w-96 h-96 rounded-full bg-gradient-to-tr from-[#F62440]/20 via-rose-300/30 to-amber-300/20 blur-3xl pointer-events-none"
+        className="absolute w-96 h-96 rounded-full bg-gradient-to-tr from-[#D64062]/20 via-[#0F1428]/10 to-[#161D3A]/20 blur-3xl pointer-events-none"
       />
 
-      {/* Central Animated Foryn Logo Container */}
+      {/* Central Animated Logo Container */}
       <div className="relative flex flex-col items-center z-10">
         {/* Animated Architectural F Logo Mark */}
         <div className="relative flex items-center justify-center mb-6">
@@ -63,7 +63,7 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
               opacity: [0.6, 0, 0.6]
             }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
-            className="absolute -inset-4 rounded-3xl bg-[#F62440]/15 border border-[#F62440]/30 blur-xs"
+            className="absolute -inset-4 rounded-3xl bg-[#D64062]/15 border border-[#D64062]/30 blur-xs"
           />
 
           {/* Animated Main Logo Box */}
@@ -73,16 +73,16 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
               scale: [1, 1.03, 1]
             }}
             transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-20 h-20 relative flex items-center justify-center bg-white text-slate-900 rounded-2xl shadow-xl border-2 border-[#F62440] overflow-hidden"
+            className="w-20 h-20 relative flex items-center justify-center bg-[#0F1428] text-white rounded-2xl shadow-xl border-2 border-[#D64062] overflow-hidden"
           >
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-white to-rose-100/50" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0F1428] via-[#161D3A] to-[#D64062]/20" />
 
             {/* Rotating SVG Grid Lines */}
             <motion.svg
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              className="absolute inset-0 w-full h-full text-[#F62440]/20"
+              className="absolute inset-0 w-full h-full text-[#D64062]/20"
               viewBox="0 0 40 40"
               fill="none"
             >
@@ -95,7 +95,7 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 1, ease: 'easeInOut' }}
-              className="relative z-10 w-10 h-10 text-[#F62440] drop-shadow-[0_2px_8px_rgba(246,36,64,0.4)]"
+              className="relative z-10 w-10 h-10 text-[#D64062] drop-shadow-[0_2px_8px_rgba(214,64,98,0.4)]"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -117,13 +117,13 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
           transition={{ delay: 0.2 }}
           className="flex items-center gap-2 mb-2"
         >
-          <span className="text-3xl font-extrabold tracking-tight text-slate-900 font-sans lowercase">
+          <span className="text-3xl font-extrabold tracking-tight text-[#0F1428] font-sans lowercase">
             foryn
           </span>
           <motion.span
             animate={{ scale: [1, 1.4, 1], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 1.2, repeat: Infinity }}
-            className="w-2.5 h-2.5 rounded-full bg-[#F62440] shadow-[0_0_10px_#F62440]"
+            className="w-2.5 h-2.5 rounded-full bg-[#D64062] shadow-[0_0_10px_#D64062]"
           />
         </motion.div>
 
@@ -132,17 +132,17 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="flex items-center gap-2 mb-8 text-xs font-mono font-semibold text-[#F62440] bg-rose-50 px-3 py-1 rounded-full border border-rose-200 shadow-sm"
+          className="flex items-center gap-2 mb-8 text-xs font-mono font-semibold text-[#D64062] bg-[#D64062]/10 px-3 py-1 rounded-full border border-[#D64062]/20 shadow-xs"
         >
-          <Sparkles className="w-3.5 h-3.5 text-[#F62440] animate-spin" />
-          <span>design.foryn.io</span>
+          <Sparkles className="w-3.5 h-3.5 text-[#D64062] animate-spin" />
+          <span>pentagram.in</span>
           <span className="text-slate-300">|</span>
-          <span className="text-slate-700">FORYN Studio</span>
+          <span className="text-[#0F1428] font-bold">Pentagram OS</span>
         </motion.div>
 
-        {/* Dynamic Loading Bar & Scanning Ray */}
+        {/* Dynamic Loading Bar */}
         <div className="w-72 sm:w-80 space-y-3">
-          <div className="relative h-2 bg-rose-100/80 rounded-full overflow-hidden border border-rose-200 shadow-inner">
+          <div className="relative h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200 shadow-inner">
             <motion.div
               animate={{
                 x: ['-100%', '100%']
@@ -152,7 +152,7 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
                 repeat: Infinity,
                 ease: 'easeInOut'
               }}
-              className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-[#F62440] via-rose-400 to-[#F62440] rounded-full shadow-[0_0_12px_#F62440]"
+              className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-[#D64062] via-[#0F1428] to-[#D64062] rounded-full shadow-[0_0_12px_#D64062]"
             />
           </div>
 
@@ -163,9 +163,9 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
-              className="text-xs font-mono text-slate-700 font-semibold text-center flex items-center gap-2"
+              className="text-xs font-mono text-slate-600 font-semibold text-center flex items-center gap-2"
             >
-              <Compass className="w-3.5 h-3.5 text-[#F62440] animate-spin" />
+              <Compass className="w-3.5 h-3.5 text-[#D64062] animate-spin" />
               <span>{steps[currentStep]}</span>
             </motion.p>
           </div>
@@ -179,8 +179,8 @@ export const LogoLoadingOverlay: React.FC<LogoLoadingOverlayProps> = ({
           </div>
           <span>•</span>
           <div className="flex items-center gap-1.5">
-            <Layers className="w-3.5 h-3.5 text-[#F62440]" />
-            <span>Cloud CAD v2.4</span>
+            <Layers className="w-3.5 h-3.5 text-[#0F1428]" />
+            <span>Pentagram OS v1.0</span>
           </div>
         </div>
       </div>

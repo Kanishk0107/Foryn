@@ -29,11 +29,11 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false })
           className={`${iconSizes[size]} relative flex items-center justify-center rounded-xl bg-slate-950 text-white shadow-md border border-slate-800/80 overflow-hidden shrink-0`}
         >
           {/* Obsidian Gradient Glow */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-rose-950/80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0F1428] via-[#161D3A] to-[#D64062]/20" />
 
           {/* Architectural Axis Crosshairs */}
           <svg
-            className="absolute inset-0 w-full h-full text-rose-500/15 group-hover:text-rose-500/30 transition-colors"
+            className="absolute inset-0 w-full h-full text-[#D64062]/20 group-hover:text-[#D64062]/40 transition-colors"
             viewBox="0 0 40 40"
             fill="none"
           >
@@ -43,7 +43,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false })
 
           {/* Stylized Luxury Geometric F Emblem */}
           <svg
-            className="relative z-10 w-3/5 h-3/5 text-rose-500 group-hover:scale-105 transition-transform drop-shadow-sm"
+            className="relative z-10 w-3/5 h-3/5 text-[#D64062] group-hover:scale-105 transition-transform drop-shadow-sm"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -60,21 +60,21 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false })
         {/* Brand Typography */}
         <div className="flex items-center gap-1.5">
           <span
-            className={`${textSizes[size]} font-black tracking-tight text-slate-900 dark:text-white font-sans lowercase flex items-center`}
+            className={`${textSizes[size]} font-black tracking-tight text-[#0F1428] dark:text-[#FDFDFD] font-sans lowercase flex items-center`}
           >
             foryn
           </span>
           {/* Vibrant Glowing Brand Pulse Node */}
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D64062]/60 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D64062]" />
           </span>
         </div>
       </div>
 
       {showSubtitle && (
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 mt-1 pl-0.5">
-          Enterprise Interior & Architecture Studio
+          Pentagram OS • Enterprise Interior & Architecture Studio
         </span>
       )}
     </div>

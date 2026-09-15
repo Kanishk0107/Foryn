@@ -37,11 +37,11 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-2xl relative">
+    <div className="fixed inset-0 z-50 bg-[#0F1428]/60 backdrop-blur-xs flex items-center justify-center p-4 select-none">
+      <div className="w-full max-w-md bg-[#FDFDFD] dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-6 shadow-2xl relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+          className="absolute top-4 right-4 p-2 text-slate-400 hover:text-[#0F1428] dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -49,13 +49,13 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
         {submitted ? (
           <div className="text-center py-6 space-y-4">
             <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto animate-bounce" />
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Password Reset Link Sent</h3>
+            <h3 className="text-xl font-bold text-[#0F1428] dark:text-white">Password Reset Link Sent</h3>
             <p className="text-sm text-slate-600 dark:text-slate-300">
               We emailed a recovery link to <span className="font-semibold">{email}</span>. Click the link to update your password.
             </p>
             <button
               onClick={onClose}
-              className="mt-4 px-6 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-bold text-xs"
+              className="mt-4 px-6 py-2.5 rounded-xl bg-[#0F1428] text-white font-bold text-xs hover:bg-[#161D3A] cursor-pointer transition-all"
             >
               Back to Sign In
             </button>
@@ -63,7 +63,7 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Reset Password</h3>
+              <h3 className="text-xl font-bold text-[#0F1428] dark:text-white">Reset Password</h3>
               <p className="text-xs text-slate-500">Enter your registered work email to receive a password reset link.</p>
             </div>
 
@@ -74,7 +74,7 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
             )}
 
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Work Email</label>
+              <label className="text-xs font-semibold text-[#0F1428] dark:text-slate-300">Work Email</label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                 <input
@@ -82,8 +82,8 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@company.com"
-                  className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:border-[#F62440]"
+                  placeholder="name@pentagram.in"
+                  className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-xs bg-slate-50 dark:bg-slate-950 text-[#0F1428] dark:text-white focus:outline-none focus:border-[#D64062]"
                 />
               </div>
             </div>
@@ -91,7 +91,7 @@ export const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({ isOpen
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-[#F62440] hover:bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md"
+              className="w-full py-3 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer"
             >
               <span>{loading ? 'Sending Recovery Email...' : 'Send Reset Link'}</span>
               <ArrowRight className="w-4 h-4" />

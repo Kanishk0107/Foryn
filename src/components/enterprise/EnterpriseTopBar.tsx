@@ -72,7 +72,7 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
   };
 
   return (
-    <header className="h-14 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 px-4 flex items-center justify-between gap-3 shrink-0 z-40 shadow-xs select-none">
+    <header className="h-14 bg-[#FDFDFD] dark:bg-[#0F1428] border-b border-slate-200/80 dark:border-slate-800 px-4 flex items-center justify-between gap-3 shrink-0 z-40 shadow-xs select-none">
       {/* Left: Brand, Workspace & Active Project Dropdown */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2">
@@ -88,15 +88,15 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
               setIsWorkspaceMenuOpen(!isWorkspaceMenuOpen);
               setIsProjectMenuOpen(false);
             }}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold text-[#0F1428] dark:text-slate-200 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700 cursor-pointer"
           >
-            <Building className="w-3.5 h-3.5 text-[var(--foryn-accent)]" />
+            <Building className="w-3.5 h-3.5 text-[#D64062]" />
             <span className="truncate max-w-[180px]">{currentBranch}</span>
             <ChevronDown className="w-3 h-3 text-slate-400" />
           </button>
 
           {isWorkspaceMenuOpen && (
-            <div className="absolute left-0 top-full mt-1.5 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-50 text-xs">
+            <div className="absolute left-0 top-full mt-1.5 w-64 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-50 text-xs">
               <div className="px-3 py-1.5 font-bold text-[10px] uppercase text-slate-400 font-mono">
                 Select Workspace Hub
               </div>
@@ -107,12 +107,12 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
                     setCurrentBranch(branch);
                     setIsWorkspaceMenuOpen(false);
                   }}
-                  className={`w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-between ${
-                    currentBranch === branch ? 'text-[var(--foryn-accent)] font-bold' : 'text-slate-700 dark:text-slate-300'
+                  className={`w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-between cursor-pointer ${
+                    currentBranch === branch ? 'text-[#D64062] font-bold' : 'text-[#0F1428] dark:text-slate-300'
                   }`}
                 >
                   <span>{branch}</span>
-                  {currentBranch === branch && <CheckCircle2 className="w-3.5 h-3.5" />}
+                  {currentBranch === branch && <CheckCircle2 className="w-3.5 h-3.5 text-[#D64062]" />}
                 </button>
               ))}
             </div>
@@ -126,7 +126,7 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
               setIsProjectMenuOpen(!isProjectMenuOpen);
               setIsWorkspaceMenuOpen(false);
             }}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-slate-100 hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs font-bold text-[#0F1428] dark:text-slate-100 hover:border-slate-300 dark:hover:border-slate-600 transition-colors cursor-pointer"
           >
             <FolderOpen className="w-3.5 h-3.5 text-amber-500" />
             <span className="truncate max-w-[170px] sm:max-w-[220px]">{activeProjectName}</span>
@@ -134,7 +134,7 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
           </button>
 
           {isProjectMenuOpen && (
-            <div className="absolute left-0 top-full mt-1.5 w-72 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-50 text-xs">
+            <div className="absolute left-0 top-full mt-1.5 w-72 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1.5 z-50 text-xs">
               <div className="px-3 py-1.5 font-bold text-[10px] uppercase text-slate-400 font-mono">
                 Active Client Sites (PID Registry)
               </div>
@@ -145,12 +145,12 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
                     onSelectProjectName(p);
                     setIsProjectMenuOpen(false);
                   }}
-                  className={`w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-between ${
-                    activeProjectName === p ? 'text-[var(--foryn-accent)] font-bold' : 'text-slate-700 dark:text-slate-300'
+                  className={`w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-between cursor-pointer ${
+                    activeProjectName === p ? 'text-[#D64062] font-bold' : 'text-[#0F1428] dark:text-slate-300'
                   }`}
                 >
                   <span className="truncate">{p}</span>
-                  {activeProjectName === p && <CheckCircle2 className="w-3.5 h-3.5 text-[var(--foryn-accent)]" />}
+                  {activeProjectName === p && <CheckCircle2 className="w-3.5 h-3.5 text-[#D64062]" />}
                 </button>
               ))}
             </div>
@@ -162,10 +162,10 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
       <div className="hidden lg:flex flex-1 justify-center px-4">
         <button
           onClick={onOpenCommandPalette}
-          className="flex items-center gap-2 w-full max-w-xs h-8 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-500 hover:bg-slate-200/60 dark:hover:bg-slate-700 transition-all text-xs text-slate-400 dark:text-slate-500 whitespace-nowrap"
+          className="flex items-center gap-2 w-full max-w-xs h-8 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-500 hover:bg-slate-200/60 dark:hover:bg-slate-700 transition-all text-xs text-slate-400 dark:text-slate-500 whitespace-nowrap cursor-pointer"
         >
           <Search className="w-3.5 h-3.5 shrink-0 text-slate-400" />
-          <span className="flex-1 text-left truncate">Search...</span>
+          <span className="flex-1 text-left truncate">Search Pentagram OS...</span>
           <kbd className="inline-flex items-center gap-0.5 font-mono text-[10px] px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-400 shrink-0">
             <Command className="w-2.5 h-2.5" />K
           </kbd>
@@ -180,98 +180,95 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
           <span>Cloud Sync 18ms</span>
         </div>
 
-        {/* Quick + New Entry Dropdown */}
+        {/* Quick + New Entry Action Button (Pentagram Crimson #D64062) */}
         <div className="relative">
           <button
             onClick={() => setIsNewMenuOpen(!isNewMenuOpen)}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-[var(--foryn-accent)] hover:brightness-110 text-slate-950 text-xs font-bold transition-all shadow-xs"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-            <span className="hidden sm:inline">New</span>
+            <span className="hidden sm:inline">New Action</span>
             <ChevronDown className="w-3 h-3" />
           </button>
 
           {isNewMenuOpen && (
-            <div className="absolute right-0 top-full mt-1.5 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1 z-50 text-xs font-semibold">
+            <div className="absolute right-0 top-full mt-1.5 w-52 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl py-1 z-50 text-xs font-semibold">
               <button
                 onClick={() => {
                   onOpenNewItemModal('lead');
                   setIsNewMenuOpen(false);
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center gap-2"
+                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-[#0F1428] dark:text-slate-200 flex items-center gap-2 cursor-pointer"
               >
                 <span className="w-2 h-2 rounded-full bg-blue-500" />
-                Capture New Client Lead
+                + New Client Lead
               </button>
               <button
                 onClick={() => {
                   onOpenNewItemModal('boq');
                   setIsNewMenuOpen(false);
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center gap-2"
+                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-[#0F1428] dark:text-slate-200 flex items-center gap-2 cursor-pointer"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                Add BOQ Line Item
+                Create BOQ Line Item
               </button>
               <button
                 onClick={() => {
                   onOpenNewItemModal('vendor');
                   setIsNewMenuOpen(false);
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center gap-2"
+                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-[#0F1428] dark:text-slate-200 flex items-center gap-2 cursor-pointer"
               >
                 <span className="w-2 h-2 rounded-full bg-amber-500" />
-                Issue Vendor Work Order
+                Raise PO / Work Order
               </button>
               <button
                 onClick={() => {
                   onOpenNewItemModal('project');
                   setIsNewMenuOpen(false);
                 }}
-                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center gap-2 border-t border-slate-100 dark:border-slate-800"
+                className="w-full px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800 text-[#0F1428] dark:text-slate-200 flex items-center gap-2 border-t border-slate-100 dark:border-slate-800 cursor-pointer"
               >
-                <span className="w-2 h-2 rounded-full bg-purple-500" />
-                Scaffold New Site Project
+                <span className="w-2 h-2 rounded-full bg-[#D64062]" />
+                + New Project Scaffold
               </button>
             </div>
           )}
         </div>
 
         {/* Authenticated Studio Role Badge (Locked to Verified User Profile) */}
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 select-none">
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-[#0F1428] dark:text-slate-200 select-none">
           <span className="text-[10px] text-slate-400 font-mono hidden md:inline">Role:</span>
-          <span className="text-slate-900 dark:text-white font-extrabold">{user.role}</span>
+          <span className="text-[#0F1428] dark:text-white font-extrabold">{user.role}</span>
         </div>
 
         {/* Notifications Hub Bell */}
         <div className="relative">
           <button
             onClick={openNotifications}
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative"
+            className="p-2 rounded-xl text-slate-500 hover:text-[#0F1428] dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative cursor-pointer"
             title="Enterprise Audit Notifications"
           >
             <Bell className="w-4 h-4" />
-            {/* Red dot — only shown when there are unread notifications */}
             {unreadCount > 0 && (
-              <span className="absolute top-1 right-1 min-w-[14px] h-[14px] px-0.5 rounded-full bg-rose-500 ring-2 ring-white dark:ring-slate-900 flex items-center justify-center font-mono text-[9px] text-white font-bold">
+              <span className="absolute top-1 right-1 min-w-[14px] h-[14px] px-0.5 rounded-full bg-[#D64062] ring-2 ring-white dark:ring-slate-900 flex items-center justify-center font-mono text-[9px] text-white font-bold">
                 {unreadCount}
               </span>
             )}
           </button>
 
           {isNotificationsOpen && (
-            <div className="absolute right-0 top-full mt-1.5 w-80 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-xs">
-              {/* Panel header */}
+            <div className="absolute right-0 top-full mt-1.5 w-80 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200 dark:border-slate-800 rounded-xl shadow-2xl py-2 z-50 text-xs">
               <div className="px-3.5 py-2 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <span className="font-bold text-slate-800 dark:text-slate-100">Notifications</span>
+                <span className="font-bold text-[#0F1428] dark:text-slate-100">Notifications</span>
                 <button
                   onClick={() => setReadIds(new Set(recentNotifications.map(n => n.id)))}
-                  className="text-[10px] font-semibold text-[var(--foryn-accent)] hover:underline"
+                  className="text-[10px] font-semibold text-[#D64062] hover:underline cursor-pointer"
                 >
                   Mark all read
                 </button>
               </div>
-              {/* Notification items */}
               <div className="divide-y divide-slate-100 dark:divide-slate-800/60 max-h-72 overflow-y-auto">
                 {recentNotifications.map((n) => {
                   const isUnread = !readIds.has(n.id);
@@ -285,17 +282,16 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
                           : 'hover:bg-slate-50 dark:hover:bg-slate-800/30'
                       }`}
                     >
-                      {/* Unread indicator */}
                       <div className="pt-1 shrink-0">
                         <span className={`block w-2 h-2 rounded-full transition-all ${
-                          isUnread ? 'bg-rose-500' : 'bg-transparent'
+                          isUnread ? 'bg-[#D64062]' : 'bg-transparent'
                         }`} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between mb-0.5">
                           <span className={`truncate ${
                             isUnread
-                              ? 'font-bold text-slate-900 dark:text-slate-100'
+                              ? 'font-bold text-[#0F1428] dark:text-slate-100'
                               : 'font-medium text-slate-600 dark:text-slate-400'
                           }`}>{n.title}</span>
                           <span className="text-[10px] text-slate-400 shrink-0 ml-2">{n.time}</span>
@@ -306,7 +302,6 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
                   );
                 })}
               </div>
-              {/* Footer */}
               <div className="px-3.5 pt-2 border-t border-slate-100 dark:border-slate-800">
                 <p className="text-[10px] text-slate-400 font-mono">
                   {unreadCount === 0 ? 'All caught up ✓' : `${unreadCount} unread`}
@@ -319,21 +314,18 @@ export const EnterpriseTopBar: React.FC<EnterpriseTopBarProps> = ({
         {/* Transactional Email Logs Modal Button */}
         <button
           onClick={onOpenEmailConsole}
-          className="p-2 rounded-xl text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          className="p-2 rounded-xl text-slate-500 hover:text-[#0F1428] dark:text-slate-400 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           title="Transactional Email Logs"
         >
           <Mail className="w-4 h-4 text-emerald-500" />
         </button>
-
-
-
 
         {/* User Avatar & Logout */}
         <div className="flex items-center gap-2">
           <UserAvatar name={user.name} role={user.role} size="sm" showStatus />
           <button
             onClick={onLogout}
-            className="text-slate-400 hover:text-rose-500 transition-colors p-1"
+            className="text-slate-400 hover:text-[#D64062] transition-colors p-1 cursor-pointer"
             title="Sign Out"
           >
             <LogOut className="w-4 h-4" />

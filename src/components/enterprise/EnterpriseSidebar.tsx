@@ -121,7 +121,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
 
   return (
     <aside
-      className={`h-[calc(100vh-3.5rem)] bg-white dark:bg-slate-900 border-r border-slate-200/80 dark:border-slate-800 flex flex-col justify-between transition-all duration-200 shrink-0 z-30 select-none ${
+      className={`h-[calc(100vh-3.5rem)] bg-[#FDFDFD] dark:bg-[#0F1428] border-r border-slate-200/80 dark:border-slate-800 flex flex-col justify-between transition-all duration-200 shrink-0 z-30 select-none ${
         isCollapsed ? 'w-16' : 'w-60'
       }`}
     >
@@ -141,17 +141,17 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => onSelectView(item.id)}
-                  className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all group ${
+                  className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-semibold transition-all group cursor-pointer ${
                     isActive
-                      ? 'bg-slate-900 text-white dark:bg-slate-800 dark:text-[var(--foryn-accent)] shadow-sm'
-                      : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-[#0F1428] text-white dark:bg-slate-800 dark:text-[#D64062] shadow-sm'
+                      : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-[#0F1428] dark:hover:text-white'
                   }`}
                   title={isCollapsed ? item.label : undefined}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
                     <Icon
                       className={`w-4 h-4 shrink-0 transition-transform group-hover:scale-110 ${
-                        isActive ? 'text-[var(--foryn-accent)]' : 'text-slate-400 dark:text-slate-400'
+                        isActive ? 'text-[#D64062]' : 'text-slate-400 dark:text-slate-400'
                       }`}
                     />
                     {!isCollapsed && <span className="truncate">{item.label}</span>}
@@ -176,10 +176,10 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
         {/* Quick Tips modal button */}
         <button
           onClick={onOpenQuickTips}
-          className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors ${
+          className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors cursor-pointer ${
             isCollapsed ? 'justify-center' : 'justify-start'
           }`}
-          title="Foryn Operator Quick Guide"
+          title="Pentagram Operator Quick Guide"
         >
           <Zap className="w-4 h-4 shrink-0" />
           {!isCollapsed && <span>Quick SOP Tips</span>}
@@ -195,7 +195,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
               </span>
               <span className="text-emerald-500 font-bold">LIVE</span>
             </div>
-            <div className="flex items-center justify-between text-slate-700 dark:text-slate-300 font-medium">
+            <div className="flex items-center justify-between text-[#0F1428] dark:text-slate-300 font-medium">
               <span>Tenant Security</span>
               <span className="flex items-center gap-1 font-mono text-[10px]">
                 <ShieldCheck className="w-3 h-3 text-blue-500" />
@@ -208,7 +208,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
         {/* Collapse Sidebar Button */}
         <button
           onClick={onToggleCollapse}
-          className="w-full flex items-center justify-center p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-xs"
+          className="w-full flex items-center justify-center p-1.5 rounded-lg text-slate-400 hover:text-[#0F1428] dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-xs cursor-pointer"
           title={isCollapsed ? 'Expand Navigation Sidebar' : 'Collapse Sidebar'}
         >
           {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}

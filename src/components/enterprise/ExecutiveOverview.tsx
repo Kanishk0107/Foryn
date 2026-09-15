@@ -43,11 +43,10 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
   const marginAlerts: any[] = [];
   const liveOperationsFeed: any[] = [];
 
-
   return (
     <div className="space-y-6 select-none animate-in fade-in duration-200">
       {/* Top Header Card: Greeting & Executive Pulse */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -55,7 +54,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
               Executive Command & Control
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">
+          <h1 className="text-xl sm:text-2xl font-black tracking-tight text-[#0F1428] dark:text-white">
             Pentagram Living — Operating Overview
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
@@ -63,20 +62,20 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
           </p>
         </div>
 
-        {/* Quick Launch Buttons */}
+        {/* Quick Launch Action Buttons */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => onNavigate('boq')}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-400 border border-amber-500/30 text-xs font-bold transition-all shadow-2xs"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-[#0F1428] dark:text-slate-200 text-xs font-bold transition-all shadow-2xs cursor-pointer"
           >
-            <FileSpreadsheet className="w-4 h-4" />
+            <FileSpreadsheet className="w-4 h-4 text-[#D64062]" />
             <span>Master BOQ Studio</span>
           </button>
           <button
             onClick={() => onNavigate('studio')}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[var(--foryn-accent)] hover:brightness-110 text-slate-950 text-xs font-bold transition-all shadow-xs"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-slate-950" />
+            <Sparkles className="w-4 h-4 text-white" />
             <span>Launch CAD 3D</span>
           </button>
         </div>
@@ -85,7 +84,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
       {/* KPI Highlight Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* KPI 1: Active Order Value */}
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
+        <div className="p-4 rounded-2xl bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
             <span className="text-xs font-semibold">Active Contract Pipeline</span>
             <span className="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
@@ -93,7 +92,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
             </span>
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-black font-mono text-slate-900 dark:text-white">
+            <span className="text-2xl font-black font-mono text-[#0F1428] dark:text-white">
               ₹{(totalContractValueSum || 0).toFixed(1)}
             </span>
             <span className="text-xs font-bold text-slate-500">Lakhs</span>
@@ -105,7 +104,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
         </div>
 
         {/* KPI 2: Blended Gross Margin */}
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
+        <div className="p-4 rounded-2xl bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
             <span className="text-xs font-semibold">Blended Gross Margin</span>
             <span className="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
@@ -125,26 +124,26 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
         </div>
 
         {/* KPI 3: Margin Leakage Risk Guard */}
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
+        <div className="p-4 rounded-2xl bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
             <span className="text-xs font-semibold">Margin Leakage Guard</span>
-            <span className="p-1.5 rounded-lg bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400">
+            <span className="p-1.5 rounded-lg bg-[#D64062]/10 text-[#D64062]">
               <AlertTriangle className="w-4 h-4" />
             </span>
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-black font-mono text-rose-600 dark:text-rose-400">
+            <span className="text-2xl font-black font-mono text-[#D64062]">
               {marginAlerts.length > 0 ? '₹60.5K' : '₹0'}
             </span>
             <span className="text-xs font-bold text-slate-500">At Risk</span>
           </div>
-          <div className="flex items-center gap-1 text-[11px] text-rose-600 dark:text-rose-400 font-semibold">
+          <div className="flex items-center gap-1 text-[11px] text-[#D64062] font-semibold">
             <span>{marginAlerts.length} Cost Variance Alerts</span>
           </div>
         </div>
 
         {/* KPI 4: Vendor & Finance Queue */}
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
+        <div className="p-4 rounded-2xl bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-2">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
             <span className="text-xs font-semibold">Vendor Work Orders</span>
             <span className="p-1.5 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
@@ -152,7 +151,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
             </span>
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-black font-mono text-slate-900 dark:text-white">
+            <span className="text-2xl font-black font-mono text-[#0F1428] dark:text-white">
               ₹{(totalContractValueSum || 0).toFixed(1)}L
             </span>
             <span className="text-xs font-bold text-slate-500">Total POs</span>
@@ -167,10 +166,10 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
       {/* Middle Grid: Active Sites Registry + Margin Leakage Guard Box */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left 8 Cols: Active Sites Matrix */}
-        <div className="lg:col-span-8 bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden flex flex-col">
+        <div className="lg:col-span-8 bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-xs overflow-hidden flex flex-col">
           <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-black text-slate-900 dark:text-white">
+              <h2 className="text-sm font-black text-[#0F1428] dark:text-white">
                 Active Client Sites (Connected Model)
               </h2>
               <p className="text-[11px] text-slate-500 dark:text-slate-400">
@@ -179,7 +178,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
             </div>
             <button
               onClick={() => onNavigate('projects')}
-              className="text-xs font-bold text-[var(--foryn-accent)] hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-[#D64062] hover:underline flex items-center gap-1 cursor-pointer"
             >
               <span>View 31 Stages</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -190,7 +189,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
             {activeProjects.length === 0 ? (
               <div className="p-8 text-center text-slate-400 space-y-2">
                 <Building2 className="w-8 h-8 mx-auto text-slate-300 dark:text-slate-600 opacity-60" />
-                <div className="text-xs font-bold text-slate-600 dark:text-slate-300">No Active Sites Registered</div>
+                <div className="text-xs font-bold text-[#0F1428] dark:text-slate-300">No Active Sites Registered</div>
                 <p className="text-[11px] text-slate-400 max-w-sm mx-auto">
                   Capture inbound leads in CRM and click &quot;Promote to Project&quot; to initialize a new site.
                 </p>
@@ -205,10 +204,10 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono font-black px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                      <span className="text-[10px] font-mono font-black px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#0F1428] dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                         PID #{proj.pid}
                       </span>
-                      <span className="text-xs font-black text-slate-900 dark:text-white hover:text-[var(--foryn-accent)] cursor-pointer"
+                      <span className="text-xs font-black text-[#0F1428] dark:text-white hover:text-[#D64062] cursor-pointer"
                         onClick={() => onSelectProject(`${proj.title} (${proj.pid})`)}
                       >
                         {proj.title}
@@ -237,7 +236,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
                   </div>
 
                   <div className="sm:text-right space-y-1.5 shrink-0">
-                    <div className="text-xs font-mono font-black text-slate-900 dark:text-white">
+                    <div className="text-xs font-mono font-black text-[#0F1428] dark:text-white">
                       ₹{proj.budget.toFixed(1)} Lakhs
                       <span className="text-[10px] text-slate-400 font-sans font-normal ml-1">
                         (₹{proj.paid.toFixed(1)}L paid)
@@ -253,19 +252,19 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
         {/* Right 4 Cols: Margin Leakage Guard & Live Audit Log */}
         <div className="lg:col-span-4 space-y-6">
           {/* Margin Leakage Exceptions Box */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs space-y-3">
+          <div className="bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-rose-500" />
-                <h3 className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white">
+                <ShieldCheck className="w-4 h-4 text-[#D64062]" />
+                <h3 className="text-xs font-black uppercase tracking-wider text-[#0F1428] dark:text-white">
                   Margin Leakage Detection
                 </h3>
               </div>
-              <span className="text-[10px] font-mono text-rose-500 font-bold">2 Exceptions</span>
+              <span className="text-[10px] font-mono text-[#D64062] font-bold">2 Exceptions</span>
             </div>
 
             <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
-              Foryn AI exception engine actively monitors material rate fluctuations and scrap rates between CAD takeoff and vendor billing.
+              Pentagram OS exception engine actively monitors material rate fluctuations and scrap rates between CAD takeoff and vendor billing.
             </p>
 
             <div className="space-y-2.5">
@@ -277,21 +276,21 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
                 marginAlerts.map((alert) => (
                   <div
                     key={alert.id}
-                    className="p-3 rounded-xl bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200/60 dark:border-rose-900/40 text-xs space-y-1.5"
+                    className="p-3 rounded-xl bg-[#D64062]/5 border border-[#D64062]/20 text-xs space-y-1.5"
                   >
-                    <div className="flex items-center justify-between font-bold text-rose-800 dark:text-rose-300">
+                    <div className="flex items-center justify-between font-bold text-[#D64062]">
                       <span className="truncate">{alert.item}</span>
                       <span className="font-mono text-[11px] shrink-0">{alert.impact}</span>
                     </div>
                     <div className="text-[10px] text-slate-600 dark:text-slate-300 leading-snug">
-                      <span className="font-semibold text-slate-800 dark:text-slate-100">Fix: </span>
+                      <span className="font-semibold text-[#0F1428] dark:text-slate-100">Fix: </span>
                       {alert.recommendation}
                     </div>
                     <div className="pt-1 flex items-center justify-between text-[10px]">
                       <span className="font-mono text-slate-400">{alert.project}</span>
                       <button
                         onClick={() => onNavigate('boq')}
-                        className="text-rose-600 dark:text-rose-400 font-bold hover:underline"
+                        className="text-[#D64062] font-bold hover:underline cursor-pointer"
                       >
                         Audit in BOQ →
                       </button>
@@ -303,9 +302,9 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
           </div>
 
           {/* Live Operations Feed */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs space-y-3">
+          <div className="bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white">
+              <h3 className="text-xs font-black uppercase tracking-wider text-[#0F1428] dark:text-white">
                 Live Office Operations Stream
               </h3>
               <span className="text-[10px] font-mono text-emerald-500 font-bold">Realtime</span>
@@ -320,7 +319,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
                 liveOperationsFeed.map((f: any) => (
                   <div key={f.id} className="py-2.5 space-y-0.5">
                     <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
-                      <span className="font-bold text-slate-700 dark:text-slate-300">{f.user} ({f.role})</span>
+                      <span className="font-bold text-[#0F1428] dark:text-slate-300">{f.user} ({f.role})</span>
                       <span>{f.time}</span>
                     </div>
                     <p className="text-[11px] text-slate-600 dark:text-slate-300 leading-snug">{f.action}</p>

@@ -50,7 +50,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 const Input: React.FC<InputProps> = ({ className, ...props }) => (
   <input
     className={cn(
-      'w-full px-3.5 py-2.5 rounded-xl border border-rose-200/80 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#F62440] focus:ring-1 focus:ring-[#F62440] transition-all',
+      'w-full px-3.5 py-2.5 rounded-xl border border-slate-200/90 bg-white text-xs text-[#0F1428] placeholder-slate-400 focus:outline-none focus:border-[#D64062] focus:ring-1 focus:ring-[#D64062] transition-all',
       className
     )}
     {...props}
@@ -153,8 +153,8 @@ export function Component({
 
   return (
     <div className="w-full relative flex items-center justify-center p-1 sm:p-2">
-      {/* Background ambient light glow - Crimson #F62440 */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F62440]/15 via-rose-500/10 to-transparent pointer-events-none rounded-3xl blur-2xl" />
+      {/* Background ambient light glow - Pentagram Crimson #D64062 */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#D64062]/10 via-[#0F1428]/5 to-transparent pointer-events-none rounded-3xl blur-2xl" />
 
       <motion.div
         initial={{ opacity: 0, y: 15 }}
@@ -170,57 +170,56 @@ export function Component({
           onMouseLeave={handleMouseLeave}
         >
           <div className="relative group">
-            {/* Card Perimeter Glow Container */}
+            {/* Card Perimeter Traveling Light Beams */}
             <div className="absolute -inset-[1px] rounded-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
-              {/* Traveling Light Beams */}
               <motion.div
-                className="absolute top-0 left-0 h-[2px] w-[60%] bg-gradient-to-r from-transparent via-[#F62440] to-transparent opacity-90 transform-gpu"
+                className="absolute top-0 left-0 h-[2px] w-[60%] bg-gradient-to-r from-transparent via-[#D64062] to-transparent opacity-90 transform-gpu"
                 animate={{ x: ['-100%', '200%'] }}
                 transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity, repeatDelay: 0.5 }}
               />
               <motion.div
-                className="absolute top-0 right-0 h-[60%] w-[2px] bg-gradient-to-b from-transparent via-[#F62440] to-transparent opacity-90 transform-gpu"
+                className="absolute top-0 right-0 h-[60%] w-[2px] bg-gradient-to-b from-transparent via-[#D64062] to-transparent opacity-90 transform-gpu"
                 animate={{ y: ['-100%', '200%'] }}
                 transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity, repeatDelay: 0.5, delay: 0.75 }}
               />
               <motion.div
-                className="absolute bottom-0 right-0 h-[2px] w-[60%] bg-gradient-to-r from-transparent via-[#F62440] to-transparent opacity-90 transform-gpu"
+                className="absolute bottom-0 right-0 h-[2px] w-[60%] bg-gradient-to-r from-transparent via-[#D64062] to-transparent opacity-90 transform-gpu"
                 animate={{ x: ['100%', '-200%'] }}
                 transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity, repeatDelay: 0.5, delay: 1.5 }}
               />
               <motion.div
-                className="absolute bottom-0 left-0 h-[60%] w-[2px] bg-gradient-to-b from-transparent via-[#F62440] to-transparent opacity-90 transform-gpu"
+                className="absolute bottom-0 left-0 h-[60%] w-[2px] bg-gradient-to-b from-transparent via-[#D64062] to-transparent opacity-90 transform-gpu"
                 animate={{ y: ['100%', '-200%'] }}
                 transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity, repeatDelay: 0.5, delay: 2.25 }}
               />
             </div>
 
-            {/* Glassmorphism Card Container - Pure Light Warm Theme */}
-            <div className="relative bg-white/95 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-rose-200/80 shadow-2xl shadow-rose-950/5 overflow-hidden transition-all duration-300">
-              {/* Subtle background grid pattern */}
+            {/* Glassmorphism Card Container - Pure White Workspace Theme */}
+            <div className="relative bg-[#FDFDFD]/95 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xl shadow-[#0F1428]/10 overflow-hidden transition-all duration-300">
+              {/* Subtle background architectural grid */}
               <div
-                className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                className="absolute inset-0 opacity-[0.02] pointer-events-none"
                 style={{
-                  backgroundImage: `linear-gradient(135deg, #F62440 1px, transparent 1px), linear-gradient(45deg, #F62440 1px, transparent 1px)`,
+                  backgroundImage: `linear-gradient(135deg, #0F1428 1px, transparent 1px), linear-gradient(45deg, #0F1428 1px, transparent 1px)`,
                   backgroundSize: '24px 24px'
                 }}
               />
 
-              {/* Top Foryn Brand & Tab Selector */}
+              {/* Top Pentagram OS Brand & Tab Selector */}
               <div className="text-center space-y-3 mb-6 relative z-10">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold text-[#F62440] bg-rose-50 px-3 py-1 rounded-full border border-rose-200 flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-[#F62440]" />
-                    design.foryn.io
+                  <span className="text-[11px] font-mono font-bold text-[#D64062] bg-[#D64062]/10 px-3 py-1 rounded-full border border-[#D64062]/20 flex items-center gap-1.5">
+                    <Sparkles className="w-3 h-3 text-[#D64062]" />
+                    Pentagram OS
                   </span>
-                  <div className="flex items-center space-x-1 bg-rose-100/60 p-1 rounded-xl border border-rose-200">
+                  <div className="flex items-center space-x-1 bg-slate-100 p-1 rounded-xl border border-slate-200/80">
                     <button
                       type="button"
                       onClick={() => setTab('login')}
                       className={cn(
-                        'px-3.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 cursor-pointer',
+                        'px-3.5 py-1 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer',
                         tab === 'login'
-                          ? 'bg-[#F62440] text-white shadow-sm font-bold'
+                          ? 'bg-[#0F1428] text-white shadow-xs font-bold'
                           : 'text-slate-600 hover:text-slate-900'
                       )}
                     >
@@ -230,9 +229,9 @@ export function Component({
                       type="button"
                       onClick={() => setTab('signup')}
                       className={cn(
-                        'px-3.5 py-1 text-xs font-medium rounded-lg transition-all duration-200 cursor-pointer',
+                        'px-3.5 py-1 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer',
                         tab === 'signup'
-                          ? 'bg-[#F62440] text-white shadow-sm font-bold'
+                          ? 'bg-[#0F1428] text-white shadow-xs font-bold'
                           : 'text-slate-600 hover:text-slate-900'
                       )}
                     >
@@ -242,20 +241,27 @@ export function Component({
                 </div>
 
                 <div className="pt-2 text-left">
-                  <h1 className="text-2xl font-black tracking-tight text-slate-900 flex items-center gap-2">
+                  <h1 className="text-2xl font-black tracking-tight text-[#0F1428] flex items-center gap-2">
                     {tab === 'login' ? 'Welcome Back' : 'Create Studio Account'}
-                    <Sparkles className="w-5 h-5 text-[#F62440] animate-pulse" />
+                    <Sparkles className="w-5 h-5 text-[#D64062] animate-pulse" />
                   </h1>
-                  <p className="text-xs text-slate-600 font-medium mt-1">
+                  <p className="text-xs text-slate-500 font-medium mt-1">
                     {tab === 'login'
                       ? 'Sign in to access 3D floor plans, BOQ engine & studio workstations'
-                      : 'Join Foryn AI Studio to design, cost & execute interior projects'}
+                      : 'Join Pentagram OS to design, cost & execute interior projects'}
                   </p>
                 </div>
               </div>
 
               {/* Login / Signup Form */}
               <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
+                {authError && (
+                  <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>{authError}</span>
+                  </div>
+                )}
+
                 {/* Full Name Input (For Sign Up) */}
                 <AnimatePresence mode="popLayout">
                   {tab === 'signup' && (
@@ -266,7 +272,7 @@ export function Component({
                       transition={{ duration: 0.25 }}
                       className="space-y-1 overflow-hidden"
                     >
-                      <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                      <label className="text-xs font-bold text-[#0F1428] uppercase tracking-wider">
                         Full Name
                       </label>
                       <div className="relative flex items-center">
@@ -286,14 +292,14 @@ export function Component({
 
                 {/* Email Input */}
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="text-xs font-bold text-[#0F1428] uppercase tracking-wider">
                     Email ID
                   </label>
                   <div className="relative flex items-center">
                     <Mail className="absolute left-3.5 w-4 h-4 text-slate-400" />
                     <Input
                       type="email"
-                      placeholder="name@foryn.com"
+                      placeholder="name@pentagram.in"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="pl-10"
@@ -304,7 +310,7 @@ export function Component({
 
                 {/* Password Input */}
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="text-xs font-bold text-[#0F1428] uppercase tracking-wider">
                     Password
                   </label>
                   <div className="relative flex items-center">
@@ -320,7 +326,7 @@ export function Component({
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3.5 text-slate-400 hover:text-slate-700 transition-colors"
+                      className="absolute right-3.5 text-slate-400 hover:text-[#0F1428] transition-colors cursor-pointer"
                       tabIndex={-1}
                     >
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -345,11 +351,11 @@ export function Component({
                           className={cn(
                             'flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium border transition-all duration-200 text-left cursor-pointer',
                             isSelected
-                              ? 'bg-[#F62440]/10 border-[#F62440] text-[#F62440] font-bold shadow-xs'
-                              : 'bg-white/80 border-rose-200/80 text-slate-700 hover:border-rose-300'
+                              ? 'bg-[#D64062]/10 border-[#D64062] text-[#D64062] font-bold shadow-xs'
+                              : 'bg-white/80 border-slate-200/90 text-slate-700 hover:border-slate-300'
                           )}
                         >
-                          <Icon className={cn('w-3.5 h-3.5', isSelected ? 'text-[#F62440]' : 'text-slate-400')} />
+                          <Icon className={cn('w-3.5 h-3.5', isSelected ? 'text-[#D64062]' : 'text-slate-400')} />
                           <span className="truncate">{r.label}</span>
                         </button>
                       );
@@ -359,12 +365,12 @@ export function Component({
 
                 {/* Remember Me & Forgot Password */}
                 <div className="flex items-center justify-between pt-1 text-xs">
-                  <label className="flex items-center space-x-2 cursor-pointer text-slate-600 font-medium hover:text-slate-900 transition-colors">
+                  <label className="flex items-center space-x-2 cursor-pointer text-slate-600 font-medium hover:text-[#0F1428] transition-colors">
                     <input
                       type="checkbox"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="rounded border-rose-300 text-[#F62440] focus:ring-[#F62440]"
+                      className="rounded border-slate-300 text-[#D64062] focus:ring-[#D64062]"
                     />
                     <span>Remember me</span>
                   </label>
@@ -372,20 +378,20 @@ export function Component({
                     <button
                       type="button"
                       onClick={onOpenForgotPassword}
-                      className="text-[#F62440] hover:underline font-bold cursor-pointer"
+                      className="text-[#D64062] hover:underline font-bold cursor-pointer"
                     >
                       Forgot password?
                     </button>
                   )}
                 </div>
 
-                {/* Submit Action Button - Crimson #F62440 */}
+                {/* Submit Action Button - Pentagram Crimson #D64062 */}
                 <motion.button
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   type="submit"
                   disabled={isLoading}
-                  className="w-full relative group/btn mt-3 overflow-hidden rounded-xl bg-[#F62440] hover:bg-[#e01d37] text-white font-extrabold h-12 transition-all duration-300 flex items-center justify-center shadow-lg shadow-[#F62440]/30 cursor-pointer"
+                  className="w-full relative group/btn mt-3 overflow-hidden rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white font-extrabold h-12 transition-all duration-300 flex items-center justify-center shadow-lg shadow-[#D64062]/30 cursor-pointer"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 transform-gpu" />
 
@@ -419,11 +425,11 @@ export function Component({
 
               {/* Divider */}
               <div className="relative my-4 flex items-center">
-                <div className="flex-grow border-t border-rose-200/80" />
+                <div className="flex-grow border-t border-slate-200/80" />
                 <span className="mx-3 text-[11px] font-mono text-slate-400 font-semibold uppercase">
                   OR
                 </span>
-                <div className="flex-grow border-t border-rose-200/80" />
+                <div className="flex-grow border-t border-slate-200/80" />
               </div>
 
               {/* Google OAuth Button */}
@@ -438,7 +444,7 @@ export function Component({
                     onGoogleSignIn();
                   }
                 }}
-                className="w-full h-11 bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm rounded-xl border border-slate-200 flex items-center justify-center gap-2.5 shadow-xs transition-all cursor-pointer"
+                className="w-full h-11 bg-white hover:bg-slate-50 text-[#0F1428] font-semibold text-sm rounded-xl border border-slate-200 flex items-center justify-center gap-2.5 shadow-xs transition-all cursor-pointer"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24">
                   <path
@@ -462,12 +468,12 @@ export function Component({
               </motion.button>
 
               {/* SOC2 & Security Footer */}
-              <div className="mt-4 pt-3 border-t border-rose-100 flex items-center justify-between text-[10px] text-slate-500 font-medium">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500 font-medium">
                 <span className="flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
                   256-Bit Encrypted Workspace
                 </span>
-                <span>© FORYN Technologies Pvt Ltd</span>
+                <span>© Pentagram Living Pvt Ltd</span>
               </div>
             </div>
           </div>

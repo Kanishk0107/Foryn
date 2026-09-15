@@ -178,7 +178,7 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
                   {!isCompleted && (
                     <button
                       onClick={() => setSelectedStage(stage)}
-                      className="px-3 py-1 rounded-lg bg-[var(--foryn-accent)] text-slate-950 text-xs font-bold hover:brightness-110 shadow-2xs"
+                      className="px-3 py-1 rounded-lg bg-[#D64062] hover:bg-[#C03252] text-white text-xs font-bold shadow-xs cursor-pointer transition-all"
                     >
                       Audit Gate →
                     </button>

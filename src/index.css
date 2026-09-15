@@ -3,46 +3,127 @@
 /* Tell Tailwind v4 to use the .dark class for dark mode (not just OS preference) */
 @variant dark (&:where(.dark, .dark *));
 
+/* ==========================================================================
+   PENTAGRAM OS — FINAL CORE COLOR PALETTE & DESIGN SYSTEM V1.0
+   Locked Core Tokens:
+   - 01 Midnight Navy:     #0F1428 (Primary / Information & Navigation)
+   - 02 Pure White:        #FDFDFD (Surface / Workspace & Data Cards)
+   - 03 Pentagram Crimson: #D64062 (Brand & Action / Primary CTAs & Active States)
+   ========================================================================== */
 
 :root {
-  --foryn-accent: #F62440;
-  --foryn-accent-glow: rgba(246, 36, 64, 0.25);
-  --foryn-bg-light: #FFFAF3;
+  /* Core 3 Palette */
+  --pentagram-navy: #0F1428;
+  --pentagram-navy-surface: #161D3A;
+  --pentagram-navy-muted: #242D4F;
+  --pentagram-navy-border: rgba(15, 20, 40, 0.12);
+
+  --pentagram-white: #FDFDFD;
+  --pentagram-white-subtle: #F6F8FB;
+  --pentagram-white-card: #FFFFFF;
+
+  --pentagram-crimson: #D64062;
+  --pentagram-crimson-hover: #C03252;
+  --pentagram-crimson-active: #AA2544;
+  --pentagram-crimson-glow: rgba(214, 64, 98, 0.25);
+  --pentagram-crimson-light: rgba(214, 64, 98, 0.08);
+
+  /* Global Aliases */
+  --foryn-accent: #D64062;
+  --foryn-accent-hover: #C03252;
+  --foryn-accent-glow: rgba(214, 64, 98, 0.25);
+  --foryn-bg-light: #FDFDFD;
 }
 
-[data-theme-color="crimson"], :root {
-  --foryn-accent: #F62440;
-  --foryn-accent-glow: rgba(246, 36, 64, 0.25);
+/* Background Workspace Tokens */
+.bg-pentagram-navy {
+  background-color: #0F1428;
+}
+
+.text-pentagram-navy {
+  color: #0F1428;
+}
+
+.border-pentagram-navy {
+  border-color: #0F1428;
+}
+
+.bg-pentagram-white {
+  background-color: #FDFDFD;
+}
+
+.text-pentagram-white {
+  color: #FDFDFD;
+}
+
+.bg-pentagram-crimson {
+  background-color: #D64062;
+}
+
+.text-pentagram-crimson {
+  color: #D64062;
+}
+
+.border-pentagram-crimson {
+  border-color: #D64062;
 }
 
 .bg-foryn-light {
-  background-color: #FFFAF3;
+  background-color: #FDFDFD;
 }
 
-[data-theme-color="teal"] {
-  --foryn-accent: #14b8a6;
-  --foryn-accent-glow: rgba(20, 184, 166, 0.25);
+/* Pentagram OS Action Buttons (Rule: Crimson = Action) */
+.btn-pentagram-action {
+  background-color: #D64062;
+  color: #FFFFFF;
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(214, 64, 98, 0.3);
 }
 
-/* Custom scrollbars for CAD and tables */
+.btn-pentagram-action:hover {
+  background-color: #C03252;
+  box-shadow: 0 4px 12px rgba(214, 64, 98, 0.35);
+  transform: translateY(-0.5px);
+}
+
+.btn-pentagram-action:active {
+  background-color: #AA2544;
+  transform: translateY(0);
+}
+
+/* Pentagram OS Information & Secondary Dark Controls */
+.btn-pentagram-navy {
+  background-color: #0F1428;
+  color: #FDFDFD;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.btn-pentagram-navy:hover {
+  background-color: #161D3A;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.05);
+  background: rgba(15, 20, 40, 0.04);
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 20, 40, 0.6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.4);
+  background: rgba(100, 116, 139, 0.35);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--foryn-accent);
+  background: #D64062;
 }

@@ -666,7 +666,7 @@ export default function App() {
     }
 
     return (
-      <div className="h-screen w-screen bg-[#f4f5f7] dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col font-sans select-none overflow-hidden">
+      <div className="h-screen w-screen bg-[#F8F9FC] dark:bg-[#0F1428] text-[#0F1428] dark:text-[#FDFDFD] flex flex-col font-sans select-none overflow-hidden">
         {/* Universal MNC Enterprise Top Bar */}
         <EnterpriseTopBar
           user={user}
@@ -825,11 +825,11 @@ export default function App() {
   // Default Login / Showcase Gateway (when logged out)
   // -------------------------------------------------------------
   return (
-    <div className="min-h-screen w-full bg-[#FFFAF3] text-slate-900 flex flex-col justify-between font-sans selection:bg-[#F62440] selection:text-white relative overflow-hidden">
+    <div className="min-h-screen w-full bg-[#FDFDFD] text-[#0F1428] flex flex-col justify-between font-sans selection:bg-[#D64062] selection:text-white relative overflow-hidden">
       {/* Background Soft Mesh Ambient Glows */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#F62440]/10 rounded-full blur-[140px]" />
-        <div className="absolute top-1/2 -right-32 w-[500px] h-[500px] bg-rose-400/10 rounded-full blur-[140px]" />
+        <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#D64062]/10 rounded-full blur-[140px]" />
+        <div className="absolute top-1/2 -right-32 w-[500px] h-[500px] bg-[#0F1428]/5 rounded-full blur-[140px]" />
         <div className="absolute -bottom-32 left-1/3 w-[550px] h-[550px] bg-amber-400/10 rounded-full blur-[140px]" />
       </div>
 
@@ -837,9 +837,9 @@ export default function App() {
       <header className="w-full max-w-7xl mx-auto px-6 pt-6 flex items-center justify-between z-20 shrink-0">
         <div className="flex items-center gap-3">
           <Logo size="md" />
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-rose-700 bg-rose-50 border border-rose-200/80 px-2.5 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F62440] animate-pulse" />
-            Enterprise Platform
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-[#D64062] bg-[#D64062]/10 border border-[#D64062]/20 px-2.5 py-1 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D64062] animate-pulse" />
+            Pentagram OS • Enterprise Platform
           </span>
         </div>
         <div className="flex items-center gap-4 text-xs font-semibold text-slate-600">
@@ -856,12 +856,12 @@ export default function App() {
         {/* Left Column: Interactive 3D Showcase in a Framed Warm Glass Container */}
         <div className="lg:col-span-7 flex flex-col gap-5">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100/60 border border-rose-200 text-[#F62440] text-xs font-extrabold uppercase tracking-wider font-mono">
-              <Sparkles className="w-3.5 h-3.5" /> Foryn Studio & CAD
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D64062]/10 border border-[#D64062]/20 text-[#D64062] text-xs font-extrabold uppercase tracking-wider font-mono">
+              <Sparkles className="w-3.5 h-3.5" /> Pentagram Studio & CAD
             </div>
-            <h1 className="text-3xl sm:text-4xl xl:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl xl:text-5xl font-black text-[#0F1428] tracking-tight leading-tight">
               Design, Cost & Build <br className="hidden sm:inline" />
-              <span className="text-[#F62440]">Luxury Spaces</span> Effortlessly.
+              <span className="text-[#D64062]">Luxury Spaces</span> Effortlessly.
             </h1>
             <p className="text-sm sm:text-base text-slate-600 max-w-xl font-medium leading-relaxed">
               Unified workstation platform integrating real-time 3D CAD visualization, automated BOQ calculations, and end-to-end site project management.
@@ -869,7 +869,7 @@ export default function App() {
           </div>
 
           {/* Styled Showcase Container Card */}
-          <div className="relative rounded-2xl sm:rounded-3xl border border-rose-200/80 bg-slate-900 shadow-2xl shadow-rose-950/5 backdrop-blur-xl overflow-hidden h-[300px] sm:h-[380px] md:h-[440px] lg:h-[480px] xl:h-[520px] flex flex-col transition-all group">
+          <div className="relative rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-[#0F1428] shadow-2xl shadow-[#0F1428]/10 backdrop-blur-xl overflow-hidden h-[300px] sm:h-[380px] md:h-[440px] lg:h-[480px] xl:h-[520px] flex flex-col transition-all group">
             <ShowcaseCanvas
               scenes={ROOM_SCENES}
               currentScene={currentScene}
@@ -881,24 +881,24 @@ export default function App() {
 
           {/* Trust Highlights Ticker */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-1">
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-rose-100 shadow-xs flex items-center gap-2.5">
-              <ShieldCheck className="w-4 h-4 text-[#F62440] shrink-0" />
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/80 border border-slate-200/80 shadow-xs flex items-center gap-2.5">
+              <ShieldCheck className="w-4 h-4 text-[#D64062] shrink-0" />
               <div>
-                <div className="text-xs font-bold text-slate-900">256-Bit Encrypted</div>
+                <div className="text-xs font-bold text-[#0F1428]">256-Bit Encrypted</div>
                 <div className="text-[10px] text-slate-500 font-medium">Enterprise Security</div>
               </div>
             </div>
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-rose-100 shadow-xs flex items-center gap-2.5">
-              <Building className="w-4 h-4 text-[#F62440] shrink-0" />
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/80 border border-slate-200/80 shadow-xs flex items-center gap-2.5">
+              <Building className="w-4 h-4 text-[#D64062] shrink-0" />
               <div>
-                <div className="text-xs font-bold text-slate-900">31-Stage Engine</div>
+                <div className="text-xs font-bold text-[#0F1428]">31-Stage Engine</div>
                 <div className="text-[10px] text-slate-500 font-medium">Full Site Tracking</div>
               </div>
             </div>
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-rose-100 shadow-xs flex items-center gap-2.5">
-              <Sparkles className="w-4 h-4 text-[#F62440] shrink-0" />
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/80 border border-slate-200/80 shadow-xs flex items-center gap-2.5">
+              <Sparkles className="w-4 h-4 text-[#D64062] shrink-0" />
               <div>
-                <div className="text-xs font-bold text-slate-900">BOQ Automation</div>
+                <div className="text-xs font-bold text-[#0F1428]">BOQ Automation</div>
                 <div className="text-[10px] text-slate-500 font-medium">Real-Time Costing</div>
               </div>
             </div>
@@ -916,19 +916,19 @@ export default function App() {
       </main>
 
       {/* Minimal Footer */}
-      <footer className="w-full max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium z-10 border-t border-rose-100/60 pb-16 md:pb-4">
-        <div>© 2026 Foryn Living Pvt. Ltd. All rights reserved. • DLF Cyber City, Gurugram</div>
+      <footer className="w-full max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium z-10 border-t border-slate-200/60 pb-16 md:pb-4">
+        <div>© 2026 Pentagram Living Pvt. Ltd. All rights reserved. • DLF Cyber City, Gurugram</div>
         <div className="flex items-center gap-4 mt-2 sm:mt-0 font-mono text-[11px]">
           <button
             onClick={() => setIsPrivacyOpen(true)}
-            className="hover:text-rose-600 hover:underline transition-colors cursor-pointer"
+            className="hover:text-[#D64062] hover:underline transition-colors cursor-pointer"
           >
             Privacy Policy
           </button>
           <span>•</span>
           <button
             onClick={() => setIsTermsOpen(true)}
-            className="hover:text-rose-600 hover:underline transition-colors cursor-pointer"
+            className="hover:text-[#D64062] hover:underline transition-colors cursor-pointer"
           >
             Terms of Service
           </button>
