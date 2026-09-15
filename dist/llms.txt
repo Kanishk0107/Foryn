@@ -1,0 +1,25 @@
+# Foryn
+> Next-Gen Cloud Interior Design & Architecture Studio Platform
+> URL: https://foryn.io
+
+## Overview
+Foryn is a unified, cloud-native interior design, architecture, and project execution platform. It bridges the entire lifecycle from initial Meta & builder lead capture to interactive 2D/3D CAD floorplan authoring, cloud raytrace rendering, vendor milestone approvals, and automated GST/finance disbursement.
+
+## Key Modules & Workstations
+- **Interactive 3D Showcase**: Real-time room scenes (Modern Nordic Living, Japandi Master Suite, Minimalist Kitchen) with interactive material hotspots, pricing breakdowns, and direct-to-CAD workstation jumping.
+- **2D/3D CAD & BIM Studio**: WebGL/Canvas floorplan editor with multi-layer CAD management, AutoCAD layer freezing/locking, Revit-inspired BIM wall systems with thermal/fire ratings, and 3ds Max shader material studios.
+- **Sales Lead CRM (CRM Engine)**: Ingestion for Meta/Instagram ads and builder referrals, auto-generating unique 4-digit numeric PIDs (Project IDs), status tracking, follow-up scheduling, and 1-click promotion to active project sites.
+- **Project Management & BOQ Engine**: Milestone-based vendor assignment (Modular Cabinetry, Civil, False Ceiling, Electrical), site-readiness tracking, and PM sign-off approvals.
+- **Finance & GST Ledger**: Automated payout generation upon PM milestone sign-offs, 18% GST tax computation, RTGS/NEFT disbursement triggers, and transactional email notification logs.
+- **Transactional Email Dispatcher**: Event-driven notification service delivering branded HTML invoices, payment approvals, and lead alerts.
+
+## Primary Roles
+- `Sales Lead`: Ingests leads, tracks conversion probabilities, schedules calls, converts won deals to active project sites.
+- `Designer Team` / `Interior Designer` / `Architect`: Operates the 2D CAD canvas, configures IES photometric lights, modifies PBR shader materials, and triggers cloud renders.
+- `Project Management`: Oversees on-site contractors, verifies milestone proofs, and approves vendor payouts.
+- `Finance Team`: Audits vendor payouts, reviews GST ledgers, and disburses RTGS bank payments.
+
+## Developer Links
+- [Full LLM Architecture Specification](/full-llm.txt): Complete data models, state machines, and API schemas.
+- [Sitemap](/sitemap.xml): Search engine and routing manifest.
+- [Robots Policy](/robots.txt): Crawler rules and indexing directives.

@@ -1,0 +1,167 @@
+# Foryn: Full Architectural & LLM Context Specification
+Document Version: 2.4.0
+Last Updated: 2026-09-04
+Platform: Foryn Cloud Interior Design & Architecture Studio
+
+================================================================================
+1. SYSTEM ARCHITECTURE & PHILOSOPHY
+================================================================================
+Foryn is built as a single-page reactive application powered by React 19, TypeScript, Tailwind CSS v4, Motion (Framer Motion engine), and D3.js. It features a complete end-to-end lifecycle for architectural firms, interior designers, modular fit-out contractors, and turn-key home builders.
+
+Key Structural Foundations:
+1. Client-Side High Performance Graphics:
+   - 2D Canvas CAD engine with snap-to-grid (100mm increments), real-time rotation, dimension calculations, and multi-layer CAD controls.
+   - Interactive 3D Raytracing Viewport with WebGL shaders, PBR material preview (Roughness, Metallic, IOR, Bump maps), and IES photometric lighting rigs.
+2. Cross-Role Enterprise Workstations:
+   - Role-based routing supporting instantaneous persona switching:
+     * Sales Lead: Meta/IG lead ingestion, call log recording, 4-digit PID generator, won-deal promotion.
+     * Designer Team / Architect: Floorplan authoring, layer manager, material palette, BOQ price tally.
+     * Project Management: BOQ milestones, contractor payouts, inspection certificates, site progress.
+     * Finance Team: GST 18% calculation, automated payout queue, RTGS batch settlement.
+3. Universal Data Pipeline:
+   - Lead Captured -> PID Generated -> Promoted to Project -> Vendor BOQ Assigned -> PM Milestone Approved -> Finance Payout Generated -> RTGS Disbursed -> Transactional Email Logged.
+
+================================================================================
+2. CORE TYPES & INTERFACES (TypeScript Definition Schema)
+================================================================================
+
+```typescript
+export type UserRole =
+  | 'Sales Lead'
+  | 'Designer Team'
+  | 'Project Management'
+  | 'Finance Team'
+  | 'Interior Designer'
+  | 'Architect'
+  | '3D Artist'
+  | 'Homeowner';
+
+export interface LeadItem {
+  id: string; // e.g. LD-910
+  pid: string; // Unique 4-digit numeric Project ID (e.g. 1001, 1002)
+  clientName: string;
+  phone: string;
+  email: string;
+  source: 'Meta / IG Ads' | 'Website Inquiry' | 'Builder Referral' | 'Walk-in Studio' | 'Architect Connect';
+  estimatedBudget: number; // in INR Lakhs (e.g. 25.0)
+  budgetLabel?: string;
+  propertyType: string; // 2BHK, 3BHK, Villa, Commercial Studio
+  location: string;
+  status:
+    | 'New Enquiry'
+    | 'Call Scheduled'
+    | 'Call Done'
+    | 'Call Back Required'
+    | 'No Answer'
+    | 'Fake Lead'
+    | 'Duplicate lead'
+    | 'No Requirement'
+    | 'Promoted to Sales Team';
+  probability: number; // 0 - 100
+  notes: string;
+  assignedSalesOwner: string;
+  assignedDesignLead: string;
+  createdAt: string;
+  lastUpdateDate: string;
+  callLogs?: CallLogItem[];
+  followUps?: FollowUpItem[];
+  activityLogs?: ActivityLogItem[];
+}
+
+export interface VendorAssignment {
+  id: string;
+  projectId: string;
+  projectName: string;
+  category:
+    | 'Modular Cabinetry Factory'
+    | 'Civil & Tiling'
+    | 'Electrical & Lighting'
+    | 'False Ceiling & Paint'
+    | 'Decor & Soft Furnishing';
+  vendorName: string;
+  contactPhone: string;
+  totalContractValue: number; // In Lakhs
+  paidToDate: number;
+  pendingApprovalAmount: number;
+  status: 'Contract Signed' | 'In Progress' | 'Payment Pending PM' | 'Approved by PM' | 'Cleared by Finance';
+  milestones: MilestonePayment[];
+}
+
+export interface MilestonePayment {
+  id: string;
+  title: string;
+  amount: number; // In Lakhs
+  percentage: number;
+  status: 'Pending' | 'PM Approved' | 'Released by Finance';
+  dueDate: string;
+  proofUrl?: string;
+}
+
+export interface FinanceTransaction {
+  id: string;
+  projectId: string;
+  projectName: string;
+  type: 'Client Receipt' | 'Vendor Payout' | 'GST Tax Ledger';
+  partyName: string;
+  category: string;
+  amount: number; // In Rupees
+  gstAmount: number; // 18% GST in Rupees
+  netAmount: number; // Total amount including GST
+  status: 'Pending PM Audit' | 'Ready for Release' | 'Completed & Paid';
+  paymentRefNumber?: string;
+  date: string;
+  approvedByPM: boolean;
+}
+
+export interface CadLayer {
+  id: string;
+  name: string;
+  color: string;
+  visible: boolean;
+  locked: boolean;
+  frozen: boolean;
+  lineWeight: string;
+  lineType: string;
+  isCurrent: boolean;
+  itemCount: number;
+}
+```
+
+================================================================================
+3. API & TRANSACTIONAL EVENT FLOWS
+================================================================================
+
+1. Lead Ingestion & Qualification:
+   - Incoming payload triggers `generateUniquePID(leads)` ensuring non-colliding sequential 4-digit identifiers.
+   - Activity log appends `[FL] Lead Created`.
+   - Dispatch event logs instant welcome email to client.
+
+2. Lead Promotion to Active Project:
+   - Status transitions to `Promoted to Sales Team`.
+   - Auto-creates `VendorAssignment` with default modular milestone structure.
+   - Notifies PM & Design teams via unified in-app toast & state pipeline.
+
+3. Milestone Approval & Payment Disbursement:
+   - PM audits milestone completion on site.
+   - Triggers `handleApproveVendorPayment` -> creates `FinanceTransaction` with 18% GST breakdown.
+   - Transactional email fired to `vendor.finance@foryn-suppliers.in`.
+   - Finance audits and clicks `Release Payout` -> generates RTGS transaction code (e.g. `HDFC-RTGS-XXXXXX`) and updates vendor ledger balance to cleared.
+
+================================================================================
+4. KEYBOARD SHORTCUTS & INTERACTION GUIDE
+================================================================================
+- `Delete` / `Backspace`: Remove selected 2D CAD furniture or wall element.
+- `R`: Rotate selected element by 45 degrees.
+- `Cmd/Ctrl + C`: Duplicate selected plan item.
+- `Space + Drag`: Pan 2D viewport.
+- `Scroll Wheel`: Zoom in/out with 10% step increments.
+- `T`: Open Theme Customizer & Switcher.
+- `L`: Open AutoCAD Layer Manager.
+- `M`: Open Shader & PBR Material Studio.
+
+================================================================================
+5. SEO & ROBOTIC DIRECTIVES
+================================================================================
+- XML Sitemap: https://foryn.io/sitemap.xml
+- Robots Config: https://foryn.io/robots.txt
+- LLM Index: https://foryn.io/llm.txt

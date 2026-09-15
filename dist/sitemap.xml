@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage & Interactive 3D Showcase Portal -->
+  <url>
+    <loc>https://foryn.io/</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Cloud 2D CAD & 3D Raytrace Studio Workstation -->
+  <url>
+    <loc>https://foryn.io/studio</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Sales CRM & Lead Capturing Pipeline (Meta Ads, Builder Connect) -->
+  <url>
+    <loc>https://foryn.io/crm/leads</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project Management & BOQ Vendor Milestone Workflow -->
+  <url>
+    <loc>https://foryn.io/pm/projects</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Finance & GST Tax Ledger Disbursement Portal -->
+  <url>
+    <loc>https://foryn.io/finance/payouts</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 3D BIM & Revit Architectural Layer Manager -->
+  <url>
+    <loc>https://foryn.io/studio/bim-layers</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Shader Material & IES Photometric Lighting Studio -->
+  <url>
+    <loc>https://foryn.io/studio/materials</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Transactional Email & Vendor Notification Dispatcher -->
+  <url>
+    <loc>https://foryn.io/notifications/email-logs</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- LLM Context & Agentic Architecture Endpoints -->
+  <url>
+    <loc>https://foryn.io/llm.txt</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://foryn.io/full-llm.txt</loc>
+    <lastmod>2026-09-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

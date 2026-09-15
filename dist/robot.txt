@@ -1,0 +1,21 @@
+# Robots.txt for Foryn Cloud Architecture & Interior Design Studio Platform
+# Website: https://foryn.io
+
+User-agent: *
+Allow: /
+Allow: /studio
+Allow: /crm/leads
+Allow: /pm/projects
+Allow: /finance/payouts
+Allow: /llm.txt
+Allow: /llms.txt
+Allow: /full-llm.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+
+# Restrict private internal API routes
+Disallow: /api/private/
+Disallow: /api/internal/
+
+# Sitemap Index
+Sitemap: https://foryn.io/sitemap.xml
