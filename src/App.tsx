@@ -337,6 +337,14 @@ export default function App() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
+  const triggerSplashIfFirstLogin = () => {
+    const hasSeenSplash = sessionStorage.getItem('foryn_splash_shown');
+    if (!hasSeenSplash) {
+      sessionStorage.setItem('foryn_splash_shown', 'true');
+      setIsAppBooting(true);
+    }
+  };
+
   const handleLoginSuccess = (userEmail: string, role?: string) => {
     setUser({
       name: userEmail.split('@')[0],
@@ -344,7 +352,7 @@ export default function App() {
       role: (role as UserRole) || 'Sales Lead'
     });
     setIsLoggedIn(true);
-    setIsAppBooting(true);
+    triggerSplashIfFirstLogin();
     setActiveEnterpriseView('executive');
     const timeGreeting = getGreetingTextByTime();
     addToast(
@@ -362,7 +370,7 @@ export default function App() {
       company: 'Pentagram Living Pvt. Ltd.'
     });
     setIsLoggedIn(true);
-    setIsAppBooting(true);
+    triggerSplashIfFirstLogin();
     setActiveEnterpriseView('executive');
     addToast(
       'info',
@@ -372,6 +380,7 @@ export default function App() {
   };
 
   const handleLogout = async () => {
+    sessionStorage.removeItem('foryn_splash_shown');
     if (supabase) {
       await supabase.auth.signOut();
     }
@@ -827,14 +836,6 @@ export default function App() {
           onScaffoldProject={handleScaffoldProject}
         />
 
-        {/* Global Architectural Loading & Splash Morph Experience */}
-        <AnimatePresence>
-          {isAppBooting && (
-            <ForynLoadingExperience
-              onComplete={() => setIsAppBooting(false)}
-            />
-          )}
-        </AnimatePresence>
       </div>
     );
   }

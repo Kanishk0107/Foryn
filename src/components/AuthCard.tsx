@@ -17,13 +17,8 @@ export const AuthCard: React.FC<AuthCardProps> = ({
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState('Authenticating session...');
 
-  const triggerLoginWithIntro = (action: () => void, message: string) => {
-    setLoadingMessage(message);
-    setIsLoggingIn(true);
-    setTimeout(() => {
-      setIsLoggingIn(false);
-      action();
-    }, 1200);
+  const triggerLoginWithIntro = (action: () => void, _message: string) => {
+    action();
   };
 
   const handleLoginSuccess = (userEmail: string, role?: string) => {
