@@ -117,7 +117,7 @@ export const EnterpriseSidebar: React.FC<EnterpriseSidebarProps> = ({
 
   return (
     <aside
-      className={`h-[calc(100vh-3.5rem)] bg-[#FDFDFD] dark:bg-[#0F1428] border-r border-slate-200/80 dark:border-slate-800 flex flex-col justify-between transition-all duration-200 shrink-0 z-30 select-none ${
+      className={`hidden md:flex h-[calc(100vh-3.5rem)] bg-[#FDFDFD] dark:bg-[#0F1428] border-r border-slate-200/80 dark:border-slate-800 flex-col justify-between transition-all duration-200 shrink-0 z-30 select-none ${
         isCollapsed ? 'w-16' : 'w-64'
       }`}
     >

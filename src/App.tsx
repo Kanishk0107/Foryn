@@ -26,6 +26,7 @@ import { initAnalytics, trackPageView } from './utils/analytics';
 // Enterprise Redesign Workstations & Layout
 import { EnterpriseTopBar } from './components/enterprise/EnterpriseTopBar';
 import { EnterpriseSidebar, EnterpriseView } from './components/enterprise/EnterpriseSidebar';
+import { EnterpriseMobileDock } from './components/enterprise/EnterpriseMobileDock';
 import { ExecutiveOverview } from './components/enterprise/ExecutiveOverview';
 import { MasterBoqStudio } from './components/enterprise/MasterBoqStudio';
 import { ProjectExecutionTracker } from './components/enterprise/ProjectExecutionTracker';
@@ -745,7 +746,7 @@ export default function App() {
 
         {/* Enterprise Workspace Layout: Sidebar + Active Workstation View */}
         <div className="flex-1 flex overflow-hidden">
-          {/* Collapsible 7-Discipline Navigation Sidebar */}
+          {/* Collapsible 7-Discipline Navigation Sidebar (Desktop) */}
           <EnterpriseSidebar
             activeView={activeEnterpriseView}
             onSelectView={(view) => setActiveEnterpriseView(view)}
@@ -757,9 +758,18 @@ export default function App() {
             onOpenQuickTips={() => setIsQuickTipsOpen(true)}
           />
 
+          {/* Ergonomic Glass Bottom Navigation Dock (Mobile < 768px) */}
+          <EnterpriseMobileDock
+            activeView={activeEnterpriseView}
+            onSelectView={(view) => setActiveEnterpriseView(view)}
+            leadCount={leads.length}
+            pendingPmCount={pendingPmCount}
+            pendingFinanceCount={pendingFinanceCount}
+          />
+
           {/* Main Workstation View Area — padded for all views except studio */}
           {activeEnterpriseView === 'studio' ? (
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden pb-12 md:pb-0">
               <StudioDashboard
                 user={user}
                 onLogout={() => setActiveEnterpriseView('executive')}
@@ -768,7 +778,7 @@ export default function App() {
               />
             </div>
           ) : (
-          <main className="flex-1 overflow-y-auto p-4 sm:p-6">
+          <main className="flex-1 overflow-y-auto p-4 sm:p-6 pb-20 md:pb-6">
             <div className="max-w-7xl mx-auto w-full">
               <ErrorBoundary fallbackTitle="Enterprise Workstation Exception Captured">
                 {/* 1. Executive Command Center */}
