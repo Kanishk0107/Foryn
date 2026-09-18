@@ -31,7 +31,7 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
           <section className="space-y-2">
             <h3 className="text-sm font-bold text-[#0F1428] dark:text-white">1. Data Ownership & Security</h3>
             <p>
-              Pentagram Living Pvt. Ltd. ("Pentagram OS", "we", "our") respects your privacy. All 3D CAD blueprints, BOQ estimates, and client data are stored using 256-bit AES encryption at rest and TLS 1.3 in transit via Supabase Cloud infrastructure.
+              Verdiore Interiors and Furnishing Pvt. Ltd. ("Verdiore", "we", "our") respects your privacy. All 3D CAD blueprints, BOQ estimates, and client data are stored using 256-bit AES encryption at rest and TLS 1.3 in transit via Supabase Cloud infrastructure.
             </p>
           </section>
 
@@ -50,12 +50,10 @@ export const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, 
           </section>
 
           <section className="space-y-2">
-            <h3 className="text-sm font-bold text-[#0F1428] dark:text-white">4. Registered Contact Address</h3>
+            <h3 className="text-sm font-bold text-[#0F1428] dark:text-white">4. Registered Contact Information</h3>
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-700 dark:text-slate-300">
-              <p className="font-bold">Pentagram Living Pvt. Ltd. (HQ)</p>
-              <p>DLF Cyber City, Phase III, Building 10, Tower B, 14th Floor</p>
-              <p>Gurugram, Haryana 122002, India</p>
-              <p>Contact Email: privacy@pentagram.in | Phone: +91 124 489 9000</p>
+              <p className="font-bold">Verdiore Interiors and Furnishing Pvt. Ltd.</p>
+              <p>Contact Email: contact@verdiore.in</p>
             </div>
           </section>
         </div>

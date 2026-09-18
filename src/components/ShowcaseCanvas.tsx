@@ -6,7 +6,6 @@ import {
   Sun,
   Moon,
   Eye,
-  Sparkles,
   RotateCcw,
   Tag,
   Fan,
@@ -290,13 +289,6 @@ export const ShowcaseCanvas: React.FC<ShowcaseCanvasProps> = ({
             </div>
           )}
 
-          {/* Watermark & Legal Domain Stamps */}
-          <div className="absolute bottom-4 left-4 z-20 bg-slate-900/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 text-[10px] text-slate-300 font-mono flex items-center gap-2">
-            <Globe className="w-3 h-3 text-[#D64062]" />
-            <span className="font-bold text-white">design.foryn.io</span>
-            <span className="text-slate-500">|</span>
-            <span className="text-slate-400">FORYN Technologies Pvt Ltd</span>
-          </div>
 
           {/* Hotspots Pins */}
           {showHotspots && (

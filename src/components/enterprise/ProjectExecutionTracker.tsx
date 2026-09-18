@@ -5,46 +5,52 @@ import {
   WORKFLOW_PHASES
 } from '../../data/stageData';
 import {
-  FolderGit2,
   CheckCircle2,
+  Circle,
   Clock,
-  AlertCircle,
   ShieldCheck,
   ChevronRight,
-  Sparkles,
-  UserCheck,
-  ArrowRight,
-  Filter,
-  CheckSquare,
-  Lock,
-  FileText,
   X,
-  Building,
-  Zap
+  Zap,
+  RefreshCw
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface ProjectExecutionTrackerProps {
   activeProjectName: string;
   onSendToast?: (type: 'success' | 'error' | 'info', title: string, desc?: string) => void;
 }
 
+type StageStatus = 'Completed' | 'In Progress' | 'Pending';
+
+const STATUS_ICON = {
+  Completed: <CheckCircle2 className="w-4 h-4 text-[#D64062]" />,
+  'In Progress': <RefreshCw className="w-4 h-4 text-[#0F1428] animate-spin-slow" />,
+  Pending: <Circle className="w-4 h-4 text-slate-300" />
+};
+
+const STATUS_PILL: Record<StageStatus, string> = {
+  Completed:    'bg-[#D64062]/10 text-[#D64062]',
+  'In Progress':'bg-[#0F1428]/10 text-[#0F1428]',
+  Pending:      'bg-slate-100 text-slate-400'
+};
+
 export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = ({
   activeProjectName,
   onSendToast
 }) => {
-  // Per-project completion tracking state map
   const [projectCompletedStagesMap, setProjectCompletedStagesMap] = useState<Record<string, string[]>>({
-    'B3/21 DLF Alameda Villa (PID 1005)': ['s-1-1', 's-1-2', 's-1-3', 's-1-4', 's-1-5', 's-2-1', 's-2-2'],
-    'Villa Penthouse 402 (PID 1001)': ['s-1-1', 's-1-2', 's-1-3', 's-1-4', 's-1-5']
+    'B3/21 DLF Alameda Villa (PID 1005)': ['stg-01', 'stg-02', 'stg-03', 'stg-04', 'stg-05', 'stg-06', 'stg-07'],
+    'Villa Penthouse 402 (PID 1001)': ['stg-01', 'stg-02', 'stg-03', 'stg-04', 'stg-05']
   });
 
-  const [activePhaseNumber, setActivePhaseNumber] = useState<number>(2);
-  const [selectedStage, setSelectedStage] = useState<WorkflowStage | null>(null);
+  const [activePhaseNumber, setActivePhaseNumber] = useState<number>(1);
+  const [selectedStage, setSelectedStage] = useState<WorkflowStage & { status: StageStatus } | null>(null);
   const [signoffNotes, setSignoffNotes] = useState('');
 
   const completedStageIds = projectCompletedStagesMap[activeProjectName] || [];
 
-  const getStageStatus = (stageId: string, index: number): 'Completed' | 'In Progress' | 'Pending' => {
+  const getStageStatus = (stageId: string, index: number): StageStatus => {
     if (completedStageIds.includes(stageId)) return 'Completed';
     if (index === 0 || completedStageIds.includes(INITIAL_WORKFLOW_STAGES[index - 1]?.id)) return 'In Progress';
     return 'Pending';
@@ -52,12 +58,10 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
 
   const stages = INITIAL_WORKFLOW_STAGES.map((s, idx) => ({
     ...s,
-    status: getStageStatus(s.id, idx)
+    status: getStageStatus(s.id, idx) as StageStatus
   }));
 
   const currentPhaseStages = stages.filter((s) => s.phaseNumber === activePhaseNumber);
-
-  // Dynamic Overall Statistics for active project
   const totalCompleted = completedStageIds.length;
   const percentComplete = Math.round((totalCompleted / INITIAL_WORKFLOW_STAGES.length) * 100);
 
@@ -69,280 +73,276 @@ export const ProjectExecutionTracker: React.FC<ProjectExecutionTrackerProps> = (
       }
       return prev;
     });
-
     const stg = INITIAL_WORKFLOW_STAGES.find((s) => s.id === stageId);
-    onSendToast?.(
-      'success',
-      `Gate Certified: ${stg?.stageCode}`,
-      `Certified ${stg?.title} for ${activeProjectName}. Progress updated dynamically.`
-    );
+    onSendToast?.('success', `Gate Certified: ${stg?.stageCode}`, `${stg?.title} approved for ${activeProjectName}.`);
     setSelectedStage(null);
     setSignoffNotes('');
   };
 
   return (
-    <div className="space-y-5 select-none animate-in fade-in duration-200">
-      {/* Top Header Card */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <div className="h-full flex flex-col gap-4 select-none animate-in fade-in duration-200 overflow-hidden">
+
+      {/* ── Header Row ─────────────────────────────────────── */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0F1428] dark:text-slate-400 bg-slate-50 dark:bg-slate-900 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-200">
-              31-Stage Execution Tracker
-            </span>
-            <span className="text-xs text-slate-400">•</span>
-            <span className="text-xs font-bold text-[#D64062]">
-              {activeProjectName}
-            </span>
-          </div>
-          <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">
-            Project Lifecycle Engine
+          <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#D64062] mb-0.5">
+            31-Stage Execution
+          </p>
+          <h1 className="text-lg font-black text-slate-900 dark:text-white tracking-tight leading-none">
+            {activeProjectName}
           </h1>
         </div>
 
-        {/* Overall Progress Meter */}
-        <div className="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/60 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700/80">
-          <div>
-            <div className="text-[10px] font-mono uppercase text-slate-400 font-bold">Lifecycle Completion</div>
-            <div className="text-sm font-black font-mono text-slate-900 dark:text-white">
-              {totalCompleted} of {INITIAL_WORKFLOW_STAGES.length} Stages ({percentComplete}%)
-            </div>
+        {/* Arc Progress */}
+        <div className="flex items-center gap-3">
+          <div className="flex flex-col items-end">
+            <span className="text-2xl font-black text-[#D64062] leading-none">{percentComplete}%</span>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Complete</span>
           </div>
-          <div className="w-20 h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-[#D64062] rounded-full transition-all duration-300"
-              style={{ width: `${percentComplete}%` }}
+          {/* Ring */}
+          <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="15" fill="none" stroke="#f1f5f9" strokeWidth="3" />
+            <circle
+              cx="18" cy="18" r="15"
+              fill="none"
+              stroke="#D64062"
+              strokeWidth="3"
+              strokeDasharray={`${percentComplete * 0.942} 94.2`}
+              strokeLinecap="round"
+              className="transition-all duration-700"
             />
+          </svg>
+          <div className="text-[10px] font-mono text-slate-400">
+            <span className="font-bold text-slate-600">{totalCompleted}</span>/{INITIAL_WORKFLOW_STAGES.length}
           </div>
         </div>
       </div>
 
-      {/* Phase Selector Tabs */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+      {/* ── Phase Tabs ──────────────────────────────────────── */}
+      <div className="flex gap-1.5 overflow-x-auto pb-1 shrink-0 scrollbar-none">
         {WORKFLOW_PHASES.map((phase) => {
-          const isCurrent = activePhaseNumber === phase.phaseNumber;
-          const phaseStages = stages.filter((s) => s.phaseNumber === phase.phaseNumber);
-          const phaseCompleted = phaseStages.filter((s) => s.status === 'Completed').length;
+          const isActive = activePhaseNumber === phase.phaseNumber;
+          const phaseStages = stages.filter(s => s.phaseNumber === phase.phaseNumber);
+          const done = phaseStages.filter(s => s.status === 'Completed').length;
+          const total = phaseStages.length;
+          const allDone = done === total;
 
           return (
             <button
               key={phase.phaseNumber}
               onClick={() => setActivePhaseNumber(phase.phaseNumber)}
-              className={`p-3 rounded-xl border text-left transition-all ${
-                isCurrent
-                  ? 'bg-slate-900 text-white dark:bg-slate-800 dark:text-white border-slate-900 dark:border-slate-700 shadow-sm'
-                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer border ${
+                isActive
+                  ? 'bg-[#0F1428] text-white border-[#0F1428] shadow-sm'
+                  : allDone
+                  ? 'bg-[#D64062]/8 text-[#D64062] border-[#D64062]/20 hover:border-[#D64062]/40'
+                  : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300'
               }`}
             >
-              <div className="flex items-center justify-between text-[10px] font-mono font-bold text-slate-400">
-                <span>Phase {phase.phaseNumber}</span>
-                <span>{phase.range}</span>
-              </div>
-              <div className="text-xs font-black truncate mt-1">{phase.name}</div>
-              <div className="text-[10px] font-mono opacity-80 mt-1">
-                {phaseCompleted}/{phaseStages.length} Verified
-              </div>
+              {allDone && <CheckCircle2 className="w-3 h-3 text-[#D64062] shrink-0" />}
+              <span>Phase {phase.phaseNumber}</span>
+              <span className={`text-[10px] font-mono opacity-70`}>{done}/{total}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Current Phase Stages List */}
-      <div className="space-y-3">
-        {currentPhaseStages.map((stage) => {
-          const isCompleted = stage.status === 'Completed';
-          const isInProgress = stage.status === 'In Progress';
+      {/* ── Stage Pipeline ──────────────────────────────────── */}
+      <div className="flex-1 overflow-y-auto space-y-2 pr-0.5">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activePhaseNumber}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="space-y-2"
+          >
+            {/* Phase title */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400">
+                {WORKFLOW_PHASES.find(p => p.phaseNumber === activePhaseNumber)?.name}
+              </span>
+              <div className="flex-1 h-px bg-slate-100 dark:bg-slate-800" />
+              <span className="text-[10px] font-mono text-slate-400">
+                {WORKFLOW_PHASES.find(p => p.phaseNumber === activePhaseNumber)?.range}
+              </span>
+            </div>
 
-          return (
-            <div
-              key={stage.id}
-              className={`p-4 sm:p-5 rounded-2xl border transition-all bg-white dark:bg-slate-900 ${
-                isCompleted
-                  ? 'border-slate-200 dark:border-slate-200'
-                  : isInProgress
-                  ? 'border-slate-200 dark:border-slate-200 ring-1 ring-slate-200'
-                  : 'border-slate-200/80 dark:border-slate-800'
-              }`}
-            >
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="text-xs font-mono font-black px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700">
+            {currentPhaseStages.map((stage, idx) => {
+              const isCompleted = stage.status === 'Completed';
+              const isInProgress = stage.status === 'In Progress';
+
+              return (
+                <motion.div
+                  key={stage.id}
+                  initial={{ opacity: 0, x: -6 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.04 }}
+                  className={`group flex items-center gap-3 p-3 rounded-xl border transition-all ${
+                    isCompleted
+                      ? 'bg-slate-50/60 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800/60 opacity-70'
+                      : isInProgress
+                      ? 'bg-white dark:bg-slate-900 border-[#D64062]/30 ring-1 ring-[#D64062]/15 shadow-sm'
+                      : 'bg-white dark:bg-slate-900 border-slate-200/80 dark:border-slate-800 hover:border-slate-300'
+                  }`}
+                >
+                  {/* Status Icon */}
+                  <div className="shrink-0">
+                    {STATUS_ICON[stage.status]}
+                  </div>
+
+                  {/* Stage Code */}
+                  <span className={`text-[10px] font-mono font-black shrink-0 ${
+                    isCompleted ? 'text-slate-400' : 'text-[#0F1428] dark:text-slate-200'
+                  }`}>
                     {stage.stageCode}
                   </span>
-                  <h3 className="text-sm font-black text-slate-900 dark:text-white">{stage.title}</h3>
-                  {stage.criticalPath && (
-                    <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-[#D64062]/10 dark:bg-slate-900 text-[#D64062] dark:text-[#D64062]">
-                      Critical Path
+
+                  {/* Title */}
+                  <div className="flex-1 min-w-0">
+                    <p className={`text-xs font-semibold truncate ${
+                      isCompleted ? 'text-slate-400 line-through' : 'text-slate-800 dark:text-slate-100'
+                    }`}>
+                      {stage.title}
+                    </p>
+                    <p className="text-[10px] text-slate-400 font-mono mt-0.5 truncate">
+                      {stage.assignedRole} · {stage.leadTimeDays}d
+                    </p>
+                  </div>
+
+                  {/* Badges */}
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {stage.criticalPath && !isCompleted && (
+                      <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#D64062]/10 text-[#D64062]">
+                        CP
+                      </span>
+                    )}
+                    <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${STATUS_PILL[stage.status]}`}>
+                      {stage.status}
                     </span>
-                  )}
-                </div>
+                  </div>
 
-                <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-mono text-slate-500">
-                    Lead: <strong className="text-slate-700 dark:text-slate-300">{stage.assignedRole}</strong> ({stage.leadTimeDays}d)
-                  </span>
-
-                  <span
-                    className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
-                      isCompleted
-                        ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
-                        : isInProgress
-                        ? 'bg-slate-100 text-[#0F1428] dark:bg-slate-900 dark:text-slate-300'
-                        : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
-                    }`}
-                  >
-                    {stage.status}
-                  </span>
-
-                  {!isCompleted && (
+                  {/* Approve Gate button — only on in-progress */}
+                  {isInProgress && (
                     <button
                       onClick={() => setSelectedStage(stage)}
-                      className="px-3 py-1 rounded-lg bg-[#D64062] hover:bg-[#C03252] text-white text-xs font-bold shadow-xs cursor-pointer transition-all"
+                      className="shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#D64062] hover:bg-[#C03252] text-white text-[10px] font-bold transition-all cursor-pointer shadow-xs"
                     >
-                      Audit Gate →
+                      <ShieldCheck className="w-3 h-3" />
+                      <span className="hidden sm:inline">Certify</span>
                     </button>
                   )}
-                </div>
-              </div>
 
-              {/* FORYN Stage Atom Structure Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
-                {/* 1. Trigger */}
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                  <div className="text-[10px] font-mono uppercase text-slate-400 font-bold mb-1 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0F1428]" />
-                    <span>Trigger</span>
-                  </div>
-                  <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
-                    {stage.trigger}
-                  </p>
-                </div>
-
-                {/* 2. Human Action */}
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                  <div className="text-[10px] font-mono uppercase text-slate-400 font-bold mb-1 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#D64062]" />
-                    <span>Human Action</span>
-                  </div>
-                  <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
-                    {stage.humanAction}
-                  </p>
-                </div>
-
-                {/* 3. FORYN Automation */}
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                  <div className="text-[10px] font-mono uppercase text-[#0F1428] font-bold mb-1 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-[#0F1428]" />
-                    <span>FORYN Automation</span>
-                  </div>
-                  <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
-                    {stage.automation}
-                  </p>
-                </div>
-
-                {/* 4. Decision Gate */}
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                  <div className="text-[10px] font-mono uppercase text-[#0F1428] dark:text-[#D64062] font-bold mb-1 flex items-center gap-1">
-                    <ShieldCheck className="w-3 h-3 text-[#D64062]" />
-                    <span>Decision Gate</span>
-                  </div>
-                  <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug font-medium">
-                    {stage.decisionGate}
-                  </p>
-                </div>
-              </div>
-
-              {/* Output Banner */}
-              <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px]">
-                <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
-                  <span className="font-mono text-[10px] font-bold uppercase text-slate-400">Stage Output:</span>
-                  <span className="font-semibold text-slate-800 dark:text-slate-200">{stage.output}</span>
-                </div>
-                {isCompleted && (
-                  <span className="flex items-center gap-1 font-mono text-[10px] text-[#0F1428] dark:text-[#D64062] font-bold">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    Gate Certified
-                  </span>
-                )}
-              </div>
-            </div>
-          );
-        })}
+                  {/* Pending — faint arrow */}
+                  {stage.status === 'Pending' && (
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-200 shrink-0" />
+                  )}
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* Decision Gate Signoff Modal */}
-      {selectedStage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs select-none">
-          <div className="w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-            <div className="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span className="text-[10px] font-mono font-bold uppercase text-slate-400">
-                  Stage Gate Verification
-                </span>
-                <h3 className="text-sm font-black text-slate-900 dark:text-white">
-                  {selectedStage.stageCode} — {selectedStage.title}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelectedStage(null)}
-                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="p-5 space-y-4 text-xs">
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-200 space-y-1">
-                <div className="font-bold text-[#0F1428] dark:text-slate-300 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[#D64062]" />
-                  <span>Mandatory Decision Gate Criteria:</span>
+      {/* ── Gate Certification Modal ─────────────────────────── */}
+      <AnimatePresence>
+        {selectedStage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.96, y: 12 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.96, opacity: 0 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden"
+            >
+              {/* Modal Header */}
+              <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between gap-3">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] font-mono font-bold uppercase text-[#D64062] tracking-wider">
+                      {selectedStage.stageCode}
+                    </span>
+                    {selectedStage.criticalPath && (
+                      <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#D64062]/10 text-[#D64062]">CP</span>
+                    )}
+                  </div>
+                  <h3 className="text-sm font-black text-slate-900 dark:text-white leading-snug">
+                    {selectedStage.title}
+                  </h3>
                 </div>
-                <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug">
-                  {selectedStage.decisionGate}
-                </p>
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 font-bold mb-1">
-                  Required Output Artifact
-                </label>
-                <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-semibold text-slate-800 dark:text-slate-200 text-xs">
-                  {selectedStage.output}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-[10px] font-mono uppercase text-slate-400 font-bold mb-1">
-                  Officer Inspection Notes & Checklist Signoff
-                </label>
-                <textarea
-                  rows={3}
-                  value={signoffNotes}
-                  onChange={(e) => setSignoffNotes(e.target.value)}
-                  placeholder="e.g. Dimensions verified with laser; client signed freeze agreement in studio..."
-                  className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white font-medium outline-hidden"
-                />
-              </div>
-
-              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
                 <button
-                  type="button"
                   onClick={() => setSelectedStage(null)}
-                  className="px-4 py-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold"
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer shrink-0"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-5 space-y-4">
+                {/* Gate Criteria */}
+                <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase text-slate-500">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#D64062]" />
+                    Decision Gate
+                  </div>
+                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                    {selectedStage.decisionGate}
+                  </p>
+                </div>
+
+                {/* Required Output */}
+                <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase text-slate-500">
+                    <Zap className="w-3.5 h-3.5 text-[#0F1428] dark:text-slate-400" />
+                    Required Output
+                  </div>
+                  <p className="text-xs font-semibold text-slate-800 dark:text-slate-200">
+                    {selectedStage.output}
+                  </p>
+                </div>
+
+                {/* Signoff Notes */}
+                <div>
+                  <label className="block text-[10px] font-mono uppercase text-slate-400 font-bold mb-1.5">
+                    Officer Notes (optional)
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={signoffNotes}
+                    onChange={(e) => setSignoffNotes(e.target.value)}
+                    placeholder="e.g. Laser dimensions verified, client signed freeze..."
+                    className="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-900 dark:text-white placeholder-slate-400 outline-none focus:border-[#D64062]/50 transition-colors resize-none"
+                  />
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="px-5 pb-5 flex items-center justify-end gap-2">
+                <button
+                  onClick={() => setSelectedStage(null)}
+                  className="px-4 py-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-bold cursor-pointer transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={() => handleApproveGate(selectedStage.id)}
-                  className="px-5 py-2 rounded-xl bg-[#C03252] hover:bg-[#D64062] text-white font-black flex items-center gap-1.5 shadow-xs"
+                  className="px-5 py-2 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white text-xs font-black flex items-center gap-1.5 shadow-sm cursor-pointer transition-colors"
                 >
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Certify & Approve Gate</span>
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  Certify & Approve
                 </button>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

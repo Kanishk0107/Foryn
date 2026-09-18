@@ -11,7 +11,6 @@ import {
   Clock,
   ExternalLink,
   ChevronRight,
-  Sparkles,
   PieChart,
   HardHat,
   FileSpreadsheet
@@ -49,7 +48,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
       <div className="bg-[#FDFDFD] dark:bg-[#0F1428] border border-slate-200/80 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl sm:text-2xl font-black tracking-tight text-[#0F1428] dark:text-white">
-            Pentagram Living — Operating Overview
+            Verdiore Interiors — Operating Overview
           </h1>
         </div>
 
@@ -66,7 +65,7 @@ export const ExecutiveOverview: React.FC<ExecutiveOverviewProps> = ({
             onClick={() => onNavigate('studio')}
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white text-xs font-bold transition-all shadow-xs cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-white" />
+            <Layers className="w-4 h-4 text-white" />
             <span>Launch CAD 3D</span>
           </button>
         </div>

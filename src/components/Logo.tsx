@@ -4,19 +4,20 @@ import { motion } from 'motion/react';
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
   showSubtitle?: boolean;
+  inverted?: boolean;
 }
 
-export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false }) => {
+export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false, inverted = false }) => {
   const iconSizes = {
     sm: 'w-8 h-8',
     md: 'w-10 h-10',
-    lg: 'w-13 h-13'
+    lg: 'w-12 h-12'
   };
 
   const textSizes = {
     sm: 'text-xl',
     md: 'text-2xl',
-    lg: 'text-3xl'
+    lg: 'text-[1.75rem]'
   };
 
   return (
@@ -60,9 +61,10 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false })
         {/* Brand Typography */}
         <div className="flex items-center gap-1.5">
           <span
-            className={`${textSizes[size]} font-black tracking-tight text-[#0F1428] dark:text-[#FDFDFD] font-sans lowercase flex items-center`}
+            className={`${textSizes[size]} font-black tracking-tight font-sans lowercase flex items-center`}
           >
-            foryn
+            <span className="text-[#D64062]">for</span>
+            <span className={inverted ? 'text-white' : 'text-[#0F1428] dark:text-[#FDFDFD]'}>yn</span>
           </span>
           {/* Vibrant Glowing Brand Pulse Node */}
           <span className="relative flex h-2 w-2">
@@ -73,8 +75,12 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false })
       </div>
 
       {showSubtitle && (
-        <span className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 mt-1 pl-0.5">
-          Pentagram OS • Enterprise Interior & Architecture Studio
+        <span
+          className={`text-[10px] font-extrabold uppercase tracking-widest ${
+            inverted ? 'text-slate-300' : 'text-slate-400 dark:text-slate-500'
+          } mt-1 pl-0.5`}
+        >
+          Verdiore Interiors • Enterprise Architecture & Design Studio
         </span>
       )}
     </div>

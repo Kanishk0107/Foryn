@@ -23,7 +23,7 @@ export const TermsConditionsModal: React.FC<TermsConditionsModalProps> = ({ isOp
           <FileText className="w-6 h-6 text-[#D64062]" />
           <div>
             <h2 className="text-xl font-black text-[#0F1428] dark:text-white">Terms of Service</h2>
-            <p className="text-xs text-slate-500 font-mono">Pentagram OS Platform Terms — v1.0 (2026)</p>
+            <p className="text-xs text-slate-500 font-mono">Verdiore Studio Platform Terms — v1.0 (2026)</p>
           </div>
         </div>
 
@@ -31,7 +31,7 @@ export const TermsConditionsModal: React.FC<TermsConditionsModalProps> = ({ isOp
           <section className="space-y-2">
             <h3 className="text-sm font-bold text-[#0F1428] dark:text-white">1. Workstation License</h3>
             <p>
-              By creating a Pentagram OS account, you are granted an enterprise workstation license to create, edit, cost, and execute 3D CAD interior projects.
+              By accessing a Verdiore account, you are granted an enterprise workstation license to create, edit, cost, and execute 3D CAD interior projects.
             </p>
           </section>
 
@@ -50,11 +50,11 @@ export const TermsConditionsModal: React.FC<TermsConditionsModalProps> = ({ isOp
           </section>
 
           <section className="space-y-2">
-            <h3 className="text-sm font-bold text-[#0F1428] dark:text-white">4. Registered Business Address</h3>
+            <h3 className="text-sm font-bold text-[#0F1428] dark:text-white">4. Registered Business Contact</h3>
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-[11px] font-mono text-slate-700 dark:text-slate-300">
-              <p className="font-bold">Pentagram Living Pvt. Ltd.</p>
-              <p>DLF Cyber City, Phase III, Building 10, Tower B, 14th Floor</p>
-              <p>Gurugram, Haryana 122002, India</p>
+              <p className="font-bold">Verdiore Interiors and Furnishing Pvt. Ltd.</p>
+              <p>Mobile: +91 9217983737</p>
+              <p>Email: contact@verdiore.in</p>
             </div>
           </section>
         </div>

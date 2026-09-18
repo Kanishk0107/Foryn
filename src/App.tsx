@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ShowcaseCanvas } from './components/ShowcaseCanvas';
 import { AuthCard } from './components/AuthCard';
 import { ForgotPasswordModal } from './components/ForgotPasswordModal';
@@ -31,6 +31,7 @@ import { MasterBoqStudio } from './components/enterprise/MasterBoqStudio';
 import { ProjectExecutionTracker } from './components/enterprise/ProjectExecutionTracker';
 import { GlobalCommandPalette } from './components/enterprise/GlobalCommandPalette';
 import { NewSiteProjectModal } from './components/enterprise/NewSiteProjectModal';
+import { CreateUserAccountModal } from './components/enterprise/CreateUserAccountModal';
 
 import { sendTransactionalEmail } from './utils/emailNotificationService';
 import { getGreetingTextByTime } from './utils/soothingAudio';
@@ -78,10 +79,14 @@ import {
 import {
   Sun,
   Moon,
-  Sparkles,
+  Calculator,
   ArrowRight,
   ShieldCheck,
-  Building
+  Building,
+  Play,
+  Pause,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 export default function App() {
@@ -89,6 +94,19 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false); // Authenticated session required for workspace
   const [activeEnterpriseView, setActiveEnterpriseView] = useState<EnterpriseView>('executive');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+
+  // Background Architectural Slideshow & Video Tour State
+  const [activeBgIndex, setActiveBgIndex] = useState<number>(0);
+  const [isPlayingTour, setIsPlayingTour] = useState<boolean>(true);
+
+  // Auto-rotate background scenes smoothly like a cinematic tour every 6.5s
+  useEffect(() => {
+    if (isLoggedIn || !isPlayingTour) return;
+    const interval = setInterval(() => {
+      setActiveBgIndex((prev) => (prev + 1) % ROOM_SCENES.length);
+    }, 6500);
+    return () => clearInterval(interval);
+  }, [isLoggedIn, isPlayingTour]);
 
   // Application Boot & Morph Splash Experience State (only triggered on login transition)
   const [isAppBooting, setIsAppBooting] = useState<boolean>(false);
@@ -102,9 +120,9 @@ export default function App() {
 
   const [user, setUser] = useState<UserProfile>({
     name: 'Rishabh Bhardwaj',
-    email: 'rishabh@pentagram.in',
+    email: 'rishabh@verdiore.in',
     role: 'Sales Lead',
-    company: 'Pentagram Living Pvt. Ltd.'
+    company: 'Verdiore Interiors and Furnishing Pvt. Ltd.'
   });
 
   // Modal Overlay States
@@ -113,6 +131,7 @@ export default function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState<boolean>(false);
   const [isScaffoldProjectModalOpen, setIsScaffoldProjectModalOpen] = useState<boolean>(false);
+  const [isCreateUserModalOpen, setIsCreateUserModalOpen] = useState<boolean>(false);
   const [autoOpenLeadModal, setAutoOpenLeadModal] = useState<boolean>(false);
   const [autoOpenBoqModal, setAutoOpenBoqModal] = useState<boolean>(false);
   const [autoOpenVendorModal, setAutoOpenVendorModal] = useState<boolean>(false);
@@ -275,12 +294,30 @@ export default function App() {
     return () => clearInterval(interval);
   }, [isLoggedIn]);
 
+  // Live Notification State for TopBar Bell
+  const [liveNotifications, setLiveNotifications] = useState<{ id: string; title: string; desc: string; time: string; type: 'warn' | 'success' | 'info' }[]>([]);
+
   // Supabase Realtime Notifications Listener
   useEffect(() => {
-    fetchNotificationsFromSupabase();
+    fetchNotificationsFromSupabase().then((items) => {
+      setLiveNotifications(items.map(n => ({
+        id: n.id,
+        title: n.title,
+        desc: n.message,
+        time: typeof n.createdAt === 'string' ? n.createdAt : new Date(n.createdAt).toLocaleTimeString(),
+        type: (n.type === 'pm_approval' ? 'success' : n.type === 'lead_assigned' ? 'info' : 'info') as 'warn' | 'success' | 'info'
+      })));
+    });
 
     const unsubscribe = subscribeToRealtimeNotifications((notif) => {
       addToast('info', notif.title, notif.message);
+      setLiveNotifications(prev => [{
+        id: notif.id,
+        title: notif.title,
+        desc: notif.message,
+        time: 'Just now',
+        type: 'info' as const
+      }, ...prev]);
     });
 
     return () => unsubscribe();
@@ -365,17 +402,17 @@ export default function App() {
   const handleLaunchGuestDemo = () => {
     setUser({
       name: 'Rishabh Bhardwaj',
-      email: 'rishabh@pentagram.in',
-      role: 'Sales Lead',
-      company: 'Pentagram Living Pvt. Ltd.'
+      email: 'admin@verdiore.in',
+      role: 'Admin',
+      company: 'Verdiore Interiors and Furnishing Pvt. Ltd.'
     });
     setIsLoggedIn(true);
     triggerSplashIfFirstLogin();
     setActiveEnterpriseView('executive');
     addToast(
-      'info',
-      'Foryn Enterprise Workstation Active',
-      'All 7 office disciplines connected. Press Ctrl+K for quick navigation.'
+      'success',
+      'Verdiore Enterprise Workstation Active',
+      'Logged in with Master Admin access. All workstations & User Provisioning unlocked.'
     );
   };
 
@@ -608,7 +645,7 @@ export default function App() {
     );
   };
 
-  const handleOpenNewItemModal = (type: 'lead' | 'boq' | 'vendor' | 'project') => {
+  const handleOpenNewItemModal = (type: 'lead' | 'boq' | 'vendor' | 'project' | 'user') => {
     if (type === 'lead') {
       setActiveEnterpriseView('crm');
       setAutoOpenLeadModal(true);
@@ -623,6 +660,8 @@ export default function App() {
       setTimeout(() => setAutoOpenVendorModal(false), 500);
     } else if (type === 'project') {
       setIsScaffoldProjectModalOpen(true);
+    } else if (type === 'user') {
+      setIsCreateUserModalOpen(true);
     }
   };
 
@@ -701,6 +740,7 @@ export default function App() {
           onLogout={handleLogout}
           onClearAllData={handleClearAllData}
           onRestoreDemoData={handleRestoreDemoData}
+          notifications={liveNotifications}
         />
 
         {/* Enterprise Workspace Layout: Sidebar + Active Workstation View */}
@@ -717,7 +757,17 @@ export default function App() {
             onOpenQuickTips={() => setIsQuickTipsOpen(true)}
           />
 
-          {/* Main Workstation View Area */}
+          {/* Main Workstation View Area — padded for all views except studio */}
+          {activeEnterpriseView === 'studio' ? (
+            <div className="flex-1 overflow-hidden">
+              <StudioDashboard
+                user={user}
+                onLogout={() => setActiveEnterpriseView('executive')}
+                onNavigate={(view) => setActiveEnterpriseView(view as any)}
+                onSendToast={(type, title, desc) => addToast(type, title, desc)}
+              />
+            </div>
+          ) : (
           <main className="flex-1 overflow-y-auto p-4 sm:p-6">
             <div className="max-w-7xl mx-auto w-full">
               <ErrorBoundary fallbackTitle="Enterprise Workstation Exception Captured">
@@ -789,14 +839,10 @@ export default function App() {
                   onReleasePayout={handleReleasePayout}
                 />
               )}
-
-              {/* 7. CAD Workspace (In Development) */}
-              {activeEnterpriseView === 'studio' && (
-                <StudioDashboard user={user} onLogout={() => setActiveEnterpriseView('executive')} />
-              )}
               </ErrorBoundary>
             </div>
           </main>
+          )}
         </div>
 
         {/* Global Spotlight Command Palette (Ctrl+K) */}
@@ -836,6 +882,19 @@ export default function App() {
           onScaffoldProject={handleScaffoldProject}
         />
 
+        {/* Provision User Account Modal (Admin Only) */}
+        <CreateUserAccountModal
+          isOpen={isCreateUserModalOpen}
+          onClose={() => setIsCreateUserModalOpen(false)}
+          onUserCreated={(newUser) => {
+            addToast(
+              'success',
+              'Sign-In Account Provisioned',
+              `Created ${newUser.email} (${newUser.role}). Credentials ready to share.`
+            );
+          }}
+        />
+
       </div>
     );
   }
@@ -843,89 +902,49 @@ export default function App() {
   // -------------------------------------------------------------
   // Default Login / Showcase Gateway (when logged out)
   // -------------------------------------------------------------
+  const activeScene = ROOM_SCENES[activeBgIndex] || ROOM_SCENES[0];
+
   return (
-    <div className="min-h-screen w-full bg-[#FDFDFD] text-[#0F1428] flex flex-col justify-between font-sans selection:bg-[#D64062] selection:text-white relative overflow-hidden">
-      {/* Background Soft Mesh Ambient Glows */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#D64062]/10 rounded-full blur-[140px]" />
-        <div className="absolute top-1/2 -right-32 w-[500px] h-[500px] bg-[#0F1428]/5 rounded-full blur-[140px]" />
-        <div className="absolute -bottom-32 left-1/3 w-[550px] h-[550px] bg-[#D64062]/10 rounded-full blur-[140px]" />
+    <div className="h-[100dvh] max-h-[100dvh] w-full bg-black text-white flex flex-col justify-between font-sans selection:bg-[#D64062] selection:text-white relative overflow-hidden select-none">
+      {/* Cinematic Full-Bleed Architectural Video / Movie Slideshow */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none select-none">
+        <AnimatePresence mode="popLayout">
+          <motion.img
+            key={activeScene.id}
+            src={activeScene.image}
+            alt={activeScene.name}
+            initial={{ scale: 1.0, opacity: 0 }}
+            animate={{ scale: 1.15, opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.18 }}
+            transition={{
+              scale: { duration: 7.5, ease: 'easeOut' },
+              opacity: { duration: 1.0, ease: 'easeInOut' }
+            }}
+            className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+          />
+        </AnimatePresence>
+
+        {/* Cinematic Film Scrim - Light & Luminous so the renders are completely clear and visible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/60 pointer-events-none" />
       </div>
 
-      {/* Top Light Portal Navigation Header */}
-      <header className="w-full max-w-7xl mx-auto px-6 pt-6 flex items-center justify-between z-20 shrink-0">
+      {/* Top Portal Navigation Header */}
+      <header className="w-full max-w-7xl mx-auto px-4 pt-3 sm:pt-4 flex items-center justify-between z-20 shrink-0">
         <div className="flex items-center gap-3">
-          <Logo size="md" />
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-[#D64062] bg-[#D64062]/10 border border-[#D64062]/20 px-2.5 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D64062] animate-pulse" />
-            Pentagram OS • Enterprise Platform
-          </span>
+          <Logo size="sm" inverted={true} />
         </div>
-        <div className="flex items-center gap-4 text-xs font-semibold text-slate-600">
-          <span className="hidden md:inline">24/7 Enterprise Support</span>
-          <span className="px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-[#0F1428] text-xs font-bold flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#D64062] animate-pulse" />
-            Cloud Auth Active
-          </span>
+        <div className="flex items-center gap-2">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md text-[10px] sm:text-[11px] font-mono text-slate-200 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="hidden sm:inline">Verdiore Studio OS • v2.4</span>
+            <span className="sm:hidden">Studio OS</span>
+          </div>
         </div>
       </header>
 
-      {/* Center Grid: Left Interactive Showcase Card + Right Login Form */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center z-10">
-        {/* Left Column: Interactive 3D Showcase in a Framed Warm Glass Container */}
-        <div className="lg:col-span-7 flex flex-col gap-5">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D64062]/10 border border-[#D64062]/20 text-[#D64062] text-xs font-extrabold uppercase tracking-wider font-mono">
-              <Sparkles className="w-3.5 h-3.5" /> Pentagram Studio & CAD
-            </div>
-            <h1 className="text-3xl sm:text-4xl xl:text-5xl font-black text-[#0F1428] tracking-tight leading-tight">
-              Design, Cost & Build <br className="hidden sm:inline" />
-              <span className="text-[#D64062]">Luxury Spaces</span> Effortlessly.
-            </h1>
-            <p className="text-sm sm:text-base text-slate-600 max-w-xl font-medium leading-relaxed">
-              Unified workstation platform integrating real-time 3D CAD visualization, automated BOQ calculations, and end-to-end site project management.
-            </p>
-          </div>
-
-          {/* Styled Showcase Container Card */}
-          <div className="relative rounded-2xl sm:rounded-3xl border border-slate-200/80 bg-[#0F1428] shadow-2xl shadow-[#0F1428]/10 backdrop-blur-xl overflow-hidden h-[300px] sm:h-[380px] md:h-[440px] lg:h-[480px] xl:h-[520px] flex flex-col transition-all group">
-            <ShowcaseCanvas
-              scenes={ROOM_SCENES}
-              currentScene={currentScene}
-              onSelectScene={(scene) => setCurrentScene(scene)}
-              onSelectHotspotInStudio={handleSelectHotspotInStudio}
-              hideBottomToolbar={true}
-            />
-          </div>
-
-          {/* Trust Highlights Ticker */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-1">
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/80 border border-slate-200/80 shadow-xs flex items-center gap-2.5">
-              <ShieldCheck className="w-4 h-4 text-[#D64062] shrink-0" />
-              <div>
-                <div className="text-xs font-bold text-[#0F1428]">256-Bit Encrypted</div>
-                <div className="text-[10px] text-slate-500 font-medium">Enterprise Security</div>
-              </div>
-            </div>
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/80 border border-slate-200/80 shadow-xs flex items-center gap-2.5">
-              <Building className="w-4 h-4 text-[#D64062] shrink-0" />
-              <div>
-                <div className="text-xs font-bold text-[#0F1428]">31-Stage Engine</div>
-                <div className="text-[10px] text-slate-500 font-medium">Full Site Tracking</div>
-              </div>
-            </div>
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/80 border border-slate-200/80 shadow-xs flex items-center gap-2.5">
-              <Sparkles className="w-4 h-4 text-[#D64062] shrink-0" />
-              <div>
-                <div className="text-xs font-bold text-[#0F1428]">BOQ Automation</div>
-                <div className="text-[10px] text-slate-500 font-medium">Real-Time Costing</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Auth Card Portal */}
-        <div className="lg:col-span-5 flex flex-col justify-center">
+      {/* Center Monolithic Smoked Glass Auth Portal - Compact & 100% In-View */}
+      <main className="flex-1 w-full max-w-md mx-auto px-3 sm:px-4 flex items-center justify-center z-10 my-auto py-1">
+        <div className="w-full max-w-sm sm:max-w-md">
           <AuthCard
             onLoginSuccess={handleLoginSuccess}
             onOpenForgotPassword={() => setIsForgotPasswordOpen(true)}
@@ -934,25 +953,86 @@ export default function App() {
         </div>
       </main>
 
-      {/* Minimal Footer */}
-      <footer className="w-full max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium z-10 border-t border-slate-200/60 pb-16 md:pb-4">
-        <div>© 2026 Pentagram Living Pvt. Ltd. All rights reserved. • DLF Cyber City, Gurugram</div>
-        <div className="flex items-center gap-4 mt-2 sm:mt-0 font-mono text-[11px]">
+      {/* Cinematic Video Tour HUD & Minimal Footer */}
+      <footer className="w-full max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-2.5 flex flex-col sm:flex-row items-center justify-between z-20 shrink-0 text-[10px] sm:text-xs text-slate-300 gap-2 border-t border-white/10 bg-black/50 backdrop-blur-md">
+        {/* Left: Video Playback Controls, Progress Bars & Scene Title */}
+        <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-start">
+          {/* Movie Controls */}
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setActiveBgIndex((prev) => (prev - 1 + ROOM_SCENES.length) % ROOM_SCENES.length)}
+              className="p-1 sm:p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+              title="Previous Scene"
+              aria-label="Previous Scene"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+            </button>
+            <button
+              onClick={() => setIsPlayingTour(!isPlayingTour)}
+              className="p-1 sm:p-1.5 rounded-lg bg-[#D64062] hover:bg-[#C03252] text-white transition-colors cursor-pointer"
+              title={isPlayingTour ? 'Pause Tour' : 'Play Tour'}
+              aria-label={isPlayingTour ? 'Pause Tour' : 'Play Tour'}
+            >
+              {isPlayingTour ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+            </button>
+            <button
+              onClick={() => setActiveBgIndex((prev) => (prev + 1) % ROOM_SCENES.length)}
+              className="p-1 sm:p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+              title="Next Scene"
+              aria-label="Next Scene"
+            >
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
+          {/* Story Progress Indicators (like video clips) */}
+          <div className="flex items-center gap-1.5 flex-1 sm:w-36">
+            {ROOM_SCENES.map((scene, idx) => (
+              <div
+                key={scene.id}
+                onClick={() => setActiveBgIndex(idx)}
+                className="h-1 flex-1 rounded-full bg-white/20 overflow-hidden cursor-pointer relative"
+                title={scene.name}
+              >
+                {idx < activeBgIndex ? (
+                  <div className="h-full w-full bg-[#D64062]" />
+                ) : idx === activeBgIndex ? (
+                  <motion.div
+                    key={`progress-${idx}-${isPlayingTour}`}
+                    initial={{ width: '0%' }}
+                    animate={{ width: isPlayingTour ? '100%' : '50%' }}
+                    transition={{ duration: 6.5, ease: 'linear' }}
+                    className="h-full bg-[#D64062]"
+                  />
+                ) : null}
+              </div>
+            ))}
+          </div>
+
+          {/* Scene Title */}
+          <div className="flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] text-slate-200">
+            <span className="text-[#D64062] font-bold">0{activeBgIndex + 1}/0{ROOM_SCENES.length}</span>
+            <span className="text-white/30">•</span>
+            <span className="truncate max-w-[130px] sm:max-w-xs font-sans font-medium">{activeScene.name}</span>
+          </div>
+        </div>
+
+        {/* Right: Copyright and Legal */}
+        <div className="flex items-center gap-2.5 text-[10px] sm:text-[11px] text-slate-400">
+          <span className="hidden md:inline">© 2026 Verdiore Interiors</span>
           <button
             onClick={() => setIsPrivacyOpen(true)}
-            className="hover:text-[#D64062] hover:underline transition-colors cursor-pointer"
+            className="hover:text-white transition-colors cursor-pointer"
           >
-            Privacy Policy
+            Privacy
           </button>
-          <span>•</span>
+          <span className="text-white/20">•</span>
           <button
             onClick={() => setIsTermsOpen(true)}
-            className="hover:text-[#D64062] hover:underline transition-colors cursor-pointer"
+            className="hover:text-white transition-colors cursor-pointer"
           >
-            Terms of Service
+            Terms
           </button>
-          <span>•</span>
-          <span>ISO 27001 Certified</span>
         </div>
       </footer>
 
@@ -980,17 +1060,6 @@ export default function App() {
 
       {/* Cookie Consent Banner */}
       <CookieConsentBanner />
-
-      {/* Mobile Sticky CTA Bar */}
-      <StickyMobileCTA
-        onAction={() => {
-          const authElement = document.querySelector('form');
-          if (authElement) {
-            authElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        }}
-        buttonText="Sign In / Register"
-      />
 
       {/* Global Toast Notifications */}
       <Toast toasts={toasts} onDismiss={handleDismissToast} />

@@ -32,7 +32,7 @@ export const CookieConsentBanner: React.FC = () => {
             Cookie & Privacy Preferences
           </h4>
           <p className="text-slate-300 leading-relaxed text-[11px]">
-            Pentagram OS uses essential cookies to authenticate your studio session, secure 3D CAD visualization state, and save BOQ costing progress.
+            Verdiore Interiors uses essential cookies to authenticate your studio session, secure 3D CAD visualization state, and save BOQ costing progress.
           </p>
           <div className="pt-2 flex items-center gap-2">
             <button

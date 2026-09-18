@@ -82,7 +82,7 @@ const STAGES: StageMetadata[] = [
     stage: 'COMPLETE',
     label: 'Workspace Assembled & Ready',
     targetProgress: 100,
-    subtext: 'Transitioning to Pentagram OS Studio Canvas...',
+    subtext: 'Transitioning to Foryn OS Studio Canvas...',
     cadMetric: 'SYSTEM_STATUS: NOMINAL'
   }
 ];
@@ -91,7 +91,7 @@ export const ForynLoadingExperience: React.FC<ForynLoadingExperienceProps> = ({
   onComplete,
   realProgress,
   isError = false,
-  errorMessage = 'Unable to establish secure handshake with Pentagram Cloud Gateway.',
+  errorMessage = 'Unable to establish secure handshake with Foryn Cloud Gateway.',
   onRetry,
   statusHeadline = 'Turning Ideas Into Beautiful Spaces',
   minDurationMs = 2400,
@@ -414,7 +414,7 @@ export const ForynLoadingExperience: React.FC<ForynLoadingExperienceProps> = ({
             <span>WebGL 2.0 / GPU Accelerated</span>
           </div>
           <span>•</span>
-          <span>© Pentagram Living Pvt Ltd</span>
+          <span>© Foryn Living Pvt Ltd</span>
         </div>
       </footer>
     </motion.div>

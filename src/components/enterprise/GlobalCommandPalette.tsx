@@ -38,7 +38,7 @@ interface GlobalCommandPaletteProps {
   onSelectView: (view: EnterpriseView) => void;
   onSelectProject: (projectName: string) => void;
   projects: string[];
-  onOpenNewItemModal: (type: 'lead' | 'boq' | 'vendor' | 'project') => void;
+  onOpenNewItemModal: (type: 'lead' | 'boq' | 'vendor' | 'project' | 'user') => void;
 }
 
 export const GlobalCommandPalette: React.FC<GlobalCommandPaletteProps> = ({
@@ -192,6 +192,16 @@ export const GlobalCommandPalette: React.FC<GlobalCommandPaletteProps> = ({
         onOpenNewItemModal('vendor');
         onClose();
       }
+    },
+    {
+      id: 'cmd-new-user',
+      title: 'Provision New User Sign-In Account',
+      category: 'Quick Actions',
+      icon: Plus,
+      action: () => {
+        onOpenNewItemModal('user');
+        onClose();
+      }
     }
   ];
 
@@ -303,7 +313,7 @@ export const GlobalCommandPalette: React.FC<GlobalCommandPaletteProps> = ({
             <span>↵ Select</span>
             <span>ESC Close</span>
           </div>
-          <span className="text-[#D64062] font-semibold">Pentagram OS Command Palette</span>
+          <span className="text-[#D64062] font-semibold">Verdiore Studio Command Palette</span>
         </div>
       </div>
     </div>

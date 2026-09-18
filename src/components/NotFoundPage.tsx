@@ -40,12 +40,12 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onReturnHome }) => {
           className="px-6 py-3 rounded-2xl bg-[#D64062] hover:bg-[#C03252] text-white font-extrabold text-xs inline-flex items-center gap-2 shadow-lg shadow-[#D64062]/25 transition-all cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Return to Pentagram OS</span>
+          <span>Return to Workspace</span>
         </button>
       </main>
 
       <footer className="text-xs text-slate-400 font-mono z-10">
-        © 2026 Pentagram Living Pvt. Ltd. • DLF Cyber City, Gurugram, India
+        © 2026 Verdiore Interiors and Furnishing Pvt. Ltd. All rights reserved.
       </footer>
     </div>
   );

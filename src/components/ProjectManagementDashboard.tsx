@@ -112,31 +112,25 @@ export const ProjectManagementDashboard: React.FC<ProjectManagementDashboardProp
 
   return (
     <div className="space-y-6">
-      {/* Top Banner Header */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-xl flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-[#0F1428]/20 text-slate-400 border border-slate-200">
-              <HardHat className="w-5 h-5" />
-            </span>
-            <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">
-              Project Management & Vendor Hub
-            </span>
-          </div>
-          <h1 className="text-2xl font-black tracking-tight text-white">
-            BOQ Control & Vendor Payment Approvals
-          </h1>
-          <p className="text-xs text-slate-300 mt-1 max-w-2xl">
-            Review site progress, assign specialized contractors (Modular Factory, Civil, Automation), and approve milestone payment releases before sending to the Finance Team.
+      {/* ── Page Header ── */}
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-100">
+        <div className="space-y-0.5">
+          <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#D64062]">
+            Procurement & Site Execution
           </p>
+          <h1 className="text-2xl font-black tracking-tight text-[#0F1428]">
+            Vendor Hub
+            <span className="text-slate-300 font-light mx-2">·</span>
+            <span className="text-slate-500 font-semibold text-lg">Payment Approvals</span>
+          </h1>
         </div>
 
         <button
           onClick={() => setIsAssignModalOpen(true)}
-          className="px-4 py-2.5 bg-[#D64062] hover:bg-[#D64062] active:scale-[0.98] text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-all flex items-center gap-2 ring-2 ring-slate-200"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#D64062] hover:bg-[#C03252] text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
         >
-          <Plus className="w-4 h-4" />
-          <span>Assign New Vendor</span>
+          <Plus className="w-3.5 h-3.5" />
+          Assign Vendor
         </button>
       </div>
 

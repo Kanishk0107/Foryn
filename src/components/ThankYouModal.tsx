@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, CheckCircle2, Sparkles, ArrowRight } from 'lucide-react';
+import { X, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface ThankYouModalProps {
   isOpen: boolean;
@@ -11,7 +11,7 @@ interface ThankYouModalProps {
 export const ThankYouModal: React.FC<ThankYouModalProps> = ({
   isOpen,
   onClose,
-  title = 'Thank You for Choosing Pentagram OS!',
+  title = 'Thank You for Choosing Verdiore Interiors!',
   message = 'Your site project data has been submitted and synced with 31-Stage execution engine.'
 }) => {
   if (!isOpen) return null;
@@ -23,17 +23,16 @@ export const ThankYouModal: React.FC<ThankYouModalProps> = ({
           onClick={onClose}
           className="absolute top-4 right-4 p-2 text-slate-400 hover:text-[#0F1428] dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
-        <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 text-[#0F1428] flex items-center justify-center mx-auto shadow-inner">
+        <div className="w-16 h-16 mx-auto rounded-2xl bg-[#D64062]/10 text-[#D64062] flex items-center justify-center">
           <CheckCircle2 className="w-8 h-8 animate-bounce" />
         </div>
 
         <div className="space-y-1">
           <h3 className="text-xl font-black text-[#0F1428] dark:text-white flex items-center justify-center gap-1.5">
             {title}
-            <Sparkles className="w-4 h-4 text-[#D64062]" />
           </h3>
           <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed font-medium">
             {message}

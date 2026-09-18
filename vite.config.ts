@@ -15,16 +15,8 @@ export default defineConfig(() => {
     server: {
       port: 3000,
       host: '0.0.0.0',
-      strictPort: true,
-      // Force HMR to use IPv4 localhost to avoid IPv6 TCP timeout errors (wsarecv).
-      hmr: disableHmr
-        ? false
-        : {
-            host: 'localhost',
-            port: 3000,
-            protocol: 'ws',
-            clientPort: 3000,
-          },
+      strictPort: false,
+      hmr: disableHmr ? false : true,
       watch: disableHmr ? null : {},
     },
     build: {

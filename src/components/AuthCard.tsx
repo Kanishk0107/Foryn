@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { LogoLoadingOverlay } from './LogoLoadingOverlay';
-import { Component as SignInCard2 } from './ui/sign-in-card-2';
+import { SignInCard2 } from './ui/sign-in-card-2';
 
 interface AuthCardProps {
   onLoginSuccess: (userEmail: string, role?: string) => void;
