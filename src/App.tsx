@@ -418,6 +418,7 @@ export default function App() {
   };
 
   const handleLogout = async () => {
+    setIsAppBooting(false);
     sessionStorage.removeItem('foryn_splash_shown');
     if (supabase) {
       await supabase.auth.signOut();
