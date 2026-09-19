@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { AnimatePresence } from 'motion/react';
-import { LogoLoadingOverlay } from './LogoLoadingOverlay';
+import React from 'react';
 import { SignInCard2 } from './ui/sign-in-card-2';
 
 interface AuthCardProps {
@@ -14,9 +12,6 @@ export const AuthCard: React.FC<AuthCardProps> = ({
   onOpenForgotPassword,
   onLaunchGuestDemo
 }) => {
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState('Authenticating session...');
-
   const triggerLoginWithIntro = (action: () => void, _message: string) => {
     action();
   };
@@ -37,26 +32,19 @@ export const AuthCard: React.FC<AuthCardProps> = ({
 
   const handleGuestDemoClick = () => {
     triggerLoginWithIntro(
-      () => onLaunchGuestDemo(),
+      () => onLaunchGuestDemo?.(),
       'Initializing Guest CAD Workstation...'
     );
   };
 
   return (
-    <>
-      {/* Full-Screen Animated Logo Loading Overlay */}
-      <AnimatePresence>
-        {isLoggingIn && <LogoLoadingOverlay statusText={loadingMessage} />}
-      </AnimatePresence>
-
-      <div className="w-full flex items-center justify-center">
-        <SignInCard2
-          onLoginSuccess={handleLoginSuccess}
-          onOpenForgotPassword={onOpenForgotPassword}
-          onLaunchGuestDemo={handleGuestDemoClick}
-          onGoogleSignIn={handleGoogleSignIn}
-        />
-      </div>
-    </>
+    <div className="w-full flex items-center justify-center">
+      <SignInCard2
+        onLoginSuccess={handleLoginSuccess}
+        onOpenForgotPassword={onOpenForgotPassword}
+        onLaunchGuestDemo={handleGuestDemoClick}
+        onGoogleSignIn={handleGoogleSignIn}
+      />
+    </div>
   );
 };

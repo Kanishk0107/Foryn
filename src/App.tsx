@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ShowcaseCanvas } from './components/ShowcaseCanvas';
 import { AuthCard } from './components/AuthCard';
 import { ForgotPasswordModal } from './components/ForgotPasswordModal';
-import { ProjectDashboard } from './components/ProjectDashboard';
 import { StudioDashboard } from './components/StudioDashboard';
 import { LeadCapturingDashboard } from './components/LeadCapturingDashboard';
 import { ProjectManagementDashboard } from './components/ProjectManagementDashboard';
@@ -17,7 +15,6 @@ import { CookieConsentBanner } from './components/CookieConsentBanner';
 import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
 import { TermsConditionsModal } from './components/TermsConditionsModal';
 import { ThankYouModal } from './components/ThankYouModal';
-import { StickyMobileCTA } from './components/StickyMobileCTA';
 import { NotFoundPage } from './components/NotFoundPage';
 import { initAnalytics, trackPageView } from './utils/analytics';
 
