@@ -17,6 +17,7 @@ import { TermsConditionsModal } from './components/TermsConditionsModal';
 import { ThankYouModal } from './components/ThankYouModal';
 import { NotFoundPage } from './components/NotFoundPage';
 import { initAnalytics, trackPageView } from './utils/analytics';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 
 
@@ -907,6 +908,9 @@ export default function App() {
             />
           )}
         </AnimatePresence>
+
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
       </div>
     );
   }
@@ -1084,6 +1088,9 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
