@@ -376,11 +376,7 @@ export default function App() {
   };
 
   const triggerSplashIfFirstLogin = () => {
-    const hasSeenSplash = sessionStorage.getItem('foryn_splash_shown');
-    if (!hasSeenSplash) {
-      sessionStorage.setItem('foryn_splash_shown', 'true');
-      setIsAppBooting(true);
-    }
+    setIsAppBooting(true);
   };
 
   const handleLoginSuccess = (userEmail: string, role?: string) => {
@@ -906,6 +902,14 @@ export default function App() {
           }}
         />
 
+        {/* Global Architectural Loading & Splash Morph Experience */}
+        <AnimatePresence>
+          {isAppBooting && (
+            <ForynLoadingExperience
+              onComplete={() => setIsAppBooting(false)}
+            />
+          )}
+        </AnimatePresence>
       </div>
     );
   }
